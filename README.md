@@ -30,3 +30,7 @@ $ lua5.3 apostinhas.lua
 ### Links Úteis
 
 [Curso de Programação em Lua](https://www.youtube.com/watch?v=3BA_fK0yXrI)
+
+[Documentação Oficial](https://www.lua.org/docs.html)
+
+[Wiki Lua](http://lua-users.org/wiki/)
