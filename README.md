@@ -17,7 +17,7 @@ $ lua5.3
 ```bash
 > print "Hello World"
 ```
-* Arquivos
+#### Arquivos
 
 Crie um arquivo <i>apostinhas.lua</i> e execute com o seguinte comando:
 
