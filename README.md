@@ -1,12 +1,12 @@
-# mlp_equipe7_2018-2
+# MLP 2018/2 - Space Invaders em Lua
 
-### Instalação Lua no Linux
+### Lua no Linux
 
 ```bash
 $ sudo apt-get install lua5.3
 ```
 
-* Testar se foi instalado:
+* Testar se foi instalado: abrir o modo interativo
 
 ```bash
 $ lua5.3
@@ -16,4 +16,11 @@ $ lua5.3
 
 ```bash
 > print "Hello World"
+```
+* Arquivos
+
+Crie um arquivo <i>apostinhas.lua</i> e execute com o seguinte comando:
+
+```bash
+$ lua5.3 apostinhas.lua
 ```
