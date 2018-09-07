@@ -1,8 +1,15 @@
 # mlp_equipe7_2018-2
 
-### Install Lua
+### Instalação Lua no Linux
 
 ```bash
-$ sudo apt-get install lua
+$ sudo apt-get install lua5.3
 ```
 
+* Testar se foi instalado:
+
+```bash
+$ lua5.3
+```
+
+ 
