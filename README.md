@@ -12,4 +12,8 @@ $ sudo apt-get install lua5.3
 $ lua5.3
 ```
 
- 
+* Hello World
+
+```bash
+> print "Hello World"
+```
