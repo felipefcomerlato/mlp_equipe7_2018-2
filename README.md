@@ -53,3 +53,5 @@ $ love PASTA_ONDE_TA_A_MAIN.LUA
 [Documentação Oficial](https://www.lua.org/docs.html)
 
 [Wiki Lua](http://lua-users.org/wiki/)
+
+[Tabels as vectors](https://www.lua.org/pil/2.5.html)
