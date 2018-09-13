@@ -5,8 +5,7 @@ local y = 0
 local xPlayer = 320
 local yPlayer = 608
 
-inimigos = {0,1,1,0,1}
-print (inimigos)
+enemies = {{0,1,1,0,1}, {0,1,1,1,1},{1,1,1,1,1}}
 
 function love.load()
   enemieImage = love.graphics.newImage("images/mysteryb.png")
@@ -16,7 +15,7 @@ end
 
 
 function love.draw()
-  desenha(#inimigos)
+  draw_enemies(#enemies)
   love.graphics.draw(playerImage, xPlayer, yPlayer)
 end
 
@@ -32,11 +31,18 @@ function love.update(dt)
 end
 
 
-function desenha(num_vezes)
-  if num_vezes > 0 then
-    if inimigos[num_vezes] == 1 then
-      love.graphics.draw(enemieImage, num_vezes*40, y)
+function draw_enemies(rows)
+  if rows > 0 then
+    desenha_col(rows, #enemies[rows])
+    draw_enemies(rows-1)
+  end
+end
+
+function desenha_col(row, enemies_on_the_row)
+  if enemies_on_the_row > 0 then
+    if enemies[row][enemies_on_the_row] == 1 then
+      love.graphics.draw(enemieImage, enemies_on_the_row*60, row*20 + y)
     end
-    desenha(num_vezes-1)
+    desenha_col(row, enemies_on_the_row-1)
   end
 end
