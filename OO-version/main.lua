@@ -6,15 +6,15 @@ local xPlayer = 320
 local yPlayer = 608
 
 function love.load()
-  enemieImage = love.graphics.newImage("images/mysteryb.png")
+  enemieImage = love.graphics.newImage("images/saucer1b.png")
   playerImage = love.graphics.newImage("images/baseshipb.png")
   love.graphics.setBackgroundColor(0,255,255)
 end
 
 function love.draw()
-  for i=0,14,1 do
-    for j=0,10,1 do
-      love.graphics.draw(enemieImage, i*40, y)
+  for i=0,10,1 do
+    for j=0,4,1 do
+      love.graphics.draw(enemieImage, i*60, j * 20 + y)
     end
   end
   love.graphics.draw(playerImage, xPlayer, yPlayer)
