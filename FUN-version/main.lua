@@ -55,15 +55,19 @@ function setShotPlayer()
 end
 
 function setEnemies()
-  enemie_image = love.graphics.newImage("images/saucer1b.png")
+  enemie1_image = love.graphics.newImage("images/saucer1b.png")
+  enemie2_image = love.graphics.newImage("images/saucer2b.png")
+  enemie3_image = love.graphics.newImage("images/saucer3b.png")
   mystery_enemie_image = love.graphics.newImage("images/mysteryb.png")
   min_x_enemie = 0
-  max_x_enemie = love.graphics.getWidth() - enemie_image:getWidth()
+  max_x_enemie = love.graphics.getWidth() - enemie1_image:getWidth()
   max_x_mystery_enemie = love.graphics.getWidth() + 500
   min_x_mystery_enemie = -500
   x_mystery_enemie = max_x_mystery_enemie
   y_mystery_enemie = 10
   enemies = {
+              {1,1,1,1,1,1,1,1,1},
+              {1,1,1,1,1,1,1,1,1},
               {1,1,1,1,1,1,1,1,1},
               {1,1,1,1,1,1,1,1,1},
               {1,1,1,1,1,1,1,1,1},
@@ -105,15 +109,15 @@ end
 function updatePositionEnemies(dt)
   y_enemies_shift = y_enemies_shift + enemies_speed*dt
   --x_enemies_shift = x_enemies_shift + 10*enemies_speed*dt
-  if x_mystery_enemie >= max_x_mystery_enemie then
-    x_mystery_enemie_shift = x_mystery_enemie_shift * (-1)
-    mystery_enemie_speed = mystery_enemie_speed * (-1)
-  end
-  if x_mystery_enemie <= min_x_mystery_enemie then
-    x_mystery_enemie_shift = x_mystery_enemie_shift * (-1)
-    mystery_enemie_speed = mystery_enemie_speed * (-1)
+  if x_mystery_enemie <= min_x_mystery_enemie or x_mystery_enemie >= max_x_mystery_enemie then
+    changeDirectionMysteryEnemie()
   end
   x_mystery_enemie_shift = mystery_enemie_speed*dt
+end
+
+function changeDirectionMysteryEnemie()
+  x_mystery_enemie_shift = x_mystery_enemie_shift * (-1)
+  mystery_enemie_speed = mystery_enemie_speed * (-1)
 end
 
 function controlPlayer()
@@ -147,7 +151,13 @@ function drawEnemieCol(row, enemies_on_the_row)
   y_enemie = row * y_distance_btw_enemies + y_enemies_shift
   if enemies_on_the_row > 0 then
     if enemies[row][enemies_on_the_row] == 1 then
-      love.graphics.draw(enemie_image, x_enemie, y_enemie)
+      if row <= 2 then
+        love.graphics.draw(enemie1_image, x_enemie, y_enemie)
+      elseif row > 2 and row <= 4 then
+        love.graphics.draw(enemie2_image, x_enemie, y_enemie)
+      else
+        love.graphics.draw(enemie3_image, x_enemie, y_enemie)
+      end
     end
     drawEnemieCol(row, enemies_on_the_row-1)
   end
