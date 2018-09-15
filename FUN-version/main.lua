@@ -10,7 +10,7 @@ function love.draw()
   love.graphics.draw(player_image, x_player, y_player)
   if shot_player_on_the_screen then
     drawShotPlayer()
-    testColisionShotPlayer()
+    testCollisionShotPlayer()
   end
 end
 
@@ -18,7 +18,7 @@ function love.keypressed(key)
   if key == "space" then
     if not shot_player_on_the_screen then
       shot_player_on_the_screen = true
-      x_shot = x_player
+      x_shot_player = x_player
       y_shot_player_initial = y_player
     end
   end
@@ -46,8 +46,8 @@ end
 
 function setShotPlayer()
   shot_player_image = love.graphics.newImage("images/tiro.png")
-  local x_shot_player
-  local y_shot_player
+  x_shot_player = 0
+  y_shot_player = love.graphics.getWidth()
   local y_shot_player_initial
   shot_player_speed = 900
   y_shot_player_shift = 0
@@ -66,20 +66,22 @@ function setEnemies()
   x_mystery_enemie = max_x_mystery_enemie
   y_mystery_enemie = 10
   enemies = {
-              {1,1,1,1,1,1,1,1,1},
-              {1,1,1,1,1,1,1,1,1},
-              {1,1,1,1,1,1,1,1,1},
-              {1,1,1,1,1,1,1,1,1},
-              {1,1,1,1,1,1,1,1,1},
-              {1,1,1,1,1,1,1,1,1}
+              {1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+              {1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+              {1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+              {1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+              {1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+              {1,1,1,1,1,1,1,1,1,1,1,1,1,1}
             }
+
   enemies_speed = 5
   mystery_enemie_speed = 20
   x_mystery_enemie_shift = 0
   x_enemies_shift = 0
   y_enemies_shift = 0
-  x_distance_btw_enemies = 60
+  x_distance_btw_enemies = 40
   y_distance_btw_enemies = 30
+  dead_enemie = false
 end
 
 
@@ -87,17 +89,20 @@ end
 
 --
 function drawShotPlayer()
-  y_shot = y_shot_player_initial - y_shot_player_shift
-  love.graphics.draw(shot_player_image, x_shot, y_shot)
+  y_shot_player = y_shot_player_initial - y_shot_player_shift
+  love.graphics.draw(shot_player_image, x_shot_player, y_shot_player)
 end
 
-function testColisionShotPlayer()
-  -- Aqui implementar colisão do tiro com inimigo
-  -- Por enquanto só tá testando limite da tela
-  if y_shot < 0 then
-    shot_player_on_the_screen = false
-    y_shot_player_shift = 0
+function testCollisionShotPlayer()
+  if y_shot_player < 0 then
+    resetShot()
   end
+end
+
+function resetShot()
+  y_shot_player = y_player
+  shot_player_on_the_screen = false
+  y_shot_player_shift = 0
 end
 
 function updatePositionShotPlayer(dt)
@@ -146,18 +151,35 @@ function drawEnemies(rows)
   love.graphics.draw(mystery_enemie_image, x_mystery_enemie, y_mystery_enemie)
 end
 
+function verifyCollision()
+  limit_left = x_shot_player + shot_player_image:getWidth()/2 - enemie1_image:getWidth()
+  limit_right = x_shot_player + shot_player_image:getWidth()/2
+  limit_bottom = y_shot_player + shot_player_image:getHeight()/2
+  if x_enemie >= limit_left and x_enemie <= limit_right then
+    if y_enemie >= limit_bottom then
+      dead_enemie = true
+      resetShot()
+    end
+  end
+end
+
 function drawEnemieCol(row, enemies_on_the_row)
   x_enemie = enemies_on_the_row * x_distance_btw_enemies -- + x_enemies_shift
   y_enemie = row * y_distance_btw_enemies + y_enemies_shift
+  verifyCollision()
+  if dead_enemie then
+    enemies[row][enemies_on_the_row] = 0
+    dead_enemie = false
+  end
   if enemies_on_the_row > 0 then
     if enemies[row][enemies_on_the_row] == 1 then
-      if row <= 2 then
-        love.graphics.draw(enemie1_image, x_enemie, y_enemie)
-      elseif row > 2 and row <= 4 then
-        love.graphics.draw(enemie2_image, x_enemie, y_enemie)
-      else
-        love.graphics.draw(enemie3_image, x_enemie, y_enemie)
-      end
+        if row <= 2 then
+          love.graphics.draw(enemie1_image, x_enemie, y_enemie)
+        elseif row > 2 and row <= 4 then
+          love.graphics.draw(enemie2_image, x_enemie, y_enemie)
+        else
+          love.graphics.draw(enemie3_image, x_enemie, y_enemie)
+        end
     end
     drawEnemieCol(row, enemies_on_the_row-1)
   end
