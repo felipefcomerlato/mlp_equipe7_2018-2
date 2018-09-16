@@ -48,7 +48,6 @@ function setShotPlayer()
   shot_player_image = love.graphics.newImage("images/tiro.png")
   x_shot_player = 0
   y_shot_player = love.graphics.getWidth()
-  local y_shot_player_initial
   shot_player_speed = 900
   y_shot_player_shift = 0
   shot_player_on_the_screen = false
@@ -73,7 +72,6 @@ function setEnemies()
               {1,1,1,1,1,1,1,1,1,1,1,1,1,1},
               {1,1,1,1,1,1,1,1,1,1,1,1,1,1}
             }
-
   enemies_speed = 5
   mystery_enemie_speed = 20
   x_mystery_enemie_shift = 0
@@ -151,14 +149,17 @@ function drawEnemies(rows)
   love.graphics.draw(mystery_enemie_image, x_mystery_enemie, y_mystery_enemie)
 end
 
-function verifyCollision()
+function verifyCollision(row, enemies_on_the_row)
+  --
   limit_left = x_shot_player + shot_player_image:getWidth()/2 - enemie1_image:getWidth()
   limit_right = x_shot_player + shot_player_image:getWidth()/2
   limit_bottom = y_shot_player + shot_player_image:getHeight()/2
-  if x_enemie >= limit_left and x_enemie <= limit_right then
-    if y_enemie >= limit_bottom then
-      dead_enemie = true
-      resetShot()
+  if enemies[row][enemies_on_the_row] == 1 then
+    if x_enemie >= limit_left and x_enemie <= limit_right then
+      if y_enemie + enemie1_image:getHeight() >= limit_bottom then
+        dead_enemie = true
+        resetShot()
+      end
     end
   end
 end
@@ -166,7 +167,7 @@ end
 function drawEnemieCol(row, enemies_on_the_row)
   x_enemie = enemies_on_the_row * x_distance_btw_enemies -- + x_enemies_shift
   y_enemie = row * y_distance_btw_enemies + y_enemies_shift
-  verifyCollision()
+  verifyCollision(row, enemies_on_the_row)
   if dead_enemie then
     enemies[row][enemies_on_the_row] = 0
     dead_enemie = false
