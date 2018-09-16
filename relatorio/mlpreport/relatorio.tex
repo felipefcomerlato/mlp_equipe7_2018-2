@@ -15,6 +15,7 @@
 % (a A seguir podem ser importados os pacotes necessários para o documento, de acordo 
 % com a necessidade)
 %
+\usepackage{float}
 \usepackage[brazilian]{babel}	    % para texto escrito em pt-br
 \usepackage[utf8]{inputenc}         % pacote para acentuação
 \usepackage{graphicx}         	    % pacote para importar figuras
@@ -73,11 +74,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % título
-\title{Um Modelo de Relatório para a Disciplina de MLP do Instituto de Informática da UFRGS} 
+\title{Equipe 7 \\ Projeto Space Invaders Utilizando Lua} 
 
 % autor
-\author{Autores(s)}{Aluno(s)} % {sobrenome}{nome}
-%\author{Autor2}{Aluno} % {sobrenome}{nome} 1 para cada aluno
+\author{Fischer Comerlato}{Felipe} % {sobrenome}{nome}
+\author{Eich}{Leonardo} % {sobrenome}{nome} 
 
 % Professor orientador da disciplina
 \advisor[Prof.~Dr.]{Mello Schnorr}{Lucas}
@@ -89,7 +90,7 @@
 \location{Porto Alegre}{RS} 
 
 % data da entrega do trabalho (mês e ano)
-\date{12}{2017}
+\date{09}{2018}
 
 
 % Palavras chave
@@ -131,18 +132,29 @@
 %
 \chapter{Introdução} \label{intro}
 
-Este capítulo tem o objetivo de descrever os detalhes necessários à correta formatação do documento. As informações aqui apresentadas devem ser suficientes para formatar corretamente o documento no ambiente \LaTeX.
+Este trabalho tem como objetivo o estudo de uma linguagem de programação moderna com características híbridas contextualizando os conceitos vistos em aula ao longo do semestre e, por fim, analisar e avaliar diferentes linguagens de programação, seguindo os critérios vistos em aula.
 
-Os \textbf{Capítulos} são sempre iniciados com o comando \texttt{\char'134chapter}, que coloca-os em uma nova folha, em letras maiúsculas, numerados e  alinhados à esquerda. Para os \textbf{capítulos não-numerados} (Listas, Resumo, Abstract, Referências, etc.), o título é centralizado na linha Para tanto, usar o comando \texttt{\char'134chapter*}. Para ambos, são deixados 90 pt de espaçamento anterior (ou seja, distância da margem superior) e 42 pt de espaçamento posterior (espaço até o início do texto ou primeira subdivisão). 
+A tarefa principal do trabalho consiste em experimentar e comparar as características e funcionalidades orientadas a objeto e funcionais da linguagem de programação escolhida. De posse de uma linguagem, é necessário escolher um problema a ser solucionado com ela. O problema será, então, implementado duas vezes na mesma linguagem: uma delas usando somente Orientação a Objetos e a outra usando somente características funcionais.
 
-Todos os \textbf{demais parágrafos de texto} são escritos em espaçamento simples, com observância de 6 pt de espaçamento em relação ao parágrafo seguinte. O estilo atual já considera essas retrições. 
+O desenvolvimento do trabalho encontra-se em \url{https://github.com/felipefcomerlato/mlp_equipe7_2018-2}.
 
 
-\section{Sobre os Títulos e Capítulos}
+\section{O Problema}
+O problema a ser resolvido neste trabalho é o desenvolvimento do jogo Space Invaders. O jogo expõe o jogador como uma espaçonave que deve destruir as espaçonaves inimigas que querem invadir o planeta do jogador. Na medida que elas avançam na tela (de cima para baixo), o jogador guia sua espaçonave (de maneira livre na tela mas sempre realizando disparos em direção ao alto da tela), para destruir todas as ondas de inimigos que se seguem.
 
-As demais subdivisões do texto (seções, subseções, etc.) são formatadas com o título alinhado sempre à esquerda, precedido da respectiva numeração. Para tanto, no \LaTeX, você deve utilizar os comandos \texttt{\char'134section},  \texttt{\char'134subsection} e  \texttt{\char'134subsubsection}.
 
-São permitidas subdivisões até o 5º nível (onde o capítulo é o 1º. nível), porém no sumário inclui-se somente os títulos até o nível 3\footnote{O formato adotado pela ABNT prevê apenas três níveis (capítulo, seção e subseção).}. Assim, \texttt{\char'134subsubsection} não é aconselhado. 
+Este trabalho tem como problema a ser resolvido o desenvolvimento do jogo Frogger. Este é um jogo \textit{arcade} que consiste em um personagem - um sapo - que deve atravessar uma estrada e um rio. O objetivo do jogo é atravessar estes lugares, desviando de obstáculos e por fim ocupar os espaços presentes no parte superior da tela, como visto na figura \ref{fig:figura1}.
+
+\begin{figure}[H]
+     \centering
+     \caption{Tela do jogo Space Invaders}
+     \fbox{
+         \includegraphics[width=5cm, keepaspectratio]{images/space-invaders-screen.jpeg}
+     }
+     \label{fig:figura1}
+ \end{figure}
+
+
 
 
 \subsection{Sobre o Sumário}

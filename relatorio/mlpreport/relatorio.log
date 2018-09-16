@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.9.7)  7 SEP 2018 18:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.9.8)  16 SEP 2018 16:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **relatorio.tex
 (./relatorio.tex
 LaTeX2e <2017-04-15>
-Babel <3.18> and hyphenation patterns for 4 language(s) loaded.
+Babel <3.18> and hyphenation patterns for 8 language(s) loaded.
 (./iiufrgs.cls
 Document Class: iiufrgs 2016/08/11 v4.17.X Formatacao de documentos para o II/U
 FRGS
@@ -561,9 +561,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@every@figure=\toks22
 \@float@every@table=\toks23
 ) (./rel_mlp.def
-File: rel_mlp.def 2016/08/19 RelatÃ³rio de MLP
-)
-(./nominata.def) (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2015/03/17 v1.2c Input encoding file
 \inpenc@prehook=\toks24
 \inpenc@posthook=\toks25
@@ -892,31 +890,722 @@ Package: fontenc 2017/04/05 v2.0i Standard LaTeX package
 File: t1enc.def 2017/04/05 v2.0i Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
 ))
+File: rel_mlp.def 2016/08/19 Relatório de MLP
+) (./nominata.def)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2017/04/05 v2.0i Standard LaTeX package
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.def
+File: t1enc.def 2017/04/05 v2.0i Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
+))
 (/usr/share/texlive/texmf-dist/tex/latex/tools/enumerate.sty
 Package: enumerate 2015/07/23 v3.00 enumerate extensions (DPC)
 \@enLab=\toks26
+) (./breakcites.sty) (/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem
+.sty
+Package: enumitem 2011/09/28 v3.5.2 Customized lists
+\labelindent=\skip78
+\enit@outerparindent=\dimen158
+\enit@toks=\toks27
+\enit@inbox=\box45
+\enitdp@description=\count270
 )
+(/usr/share/texlive/texmf-dist/tex/latex/titlesec/titletoc.sty
+Package: titletoc 2011/12/15 v1.6 TOC entries
+\ttl@leftsep=\dimen159
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count271
+\lst@gtempboxa=\box46
+\lst@token=\toks28
+\lst@length=\count272
+\lst@currlwidth=\dimen160
+\lst@column=\count273
+\lst@pos=\count274
+\lst@lostspace=\dimen161
+\lst@width=\dimen162
+\lst@newlines=\count275
+\lst@lineno=\count276
+\lst@maxwidth=\dimen163
 
-! LaTeX Error: File `breakcites.sty' not found.
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+\c@lstnumber=\count277
+\lst@skipnumbers=\count278
+\lst@framebox=\box47
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2015/06/04 1.6 listings configuration
+))
+Package: listings 2015/06/04 1.6 (Carsten Heinz)
 
-Type X to quit or <RETURN> to proceed,
-or enter new name. (Default extension: sty)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/mathptmx.sty
+Package: mathptmx 2005/04/12 PSNFSS-v9.2a Times w/ Math, improved (SPQR, WaS) 
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 28.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> OT1/ztmcm/m/n on input line 28.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/ztmcm/m/n on input line 28.
+LaTeX Font Info:    Redeclaring symbol font `letters' on input line 29.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
+(Font)                  OML/cmm/m/it --> OML/ztmcm/m/it on input line 29.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/cmm/b/it --> OML/ztmcm/m/it on input line 29.
+LaTeX Font Info:    Redeclaring symbol font `symbols' on input line 30.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/cmsy/m/n --> OMS/ztmcm/m/n on input line 30.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/cmsy/b/n --> OMS/ztmcm/m/n on input line 30.
+LaTeX Font Info:    Redeclaring symbol font `largesymbols' on input line 31.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> OMX/ztmcm/m/n on input line 31.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> OMX/ztmcm/m/n on input line 31.
+\symbold=\mathgroup4
+\symitalic=\mathgroup5
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 34.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> OT1/ptm/bx/n on input line 34.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/ptm/bx/n on input line 34.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 35.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> OT1/ptm/m/it on input line 35.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> OT1/ptm/m/it on input line 35.
+LaTeX Info: Redefining \hbar on input line 50.
+) (./relatorio.aux
 
-Enter file name: 
-! Emergency stop.
-<read *> 
-         
-l.25 \usepackage
-                {titlesec}^^M
-*** (cannot \read from terminal in nonstop modes)
+LaTeX Warning: Label `fig:figura1' multiply defined.
 
- 
+)
+\openout1 = `relatorio.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 107.
+LaTeX Font Info:    ... okay on input line 107.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 107.
+LaTeX Font Info:    ... okay on input line 107.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 107.
+LaTeX Font Info:    ... okay on input line 107.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 107.
+LaTeX Font Info:    ... okay on input line 107.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 107.
+LaTeX Font Info:    ... okay on input line 107.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 107.
+LaTeX Font Info:    ... okay on input line 107.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 107.
+LaTeX Font Info:    ... okay on input line 107.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 107.
+LaTeX Font Info:    ... okay on input line 107.
+LaTeX Font Info:    Try loading font information for T1+ptm on input line 107.
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd
+File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
+)
+Package lastpage Info: Please have a look at the pageslts package at
+(lastpage)             https://www.ctan.org/pkg/pageslts
+(lastpage)             ! on input line 107.
+
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count279
+\scratchdimen=\dimen164
+\scratchbox=\box48
+\nofMPsegments=\count280
+\nofMParguments=\count281
+\everyMPshowfont=\toks29
+\MPscratchCnt=\count282
+\MPscratchDim=\dimen165
+\MPnumerator=\count283
+\makeMPintoPDFobject=\count284
+\everyMPtoPDFconversion=\toks30
+) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+
+Package tocstyle Warning: Usage of `tocstyle' with `titletoc' detected.
+(tocstyle)                I suggest to use either `tocstyle' or `titletoc'
+(tocstyle)                but not both of them together. I expect even
+(tocstyle)                error messages because of this combination.
+
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 107.
+Package tocstyle Info: prepare \l@part for redefinition on input line 107.
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 107.
+Package tocstyle Info: prepare \l@chapter for redefinition on input line 107.
+Package tocstyle Info: prepare \l@section for redefinition on input line 107.
+LaTeX Font Info:    Try loading font information for OT1+ztmcm on input line 10
+7.
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ztmcm.fd
+File: ot1ztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ztmcm.
+)
+LaTeX Font Info:    Try loading font information for OML+ztmcm on input line 10
+7.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/omlztmcm.fd
+File: omlztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ztmcm.
+)
+LaTeX Font Info:    Try loading font information for OMS+ztmcm on input line 10
+7.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsztmcm.fd
+File: omsztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/ztmcm.
+)
+LaTeX Font Info:    Try loading font information for OMX+ztmcm on input line 10
+7.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/omxztmcm.fd
+File: omxztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/ztmcm.
+)
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 107.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ptm.fd
+File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
+)
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 107.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 107.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 107.
+Package tocstyle Info: prepare \l@subsection for redefinition on input line 107
+.
+Package tocstyle Info: prepare \l@subsubsection for redefinition on input line 
+107.
+Package tocstyle Info: prepare \l@table for redefinition on input line 107.
+Package tocstyle Info: prepare \l@figure for redefinition on input line 107.
+\AtBeginShipoutBox=\box49
+Package hyperref Info: Link coloring ON on input line 107.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
+)
+\c@section@level=\count285
+)
+LaTeX Info: Redefining \ref on input line 107.
+LaTeX Info: Redefining \pageref on input line 107.
+LaTeX Info: Redefining \nameref on input line 107.
+
+(./relatorio.out) (./relatorio.out)
+\@outlinefile=\write3
+\openout3 = `relatorio.out'.
+
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: twoside 
+* h-part:(L,W,R)=(85.35826pt, 426.79135pt, 85.35826pt)
+* v-part:(T,H,B)=(85.35826pt, 702.78308pt, 56.9055pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=426.79135pt
+* \textheight=702.78308pt
+* \oddsidemargin=13.08827pt
+* \evensidemargin=13.08827pt
+* \topmargin=-27.36447pt
+* \headheight=12.0pt
+* \headsep=28.45274pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=85.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidetrue
+* \@mparswitchtrue
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+\c@lstlisting=\count286
+\big@size=\dimen166
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 110.
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\\' on input line 110.
+
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 110.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 110.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 110.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 110.
+[1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 115.
+ (./relatorio.toc
+number indent by \l@... (toc, 0):  0.0pt
+text indent by \l@... (toc, 0):  18.0pt
+number indent by parent (toc, 0):  0.0pt
+text indent calculated (toc, 0): 18.0pt
+number indent calculated (toc, 0): 0.0pt
+text noindent (toc, 0): 39.0pt
+number noindent (toc, 0): 0.0pt
+number indent by \l@... (toc, 1):  18.0pt
+text indent by \l@... (toc, 1):  27.60004pt
+number indent by parent (toc, 1):  18.0pt
+text indent calculated (toc, 1): 21.0pt
+number indent calculated (toc, 1): 18.0pt
+text noindent (toc, 1): 39.0pt
+number noindent (toc, 1): 0.0pt
+number indent by \l@... (toc, 2):  45.60004pt
+text indent by \l@... (toc, 2):  38.39996pt
+number indent by parent (toc, 2):  39.0pt
+text indent calculated (toc, 2): 30.0pt
+number indent calculated (toc, 2): 39.0pt
+text noindent (toc, 2): 39.0pt
+number noindent (toc, 2): 0.0pt
+number indent by \l@... (toc, 3):  84.0pt
+text indent by \l@... (toc, 3):  49.20007pt
+number indent by parent (toc, 3):  69.0pt
+text indent calculated (toc, 3): 39.0pt
+number indent calculated (toc, 3): 69.0pt
+text noindent (toc, 3): 39.0pt
+number noindent (toc, 3): 0.0pt
+number indent by \l@... (toc, 3):  84.0pt
+text indent by \l@... (toc, 3):  49.20007pt
+number indent by parent (toc, 3):  69.0pt
+text indent calculated (toc, 3): 39.0pt
+number indent calculated (toc, 3): 69.0pt
+text noindent (toc, 3): 39.0pt
+number noindent (toc, 3): 0.0pt
+number indent by \l@... (toc, 3):  84.0pt
+text indent by \l@... (toc, 3):  49.20007pt
+number indent by parent (toc, 3):  69.0pt
+text indent calculated (toc, 3): 39.0pt
+number indent calculated (toc, 3): 69.0pt
+text noindent (toc, 3): 39.0pt
+number noindent (toc, 3): 0.0pt
+number indent by \l@... (toc, 2):  45.60004pt
+text indent by \l@... (toc, 2):  38.39996pt
+number indent by parent (toc, 2):  39.0pt
+text indent calculated (toc, 2): 30.0pt
+number indent calculated (toc, 2): 39.0pt
+text noindent (toc, 2): 39.0pt
+number noindent (toc, 2): 0.0pt
+number indent by \l@... (toc, 0):  0.0pt
+text indent by \l@... (toc, 0):  18.0pt
+number indent by parent (toc, 0):  0.0pt
+text indent calculated (toc, 0): 18.0pt
+number indent calculated (toc, 0): 0.0pt
+text noindent (toc, 0): 39.0pt
+number noindent (toc, 0): 0.0pt
+number indent by \l@... (toc, 1):  18.0pt
+text indent by \l@... (toc, 1):  27.60004pt
+number indent by parent (toc, 1):  18.0pt
+text indent calculated (toc, 1): 21.0pt
+number indent calculated (toc, 1): 18.0pt
+text noindent (toc, 1): 39.0pt
+number noindent (toc, 1): 0.0pt
+number indent by \l@... (toc, 1):  18.0pt
+text indent by \l@... (toc, 1):  27.60004pt
+number indent by parent (toc, 1):  18.0pt
+text indent calculated (toc, 1): 21.0pt
+number indent calculated (toc, 1): 18.0pt
+text noindent (toc, 1): 39.0pt
+number noindent (toc, 1): 0.0pt
+number indent by \l@... (toc, 0):  0.0pt
+text indent by \l@... (toc, 0):  18.0pt
+number indent by parent (toc, 0):  0.0pt
+text indent calculated (toc, 0): 18.0pt
+number indent calculated (toc, 0): 0.0pt
+text noindent (toc, 0): 39.0pt
+number noindent (toc, 0): 0.0pt
+number indent by \l@... (toc, 1):  18.0pt
+text indent by \l@... (toc, 1):  27.60004pt
+number indent by parent (toc, 1):  18.0pt
+text indent calculated (toc, 1): 21.0pt
+number indent calculated (toc, 1): 18.0pt
+text noindent (toc, 1): 39.0pt
+number noindent (toc, 1): 0.0pt
+number indent by \l@... (toc, 1):  18.0pt
+text indent by \l@... (toc, 1):  27.60004pt
+number indent by parent (toc, 1):  18.0pt
+text indent calculated (toc, 1): 21.0pt
+number indent calculated (toc, 1): 18.0pt
+text noindent (toc, 1): 39.0pt
+number noindent (toc, 1): 0.0pt
+number indent by \l@... (toc, 1):  18.0pt
+text indent by \l@... (toc, 1):  27.60004pt
+number indent by parent (toc, 1):  18.0pt
+text indent calculated (toc, 1): 21.0pt
+number indent calculated (toc, 1): 18.0pt
+text noindent (toc, 1): 39.0pt
+number noindent (toc, 1): 0.0pt
+number indent by \l@... (toc, 1):  18.0pt
+text indent by \l@... (toc, 1):  27.60004pt
+number indent by parent (toc, 1):  18.0pt
+text indent calculated (toc, 1): 21.0pt
+number indent calculated (toc, 1): 18.0pt
+text noindent (toc, 1): 39.0pt
+number noindent (toc, 1): 0.0pt
+number indent by \l@... (toc, 0):  0.0pt
+text indent by \l@... (toc, 0):  18.0pt
+number indent by parent (toc, 0):  0.0pt
+text indent calculated (toc, 0): 18.0pt
+number indent calculated (toc, 0): 0.0pt
+text noindent (toc, 0): 39.0pt
+number noindent (toc, 0): 0.0pt
+)
+\tf@toc=\write4
+\openout4 = `relatorio.toc'.
+
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 133.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 133.
+ [2
+
+
+]
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 133.
+
+Overfull \hbox (13.81296pt too wide) in paragraph at lines 139--140
+[]\T1/ptm/m/n/12 O de-sen-vol-vi-mento do tra-ba-lho encontra-se em [][]$<[]htt
+ps : / / github . com / felipefcomerlato /
+ []
+
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 142.
+<images/space-invaders-screen.jpeg, id=102, 210.7875pt x 240.9pt>
+File: images/space-invaders-screen.jpeg Graphic file (type jpg)
+<use images/space-invaders-screen.jpeg>
+Package pdftex.def Info: images/space-invaders-screen.jpeg  used on input line 
+153.
+(pdftex.def)             Requested size: 142.26378pt x 162.58945pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 156.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 156.
+ [3
+
+]
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 160.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 172.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsptm.fd
+File: omsptm.fd 
+)
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 172.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 188.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 194.
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+\T1/ptm/m/n/10.95 4
+ []
+
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 197.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 197.
+[4 <./images/space-invaders-screen.jpeg>]
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 200.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 208.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 221.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 221.
+ [5]
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 221.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 228.
+<images/image1.png, id=122, 199.49532pt x 133.24782pt>
+File: images/image1.png Graphic file (type png)
+<use images/image1.png>
+Package pdftex.def Info: images/image1.png  used on input line 238.
+(pdftex.def)             Requested size: 170.39978pt x 113.8142pt.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 248.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+\T1/ptm/m/n/10.95 6
+ []
+
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 251.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 251.
+[6
+
+ <./images/image1.png>]
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 280.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 280.
+ [7]
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 280.
+
+Underfull \hbox (badness 10000) in paragraph at lines 282--286
+
+ []
+
+
+LaTeX Warning: Citation `Adams2009Conceptual' on page 8 undefined on input line
+ 292.
+
+
+LaTeX Warning: Citation `Adams2009Conceptual' on page 8 undefined on input line
+ 294.
+
+
+LaTeX Warning: Citation `Adams2009Conceptual' on page 8 undefined on input line
+ 296.
+
+
+LaTeX Warning: Citation `Adams2009Conceptual' on page 8 undefined on input line
+ 296.
+
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 307.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 314.
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+\T1/ptm/m/n/10.95 8
+ []
+
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 323.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 323.
+[8
+
+]
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 353.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 356.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 356.
+ [9]
+Overfull \hbox (25.0146pt too wide) in paragraph at lines 367--368
+[]\T1/ptm/m/n/12 As ci-ta-ções lon-gas, por já te-rem o des-ta-que do re-cuo (r
+e-en-trada), $[]$
+ []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+\T1/ptm/m/n/10.95 10
+ []
+
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 379.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 379.
+[10]
+Overfull \hbox (19.78304pt too wide) in paragraph at lines 402--403
+[]\T1/ptm/m/n/12 Quando hou-ver uma ci-ta-ção \T1/ptm/m/it/12 den-tro de ou-tra
+ ci-ta-ção, \T1/ptm/m/n/12 as as-pas da se-gunda transformam-
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 403.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 403.
+ [11]
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 426.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+\T1/ptm/m/n/10.95 12
+ []
+
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 429.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 429.
+[12]
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 442.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 442.
+ [13]
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 442.
+
+No file relatorio.bbl.
+
+Underfull \hbox (badness 10000) in paragraph at lines 463--464
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 465--466
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 467--468
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 483--484
+
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+\T1/ptm/m/n/10.95 14
+ []
+
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 490.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 490.
+[14
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 495--496
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 505--506
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 513--514
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 519--520
+
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 521.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 521.
+ [15]
+Underfull \hbox (badness 10000) in paragraph at lines 525--526
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 531--532
+
+ []
+
+
+Overfull \hbox (1.25392pt too wide) in paragraph at lines 533--534
+[]\T1/ptm/m/n/12 Quando exis-ti-rem mais de três au-to-res, indica-se ape-nas o
+ pri-meiro, acrescentando-
+ []
+
+
+AED: lastpage setting LastPage
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+\T1/ptm/m/n/10.95 16
+ []
+
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 552.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 552.
+[16]
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 552.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 552.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 552.
+ (./relatorio.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 552.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 552.
+Package rerunfilecheck Info: File `relatorio.out' has not changed.
+(rerunfilecheck)             Checksum: 5FE66C9A5CDB7A95C972F0593B4DCA3A;3427.
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 552.
+ ) 
 Here is how much of TeX's memory you used:
- 19580 strings out of 494903
- 328354 string characters out of 6179962
- 401074 words of memory out of 5000000
- 22766 multiletter control sequences out of 15000+600000
- 531334 words of font info for 24 fonts, out of 8000000 for 9000
- 16 hyphenation exceptions out of 8191
- 48i,0n,45p,10365b,275s stack positions out of 5000i,500n,10000p,200000b,80000s
-!  ==> Fatal error occurred, no output PDF file produced!
+ 22314 strings out of 494830
+ 370488 string characters out of 6178380
+ 449813 words of memory out of 5000000
+ 25357 multiletter control sequences out of 15000+600000
+ 561207 words of font info for 63 fonts, out of 8000000 for 9000
+ 61 hyphenation exceptions out of 8191
+ 48i,11n,45p,10365b,396s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/ur
+w/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a
+.pfb>
+Output written on relatorio.pdf (16 pages, 112404 bytes).
+PDF statistics:
+ 207 PDF objects out of 1000 (max. 8388607)
+ 179 compressed objects within 2 object streams
+ 39 named destinations out of 1000 (max. 500000)
+ 147 words of extra memory for PDF output out of 10000 (max. 10000000)
+
