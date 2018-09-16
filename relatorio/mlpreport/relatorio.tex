@@ -140,10 +140,8 @@ O desenvolvimento do trabalho encontra-se em \url{https://github.com/felipefcome
 
 
 \section{O Problema}
-O problema a ser resolvido neste trabalho é o desenvolvimento do jogo Space Invaders. O jogo expõe o jogador como uma espaçonave que deve destruir as espaçonaves inimigas que querem invadir o planeta do jogador. Na medida que elas avançam na tela (de cima para baixo), o jogador guia sua espaçonave (de maneira livre na tela mas sempre realizando disparos em direção ao alto da tela), para destruir todas as ondas de inimigos que se seguem.
+O problema a ser resolvido neste trabalho é o desenvolvimento do jogo Space Invaders. O jogo expõe o jogador como uma espaçonave que deve destruir as espaçonaves inimigas que querem invadir o planeta do jogador. Na medida que elas avançam na tela (de cima para baixo), o jogador guia sua espaçonave horizontalmente e efetua disparos para destruir todas as ondas de inimigos que se seguem, como visto na figura \ref{fig:figura1}
 
-
-Este trabalho tem como problema a ser resolvido o desenvolvimento do jogo Frogger. Este é um jogo \textit{arcade} que consiste em um personagem - um sapo - que deve atravessar uma estrada e um rio. O objetivo do jogo é atravessar estes lugares, desviando de obstáculos e por fim ocupar os espaços presentes no parte superior da tela, como visto na figura \ref{fig:figura1}.
 
 \begin{figure}[H]
      \centering
@@ -153,6 +151,18 @@ Este trabalho tem como problema a ser resolvido o desenvolvimento do jogo Frogge
      }
      \label{fig:figura1}
  \end{figure}
+
+
+\chapter{Visão Geral da Linguagem}
+
+A linguagem escolhida para o trabalho foi \textbf{Lua}. Esta é uma linguagem de alto nível, leve, poderosa e multiparadigma: pode ser considerada de \textit{scripting}, imperativa, funcional ou orientada a objetos. Um dos pontos fortes da linguagem é sua semântica extensível, à qual podem ser adicionadas novas funcionalidades sem alterar suas características originais. Uma das características principais da linguagem é sua única estrutura de dados: tabelas - que podem ser usadas para representar arrays comuns, sequências, tabelas de símbolos, conjuntos, registros, grafos, árvores, etc.
+
+\section{Modelo Funcional}
+
+Lua oferece suporte ao modelo de programação funcional mas nos proporciona algumas dificuldades, como a de copiar de tabelas, por exemplo, já que tal estrutura de dados atribuída a uma variável é apenas uma referência. Tal dificuldade contraria uma das principais características do próprio paradigma funcional: a de usar funções puras, criando novas estruturas ao invés de alterar uma estrutura original. Por outro lado, Lua nos permite representar funções anônimas através de blocos de código chamados de \textit{trechos}, característico no modelo funcional.
+
+
+\section{Modelo Orientado à Objetos}
 
 
 

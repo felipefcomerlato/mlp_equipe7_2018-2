@@ -3,18 +3,21 @@
 \babel@toc {brazilian}{}
 \contentsline {chapter}{1~Introdu\IeC {\c c}\IeC {\~a}o}{3}{CHAPTER.1}
 \contentsline {section}{\numberline {1.1}O Problema}{3}{section.1.1}
-\contentsline {subsection}{\numberline {1.1.1}Sobre o Sum\IeC {\'a}rio}{4}{subsection.1.1.1}
-\contentsline {subsubsection}{\numberline {1.1.1.1}sobre a Lista de Abreviaturas e Siglas}{4}{subsubsection.1.1.1.1}
-\contentsline {subsubsection}{\numberline {1.1.1.2}Sobre a Lista de S\IeC {\'\i }mbolos}{5}{subsubsection.1.1.1.2}
-\contentsline {subsubsection}{\numberline {1.1.1.3}Sobre as Listas de Figuras e de Tabelas}{5}{subsubsection.1.1.1.3}
-\contentsline {subsection}{\numberline {1.1.2}Numera\IeC {\c c}\IeC {\~a}o das P\IeC {\'a}ginas}{5}{subsection.1.1.2}
-\contentsline {chapter}{2~AS ILUSTRA\IeC {\c C}\IeC {\~O}ES NO TEXTO}{6}{CHAPTER.2}
-\contentsline {section}{\numberline {2.1}Descri\IeC {\c c}\IeC {\~a}o das Figuras}{6}{section.2.1}
-\contentsline {section}{\numberline {2.2}Descri\IeC {\c c}\IeC {\~a}o das Tabelas}{7}{section.2.2}
-\contentsline {chapter}{3~Sobre refer\IeC {\^e}ncias e cita\IeC {\c c}\IeC {\~o}es}{8}{CHAPTER.3}
-\contentsline {section}{\numberline {3.1}cita\IeC {\c c}\IeC {\~o}es}{8}{section.3.1}
-\contentsline {section}{\numberline {3.2}Cita\IeC {\c c}\IeC {\~a}o Indireta ou Livre (par\IeC {\'a}frase)}{8}{section.3.2}
-\contentsline {section}{\numberline {3.3}Cita\IeC {\c c}\IeC {\~a}o Direta ou Textual (transcri\IeC {\c c}\IeC {\~a}o)}{10}{section.3.3}
-\contentsline {section}{\numberline {3.4}Cita\IeC {\c c}\IeC {\~a}o de Cita\IeC {\c c}\IeC {\~a}o}{13}{section.3.4}
-\contentsline {chapter}{4~CONCLUS\IeC {\~A}O}{14}{CHAPTER.4}
+\contentsline {chapter}{2~Vis\IeC {\~a}o Geral da Linguagem}{4}{CHAPTER.2}
+\contentsline {section}{\numberline {2.1}Modelo Funcional}{4}{section.2.1}
+\contentsline {section}{\numberline {2.2}Modelo Orientado \IeC {\`a} Objetos}{4}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Sobre o Sum\IeC {\'a}rio}{4}{subsection.2.2.1}
+\contentsline {subsubsection}{\numberline {2.2.1.1}sobre a Lista de Abreviaturas e Siglas}{5}{subsubsection.2.2.1.1}
+\contentsline {subsubsection}{\numberline {2.2.1.2}Sobre a Lista de S\IeC {\'\i }mbolos}{5}{subsubsection.2.2.1.2}
+\contentsline {subsubsection}{\numberline {2.2.1.3}Sobre as Listas de Figuras e de Tabelas}{5}{subsubsection.2.2.1.3}
+\contentsline {subsection}{\numberline {2.2.2}Numera\IeC {\c c}\IeC {\~a}o das P\IeC {\'a}ginas}{5}{subsection.2.2.2}
+\contentsline {chapter}{3~AS ILUSTRA\IeC {\c C}\IeC {\~O}ES NO TEXTO}{7}{CHAPTER.3}
+\contentsline {section}{\numberline {3.1}Descri\IeC {\c c}\IeC {\~a}o das Figuras}{7}{section.3.1}
+\contentsline {section}{\numberline {3.2}Descri\IeC {\c c}\IeC {\~a}o das Tabelas}{8}{section.3.2}
+\contentsline {chapter}{4~Sobre refer\IeC {\^e}ncias e cita\IeC {\c c}\IeC {\~o}es}{9}{CHAPTER.4}
+\contentsline {section}{\numberline {4.1}cita\IeC {\c c}\IeC {\~o}es}{9}{section.4.1}
+\contentsline {section}{\numberline {4.2}Cita\IeC {\c c}\IeC {\~a}o Indireta ou Livre (par\IeC {\'a}frase)}{9}{section.4.2}
+\contentsline {section}{\numberline {4.3}Cita\IeC {\c c}\IeC {\~a}o Direta ou Textual (transcri\IeC {\c c}\IeC {\~a}o)}{11}{section.4.3}
+\contentsline {section}{\numberline {4.4}Cita\IeC {\c c}\IeC {\~a}o de Cita\IeC {\c c}\IeC {\~a}o}{14}{section.4.4}
+\contentsline {chapter}{5~CONCLUS\IeC {\~A}O}{15}{CHAPTER.5}
 \contentsfinish 
