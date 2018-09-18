@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.9.7)  16 SEP 2018 20:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.9.8)  16 SEP 2018 21:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **relatorio.tex
 (./relatorio.tex
 LaTeX2e <2017-04-15>
-Babel <3.18> and hyphenation patterns for 4 language(s) loaded.
+Babel <3.18> and hyphenation patterns for 8 language(s) loaded.
 (./iiufrgs.cls
 Document Class: iiufrgs 2016/08/11 v4.17.X Formatacao de documentos para o II/U
 FRGS
@@ -1352,35 +1352,35 @@ number indent by \l@... (toc, 2):  45.60004pt
 text indent by \l@... (toc, 2):  38.39996pt
 number indent by parent (toc, 2):  45.0pt
 text indent calculated (toc, 2): 30.0pt
-number indent calculated (toc, 2): 39.0pt
+number indent calculated (toc, 2): 45.0pt
 text noindent (toc, 2): 39.0pt
 number noindent (toc, 2): 0.0pt
 number indent by \l@... (toc, 3):  84.0pt
 text indent by \l@... (toc, 3):  49.20007pt
-number indent by parent (toc, 3):  69.0pt
+number indent by parent (toc, 3):  75.0pt
 text indent calculated (toc, 3): 39.0pt
-number indent calculated (toc, 3): 69.0pt
+number indent calculated (toc, 3): 75.0pt
 text noindent (toc, 3): 39.0pt
 number noindent (toc, 3): 0.0pt
 number indent by \l@... (toc, 3):  84.0pt
 text indent by \l@... (toc, 3):  49.20007pt
-number indent by parent (toc, 3):  69.0pt
+number indent by parent (toc, 3):  75.0pt
 text indent calculated (toc, 3): 39.0pt
-number indent calculated (toc, 3): 69.0pt
+number indent calculated (toc, 3): 75.0pt
 text noindent (toc, 3): 39.0pt
 number noindent (toc, 3): 0.0pt
 number indent by \l@... (toc, 3):  84.0pt
 text indent by \l@... (toc, 3):  49.20007pt
-number indent by parent (toc, 3):  69.0pt
+number indent by parent (toc, 3):  75.0pt
 text indent calculated (toc, 3): 39.0pt
-number indent calculated (toc, 3): 69.0pt
+number indent calculated (toc, 3): 75.0pt
 text noindent (toc, 3): 39.0pt
 number noindent (toc, 3): 0.0pt
 number indent by \l@... (toc, 2):  45.60004pt
 text indent by \l@... (toc, 2):  38.39996pt
 number indent by parent (toc, 2):  45.0pt
 text indent calculated (toc, 2): 30.0pt
-number indent calculated (toc, 2): 39.0pt
+number indent calculated (toc, 2): 45.0pt
 text noindent (toc, 2): 39.0pt
 number noindent (toc, 2): 0.0pt
 number indent by \l@... (toc, 0):  0.0pt
@@ -1828,9 +1828,15 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 612.
  (./relatorio.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 612.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 612.
-Package rerunfilecheck Info: File `relatorio.out' has not changed.
-(rerunfilecheck)             Checksum: F301ED8074F51C5C1A3BF64B0D204EF9;8115.
 
+
+Package rerunfilecheck Warning: File `relatorio.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `relatorio.out':
+(rerunfilecheck)             Before: F301ED8074F51C5C1A3BF64B0D204EF9;8115
+(rerunfilecheck)             After:  B4398D4AE0DD9270259E4C46C005575C;8112.
 
 LaTeX Warning: There were undefined references.
 
@@ -1840,12 +1846,12 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 612.
  ) 
 Here is how much of TeX's memory you used:
- 22365 strings out of 494903
- 371071 string characters out of 6179962
- 454589 words of memory out of 5000000
- 25374 multiletter control sequences out of 15000+600000
+ 22365 strings out of 494830
+ 371071 string characters out of 6178380
+ 454834 words of memory out of 5000000
+ 25381 multiletter control sequences out of 15000+600000
  561207 words of font info for 63 fonts, out of 8000000 for 9000
- 16 hyphenation exceptions out of 8191
+ 61 hyphenation exceptions out of 8191
  48i,11n,45p,10365b,396s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
@@ -1853,7 +1859,7 @@ f-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/ur
 w/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a
 .pfb>
-Output written on relatorio.pdf (19 pages, 118863 bytes).
+Output written on relatorio.pdf (19 pages, 119162 bytes).
 PDF statistics:
  346 PDF objects out of 1000 (max. 8388607)
  313 compressed objects within 4 object streams

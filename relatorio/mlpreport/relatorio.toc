@@ -5,7 +5,7 @@
 \contentsline {section}{\numberline {1.1}O Problema}{3}{section.1.1}
 \contentsline {chapter}{2~Vis\IeC {\~a}o Geral da Linguagem}{4}{CHAPTER.2}
 \contentsline {section}{\numberline {2.1}Modelo Funcional}{4}{section.2.1}
-\contentsline {section}{\numberline {2.2}Modelo Orientado \IeC {\`a} Objetos}{4}{section.2.2}
+\contentsline {section}{\numberline {2.2}Modelo Orientado a Objetos}{4}{section.2.2}
 \contentsline {chapter}{3~Recursos Funcionais}{5}{CHAPTER.3}
 \contentsline {section}{\numberline {3.1}Elementos Imut\IeC {\'a}veis e Fun\IeC {\c c}\IeC {\~o}es Puras}{5}{section.3.1}
 \contentsline {section}{\numberline {3.2}Fun\IeC {\c c}\IeC {\~o}es An\IeC {\^o}nimas}{5}{section.3.2}
