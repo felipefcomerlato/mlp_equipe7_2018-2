@@ -1,11 +1,11 @@
 -- ### LOVE FUNCTIONS
 
-function love.load()
+love.load = function()
   setEnemies()
   setPlayer()
 end
 
-function love.draw()
+love.draw = function()
   drawEnemies(#enemies)
   love.graphics.draw(player_image, x_player, y_player)
   if shot_player_on_the_screen then
@@ -14,7 +14,7 @@ function love.draw()
   end
 end
 
-function love.keypressed(key)
+love.keypressed = function(key)
   if key == "space" then
     if not shot_player_on_the_screen then
       shot_player_on_the_screen = true
@@ -24,7 +24,7 @@ function love.keypressed(key)
   end
 end
 
-function love.update(dt)
+love.update = function(dt)
   updatePositionEnemies(dt)
   updatePositionShotPlayer(dt)
   controlPlayer()
@@ -34,7 +34,7 @@ end
 
 -- ### SET FUNCTIONS
 
-function setPlayer()
+setPlayer = function()
   player_image = love.graphics.newImage("images/baseshipb.png")
   x_player = love.graphics.getWidth() / 2 - player_image:getWidth() / 2
   y_player = love.graphics.getHeight() - 2 * player_image:getHeight()
@@ -44,7 +44,7 @@ function setPlayer()
   setShotPlayer()
 end
 
-function setShotPlayer()
+setShotPlayer = function()
   shot_player_image = love.graphics.newImage("images/tiro.png")
   x_shot_player = 0
   y_shot_player = love.graphics.getWidth()
@@ -53,7 +53,7 @@ function setShotPlayer()
   shot_player_on_the_screen = false
 end
 
-function setEnemies()
+setEnemies = function()
   enemie1_image = love.graphics.newImage("images/saucer1b.png")
   enemie2_image = love.graphics.newImage("images/saucer2b.png")
   enemie3_image = love.graphics.newImage("images/saucer3b.png")
@@ -86,30 +86,30 @@ end
 -- end SET FUNCTIONS ###
 
 --
-function drawShotPlayer()
+drawShotPlayer = function()
   y_shot_player = y_shot_player_initial - y_shot_player_shift
   love.graphics.draw(shot_player_image, x_shot_player, y_shot_player)
 end
 
-function testCollisionShotPlayer()
+testCollisionShotPlayer = function()
   if y_shot_player < 0 then
     resetShot()
   end
 end
 
-function resetShot()
+resetShot = function()
   y_shot_player = y_player
   shot_player_on_the_screen = false
   y_shot_player_shift = 0
 end
 
-function updatePositionShotPlayer(dt)
+updatePositionShotPlayer = function(dt)
   if shot_player_on_the_screen then
     y_shot_player_shift = y_shot_player_shift + shot_player_speed*dt
   end
 end
 
-function updatePositionEnemies(dt)
+updatePositionEnemies = function(dt)
   y_enemies_shift = y_enemies_shift + enemies_speed*dt
   --x_enemies_shift = x_enemies_shift + 10*enemies_speed*dt
   if x_mystery_enemie <= min_x_mystery_enemie or x_mystery_enemie >= max_x_mystery_enemie then
@@ -118,12 +118,12 @@ function updatePositionEnemies(dt)
   x_mystery_enemie_shift = mystery_enemie_speed*dt
 end
 
-function changeDirectionMysteryEnemie()
+changeDirectionMysteryEnemie = function()
   x_mystery_enemie_shift = x_mystery_enemie_shift * (-1)
   mystery_enemie_speed = mystery_enemie_speed * (-1)
 end
 
-function controlPlayer()
+controlPlayer = function()
   if love.keyboard.isDown("right") then   -- reduce the value
     if x_player < max_x_player then
       x_player = x_player + x_player_shift
@@ -140,7 +140,7 @@ function controlPlayer()
   end
 end
 
-function drawEnemies(rows)
+drawEnemies = function(rows)
   if rows > 0 then
     drawEnemieCol(rows, #enemies[rows])
     drawEnemies(rows-1)
@@ -149,7 +149,7 @@ function drawEnemies(rows)
   love.graphics.draw(mystery_enemie_image, x_mystery_enemie, y_mystery_enemie)
 end
 
-function verifyCollision(row, enemies_on_the_row)
+verifyCollision = function(row, enemies_on_the_row)
   --
   limit_left = x_shot_player + shot_player_image:getWidth()/2 - enemie1_image:getWidth()
   limit_right = x_shot_player + shot_player_image:getWidth()/2
@@ -164,7 +164,7 @@ function verifyCollision(row, enemies_on_the_row)
   end
 end
 
-function drawEnemieCol(row, enemies_on_the_row)
+drawEnemieCol = function(row, enemies_on_the_row)
   x_enemie = enemies_on_the_row * x_distance_btw_enemies -- + x_enemies_shift
   y_enemie = row * y_distance_btw_enemies + y_enemies_shift
   verifyCollision(row, enemies_on_the_row)
