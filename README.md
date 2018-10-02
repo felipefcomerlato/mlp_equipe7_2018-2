@@ -9,17 +9,12 @@
 $ sudo apt-get install lua5.3
 ```
 
-* Testar se foi instalado: abrir o modo interativo
+### Modo interativo
 
 ```bash
 $ lua5.3
 ```
 
-* Hello World
-
-```bash
-> print "Hello World"
-```
 ### Arquivos
 
 Crie um arquivo <i>main.lua</i> e execute com o seguinte comando:
@@ -28,7 +23,9 @@ Crie um arquivo <i>main.lua</i> e execute com o seguinte comando:
 $ lua5.3 main.lua
 ```
 
-### Instalando Pacote Love
+### Biblioteca Love2D
+
+#### Instalação
 
 ```bash
 $ sudo add-apt-repository ppa:bartbes/love-stable
@@ -39,23 +36,30 @@ $ sudo apt-get install love
 * Executando main.lua
 
 ```bash
-$ love [PASTA_ONDE_TA_A_MAIN.LUA]
+$ love [pasta_que_contem_main.lua]
 ```
 
-### Links Úteis
+## Links Úteis
+
+[Lua: Site oficial](https://www.lua.org/)
+
+[Lua: Documentação Oficial](https://www.lua.org/docs.html)
+
+[Lua: Manual](https://www.lua.org/manual/5.2/pt/manual.html#2.6%20%E2%80%93%20Co-rotinas)
+
+[Lua: Noções](http://www.lua.org/doc/nocoes-3.1.pdf)
+
+[Lua: Wiki](http://lua-users.org/wiki/)
 
 [Exemplo de jogo O.O em Lua](https://www.youtube.com/watch?v=hByAXwpoCzs)
 
 [Curso de Programação em Lua](https://www.youtube.com/watch?v=3BA_fK0yXrI)
 
-[Site oficial](https://www.lua.org/)
+[Tabelas como vetores](https://www.lua.org/pil/2.5.html)
 
-[Documentação Oficial](https://www.lua.org/docs.html)
+[Cópia de tabelas](http://lua-users.org/wiki/CopyTable)
 
-[Wiki Lua](http://lua-users.org/wiki/)
+## Autores
 
-[Tabels as vectors](https://www.lua.org/pil/2.5.html)
-
-[Copy Table](http://lua-users.org/wiki/CopyTable)
-
-[Manual Lua](https://www.lua.org/manual/5.2/pt/manual.html#2.6%20%E2%80%93%20Co-rotinas)
+* **Felipe Fischer Comerlato** - [felipefcomerlato](https://github.com/felipefcomerlato)
+* **Leonardo Eich** - [felipefcomerlato](https://github.com/leonardoeich)
