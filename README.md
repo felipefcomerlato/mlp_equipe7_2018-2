@@ -47,6 +47,8 @@ $ love [pasta_que_contem_main.lua]
 
 [Lua: Manual](https://www.lua.org/manual/5.2/pt/manual.html#2.6%20%E2%80%93%20Co-rotinas)
 
+[Lua: Noções](http://www.lua.org/doc/nocoes-3.1.pdf)
+
 [Lua: Wiki](http://lua-users.org/wiki/)
 
 [Exemplo de jogo O.O em Lua](https://www.youtube.com/watch?v=hByAXwpoCzs)
