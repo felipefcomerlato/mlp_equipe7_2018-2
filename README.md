@@ -39,7 +39,7 @@ $ sudo apt-get install love
 $ love [pasta_que_contem_main.lua]
 ```
 
-## Links Úteis
+## Referências
 
 [Lua: Site oficial](https://www.lua.org/)
 
