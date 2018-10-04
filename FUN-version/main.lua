@@ -19,11 +19,13 @@ love.load = function()
                 {1,1,1,1,1,1,1,1,1,1,1,1,1,1},
                 {1,1,1,1,1,1,1,1,1,1,1,1,1,1}
               }
-    enemies_speed = 5
+    enemies_speed_vertical = 1
+    enemies_speed_horizontal = 20
     mystery_enemie_speed = 20
     x_mystery_enemie_shift = 0
-    x_enemies_shift = 0
+    x_enemies_shift = 0 -- Controle do quanto os inimigos se moveram para uma direção
     y_enemies_shift = 0
+    direction_enemies = 1 -- Inimigos começam se movendo para a direita
     x_distance_btw_enemies = 40
     y_distance_btw_enemies = 30
   end
@@ -88,7 +90,11 @@ function love.update(dt)
 
   -- Atualiza posição dos inimigos
   updateEnemiesPosition = function(dt)
-    y_enemies_shift = y_enemies_shift + enemies_speed*dt
+    y_enemies_shift = y_enemies_shift + (enemies_speed_vertical)*dt
+    x_enemies_shift = x_enemies_shift + enemies_speed_horizontal*dt*direction_enemies
+    if x_enemies_shift >= 40 or x_enemies_shift <= -30 then
+      direction_enemies = direction_enemies*(-1)
+    end
 
     -- Movimenta o inimigo "mystery"
     changeMysteryEnemieDirection = function()
@@ -160,7 +166,7 @@ function drawEnemies(rows)
   if rows > 0 then
     -- Desenha uma linha de inimigos
     drawEnemiesOnTheRow = function(row, enemies_on_the_row)
-      x_enemie = enemies_on_the_row * x_distance_btw_enemies -- + x_enemies_shift
+      x_enemie = enemies_on_the_row * x_distance_btw_enemies + x_enemies_shift
       y_enemie = row * y_distance_btw_enemies + y_enemies_shift
 
       -- Testa se houve colisão de um inimigo com o tiro
