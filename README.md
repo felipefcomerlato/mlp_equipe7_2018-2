@@ -62,4 +62,4 @@ $ love [pasta_que_contem_main.lua]
 ## Autores
 
 * **Felipe Fischer Comerlato** - [felipefcomerlato](https://github.com/felipefcomerlato)
-* **Leonardo Eich** - [leonardoeich](ttps://github.com/leonardoeich)
+* **Leonardo Eich** - [leonardoeich](https://github.com/leonardoeich)
