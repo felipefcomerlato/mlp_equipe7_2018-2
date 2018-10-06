@@ -1,0 +1,14 @@
+\providecommand{\abntreprintinfo}[1]{%
+ \citeonline{#1}}
+\setlength{\labelsep}{0pt}\begin{thebibliography}{}
+\providecommand{\abntrefinfo}[3]{}
+\providecommand{\abntbstabout}[1]{}
+\abntbstabout{v-1.9.1 }
+
+\bibitem[Manual de Referência de Lua 5.2 2018]{ManualLua}
+\abntrefinfo{Manual\ldots}{MANUAL\ldots}{2018}
+{MANUAL de Referência de Lua 5.2. 2018.
+Available from Internet:
+  \url{https://www.lua.org/manual/5.2/pt/manual.html\#2.6\%20\%E2\%80\%93\%20Co-rotinas}.}
+
+\end{thebibliography}
