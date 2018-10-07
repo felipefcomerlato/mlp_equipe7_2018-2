@@ -11,7 +11,7 @@ love.load = function()
     min_x_mystery_enemie = -500
     x_mystery_enemie = max_x_mystery_enemie
     y_mystery_enemie = 10
-    enemies = {
+    initial_state_of_enemies = {
                 {1,1,1,1,1,1,1,1,1,1,1,1,1,1},
                 {1,1,1,1,1,1,1,1,1,1,1,1,1,1},
                 {1,1,1,1,1,1,1,1,1,1,1,1,1,1},
@@ -19,6 +19,12 @@ love.load = function()
                 {1,1,1,1,1,1,1,1,1,1,1,1,1,1},
                 {1,1,1,1,1,1,1,1,1,1,1,1,1,1}
               }
+    local enemies = {
+                  {1,1,1},
+                  {1,1,1}
+                }
+    states_of_enemies = {initial_state_of_enemies}
+    current_state = #states_of_enemies
     enemies_speed_vertical = 1
     enemies_speed_horizontal = 20
     mystery_enemie_speed = 20
@@ -56,7 +62,8 @@ end
 
 function love.draw()
   -- Desenha as linhas de inimigos
-  drawEnemies(#enemies)
+  -- Envia para a função drawEnemies o estado mais atual dos inimigos no jogo
+  drawEnemies(#states_of_enemies[current_state])
   -- Desenha o player na tela
   love.graphics.draw(player_image, x_player, y_player)
 
@@ -159,17 +166,34 @@ function resetShot()
   y_player_shot_shift = 0
 end
 
--- Mecanismo para cópia de tabela:
--- Recebe uma tabela e devolve uma nova tabela
--- contendo os elementos retirados da primeira
-function table.clone(tab)
-  return {table.unpack(tab)}
+-- Recebe a matriz de inimigos e devolve uma cópia
+function newStateOfEnemies(enemies,death_row,death_col)
+  copyEnemies = {}
+  insertRows = function(r)
+    if r > 0 then
+      copyEnemies[r] = {}
+      insertCols = function(c)
+        if c > 0 then
+          if r == death_row and c == death_col then
+            copyEnemies[r][c] = 0
+          else
+            copyEnemies[r][c] = enemies[r][c]
+          end
+          insertCols(c-1)
+        end
+      end
+      insertCols(#enemies[r])
+      insertRows(r-1)
+    end
+  end
+  insertRows(#enemies)
+  return copyEnemies
 end
-
 
 -- Desenha a matriz de inimigos na tela
 -- rows: número de linhas da matriz, usado na recursão
 function drawEnemies(rows)
+
   if rows > 0 then
     -- Desenha uma linha de inimigos
     drawEnemiesOnTheRow = function(row, enemies_on_the_row)
@@ -183,11 +207,14 @@ function drawEnemies(rows)
         limit_right = x_player_shot + player_shot_image:getWidth()/2
         limit_bottom = y_player_shot + player_shot_image:getHeight()/2
         -- Se o inimigo está vivo, testa a colisão dele com o tiro
-        if enemies[row][enemies_on_the_row] == 1 then
+        if states_of_enemies[current_state][row][enemies_on_the_row] == 1 then
           if x_enemie >= limit_left and x_enemie <= limit_right then
             if y_enemie + enemie1_image:getHeight() >= limit_bottom then
-              -- TEM QUE CRIAR UMA NOVA MATRIZ AQUI
-              enemies[row][enemies_on_the_row] = 0
+              -- Gera novo estado dos inimigos a partir de uma cópia do estado atual
+              -- print(current_state) -- debug #1 last state
+              table.insert(states_of_enemies, newStateOfEnemies(states_of_enemies[current_state],row,enemies_on_the_row))
+              current_state = #states_of_enemies
+              -- print(current_state) -- debug #2 updated state
               resetShot()
             end
           end
@@ -198,7 +225,7 @@ function drawEnemies(rows)
 
       if enemies_on_the_row > 0 then
         -- Define inimigos diferentes conforme a linha da matriz
-        if enemies[row][enemies_on_the_row] == 1 then
+        if states_of_enemies[current_state][row][enemies_on_the_row] == 1 then
             if row <= 2 then
               love.graphics.draw(enemie1_image, x_enemie, y_enemie)
             elseif row == 3 or row == 4 then
@@ -212,7 +239,7 @@ function drawEnemies(rows)
       end
 
     end
-    drawEnemiesOnTheRow(rows, #enemies[rows])
+    drawEnemiesOnTheRow(rows, #states_of_enemies[current_state][rows])
     drawEnemies(rows-1)
   end
   -- Desenha o inimigo "mystery"
