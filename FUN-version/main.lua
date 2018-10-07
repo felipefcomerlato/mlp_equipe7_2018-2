@@ -159,6 +159,13 @@ function resetShot()
   y_player_shot_shift = 0
 end
 
+-- Mecanismo para cópia de tabela:
+-- Recebe uma tabela e devolve uma nova tabela
+-- contendo os elementos retirados da primeira
+function table.clone(tab)
+  return {table.unpack(tab)}
+end
+
 
 -- Desenha a matriz de inimigos na tela
 -- rows: número de linhas da matriz, usado na recursão
