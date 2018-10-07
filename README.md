@@ -2,7 +2,7 @@
 
 Trabalho prático da disciplina de Modelos de Linguagem de Programação da UFRGS, 2º semestre de 2018.
 
-O trabalho consiste na implementação do game Space Invaders utilizando a linguagem Lua aplicada em dois paradigmas: Funcional e Orientado a Objeto.
+O trabalho consiste na implementação do game Space Invaders utilizando a linguagem Lua aplicada em dois paradigmas: Funcional e Orientado a Objetos.
 
 ## Requisitos
 
@@ -31,9 +31,7 @@ Versão Funcional:
 $ love FUN-version/
 ```
 
-Versão Orientada a Objetos:
-
-Em breve...
+Versão Orientada a Objetos: em breve...
 
 ## Referências
 
