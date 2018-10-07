@@ -1,31 +1,21 @@
-# MLP 2018/2 - "Space Invaders" em Lua
+# "Space Invaders" em Lua (em construção)
 
+Trabalho prático da disciplina de Modelos de Linguagem de Programação da UFRGS, 2º semestre de 2018.
 
-## Linguagem Lua
+O trabalho consiste na implementação do game Space Invaders utilizando a linguagem Lua aplicada em dois paradigmas: Funcional e Orientado a Objeto.
 
-### Instalação no Linux
+## Requisitos
+
+* [Lua5.3](https://www.lua.org/)
+* [Love2d](https://love2d.org/)
+
+### Lua 5.3: Instalação
 
 ```bash
 $ sudo apt-get install lua5.3
 ```
 
-### Modo interativo
-
-```bash
-$ lua5.3
-```
-
-### Arquivos
-
-Crie um arquivo <i>main.lua</i> e execute com o seguinte comando:
-
-```bash
-$ lua5.3 main.lua
-```
-
-### Biblioteca Love2D
-
-#### Instalação
+### Love2d: Instalação
 
 ```bash
 $ sudo add-apt-repository ppa:bartbes/love-stable
@@ -33,11 +23,17 @@ $ sudo apt-get update
 $ sudo apt-get install love
 ```
 
-* Executando main.lua
+## Executando o jogo
+
+Versão Funcional:
 
 ```bash
-$ love [pasta_que_contem_main.lua]
+$ love FUN-version/
 ```
+
+Versão Orientada a Objetos:
+
+Em breve...
 
 ## Referências
 
@@ -51,13 +47,16 @@ $ love [pasta_que_contem_main.lua]
 
 [Lua: Wiki](http://lua-users.org/wiki/)
 
-[Exemplo de jogo O.O em Lua](https://www.youtube.com/watch?v=hByAXwpoCzs)
-
 [Curso de Programação em Lua](https://www.youtube.com/watch?v=3BA_fK0yXrI)
 
 [Tabelas como vetores](https://www.lua.org/pil/2.5.html)
 
 [Cópia de tabelas](http://lua-users.org/wiki/CopyTable)
+
+[Exemplo de jogo O.O em Lua](https://www.youtube.com/watch?v=hByAXwpoCzs)
+
+[Biblioteca Love2d](https://love2d.org/)
+
 
 ## Autores
 
