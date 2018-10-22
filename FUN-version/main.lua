@@ -1,6 +1,5 @@
 -- ### LOVE FUNCTIONS
-
-love.load = function()
+function love.load()
   -- Configura estado inicial dos inimigos
   setEnemies = function()
     enemie1_image = love.graphics.newImage("images/saucer1b.png")
@@ -19,10 +18,6 @@ love.load = function()
                 {1,1,1,1,1,1,1,1,1,1,1,1,1,1},
                 {1,1,1,1,1,1,1,1,1,1,1,1,1,1}
               }
-    local enemies = {
-                  {1,1,1},
-                  {1,1,1}
-                }
     states_of_enemies = {initial_state_of_enemies}
     current_state = #states_of_enemies
     enemies_speed_vertical = 1
@@ -190,6 +185,22 @@ function newStateOfEnemies(enemies,death_row,death_col)
   return copyEnemies
 end
 
+function curry2(f)
+  return function(a)
+    return function(b)
+      return f(a, b)
+    end
+  end
+end
+
+function map(fun, t, sizeT)
+  -- local result = {}
+  if sizeT > 0 then
+    fun(t[sizeT])
+    map(fun, t, sizeT-1)
+  end
+end
+
 -- Desenha a matriz de inimigos na tela
 -- rows: número de linhas da matriz, usado na recursão
 function drawEnemies(rows)
@@ -206,6 +217,7 @@ function drawEnemies(rows)
         limit_left = x_player_shot + player_shot_image:getWidth()/2 - enemie1_image:getWidth()
         limit_right = x_player_shot + player_shot_image:getWidth()/2
         limit_bottom = y_player_shot + player_shot_image:getHeight()/2
+
         -- Se o inimigo está vivo, testa a colisão dele com o tiro
         if states_of_enemies[current_state][row][enemies_on_the_row] == 1 then
           if x_enemie >= limit_left and x_enemie <= limit_right then
@@ -221,7 +233,10 @@ function drawEnemies(rows)
         end
       end
 
-      verifyCollision(row, enemies_on_the_row)
+      -- Implementação curry
+      local verifyCollision = curry2(verifyCollision)
+      local funRow = verifyCollision(row)
+      local funCol = funRow(enemies_on_the_row)
 
       if enemies_on_the_row > 0 then
         -- Define inimigos diferentes conforme a linha da matriz

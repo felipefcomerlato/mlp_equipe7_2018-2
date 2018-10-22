@@ -5,10 +5,20 @@
 \providecommand{\abntbstabout}[1]{}
 \abntbstabout{v-1.9.1 }
 
+\bibitem[About 2018]{AboutLua}
+\abntrefinfo{About}{ABOUT}{2018}
+{ABOUT. 2018.
+Available from Internet: \url{https://www.lua.org/about.html}.}
+
 \bibitem[Manual de Referência de Lua 5.2 2018]{ManualLua}
 \abntrefinfo{Manual\ldots}{MANUAL\ldots}{2018}
 {MANUAL de Referência de Lua 5.2. 2018.
 Available from Internet:
   \url{https://www.lua.org/manual/5.2/pt/manual.html\#2.6\%20\%E2\%80\%93\%20Co-rotinas}.}
+
+\bibitem[Uma Introdução à Programação em Lua 2018]{IntroLuaPDF}
+\abntrefinfo{Uma\ldots}{UMA\ldots}{2018}
+{UMA Introdução à Programação em Lua. 2018.
+Available from Internet: \url{https://www.lua.org/doc/jai2009.pdf}.}
 
 \end{thebibliography}

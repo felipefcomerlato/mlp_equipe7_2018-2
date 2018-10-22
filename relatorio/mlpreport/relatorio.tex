@@ -139,27 +139,41 @@ A tarefa principal do trabalho consiste em experimentar e comparar as caracterí
 O desenvolvimento do trabalho encontra-se em \url{https://github.com/felipefcomerlato/mlp_equipe7_2018-2}.
 
 
-\section{O Problema}
-O problema a ser resolvido neste trabalho é o desenvolvimento do jogo Space Invaders. O jogo expõe o jogador como uma espaçonave que deve destruir as espaçonaves inimigas que querem invadir o planeta do jogador. Na medida que elas avançam na tela (de cima para baixo), o jogador guia sua espaçonave horizontalmente e efetua disparos para destruir todas as ondas de inimigos que se seguem, como visto na figura \ref{fig:figura1}
+\chapter{O Problema}
+O problema a ser resolvido neste trabalho é o desenvolvimento do jogo Space Invaders. O jogo expõe o jogador como uma espaçonave que deve destruir as espaçonaves inimigas que querem invadir o planeta do jogador. Na medida que elas avançam na tela (de cima para baixo), o jogador guia sua espaçonave horizontalmente e efetua disparos para destruir todas as ondas de inimigos que se seguem, como visto na Figura \ref{fig:figura1}
 
 
 \begin{figure}[H]
      \centering
      \caption{Tela do jogo Space Invaders}
      \fbox{
-         \includegraphics[width=5cm, keepaspectratio]{images/space-invaders-screen.jpeg}
+         \includegraphics[width=5cm, keepaspectratio]{images/space-invaders-screen.jpg}
      }
      \label{fig:figura1}
+     \fonte{http://g1.globo.com/tecnologia/noticia/2011/10/homem-quebra-recorde-mundial-em-space-invaders-jogo-de-1978.html}
  \end{figure}
 
 
 \chapter{Visão Geral da Linguagem}
 
-A linguagem escolhida para o trabalho foi \textbf{Lua}. Esta é uma linguagem de alto nível, leve, poderosa e multiparadigma: pode ser considerada de \textit{scripting}, imperativa, funcional ou orientada a objetos. Um dos pontos fortes da linguagem é sua semântica extensível, à qual podem ser adicionadas novas funcionalidades sem alterar suas características originais. Uma das características principais da linguagem é sua única estrutura de dados: tabelas - que podem ser usadas para representar arrays comuns, sequências, tabelas de símbolos, conjuntos, registros, grafos, árvores, etc. \cite{ManualLua}
+A linguagem escolhida para o trabalho foi extbf{Lua}. Lua é uma linguagem de script de multiparadigma, pequena, reflexiva e leve, projetada para expandir aplicações em geral, por ser uma linguagem extensível (que une partes de um programa feitas em mais de uma linguagem), para prototipagem e para ser embarcada em softwares complexos, como jogos. Assemelha-se com Python, Ruby e Icon, entre outras.
+
+Lua foi criada por um time de desenvolvedores do Tecgraf da PUC-Rio, a princípio, para ser usada em um projeto da Petrobras. Devido à sua eficiência, clareza e facilidade de aprendizado, passou a ser usada em diversos ramos da programação, como no desenvolvimento de jogos (a Blizzard Entertainment, por exemplo, usou a linguagem no jogo World of Warcraft), controle de robôs, processamento de texto, etc. Também é frequentemente usada como uma linguagem de propósito geral.
+
+Uma das características principais da linguagem é sua única estrutura de dados: tabelas - que podem ser usadas para representar arrays comuns, sequências, tabelas de símbolos, conjuntos, registros, grafos, árvores, etc.
+
+Lua é uma linguagem distribuída e pode ser compilada em qualquer plataforma que tenha um compilador da linguagem C. Lua pode ser executada em ambientes Unix e Windows, em dispositivos móveis (Android, iOS, Windows Phone, etc), em microprocessadores embarcados e etc.
+
+Incluir Lua numa aplicação não aumenta quase nada o seu tamanho. O pacote de Lua 5.3.5, contendo o código fonte e a documentação, ocupa 297K comprimido e 1.2M descompactado. O fonte contém cerca de 24000 linhas de C. No Linux de 64 bits, o interpretador Lua contendo todas as bibliotecas padrões de Lua ocupa 247K e a biblioteca Lua ocupa 421K \cite{AboutLua}.
+
+Lua possui interpretação dinâmica, ou seja, a linguagem é capaz de executar trechos de código criados dinamicamente, no mesmo ambiente de execução do programa. Como exemplos dessa facilidade temos a função \textit{loadstring} em Lua e a função \textit{eval} em Scheme/Lisp e Perl. Lua possui também tipagem dinâmica forte, ou seja, a linguagem faz verificação de tipos em tempo de execução do programa. Linguagens com
+tipagem dinâmica em geral não possuem declarações de tipos no código e não fazem verificação de tipos em tempo de compilação. Tipagem forte significa que a linguagem jamais aplica uma operação a um tipo incorreto. Além disso, Lua conta com gerência automática de memória dinâmica ("coleta de lixo"), por tanto não precisamos gerenciar memória explicitamente no nosso programa; em especial, não há necessidade de um comando para liberar memória após seu uso \cite{IntroLuaPDF}.
+
+
 
 \section{Modelo Funcional}
 
-Lua oferece suporte ao modelo de programação funcional mas nos proporciona algumas dificuldades, como a de copiar tabelas, por exemplo, já que tal estrutura de dados atribuída a uma variável é apenas uma referência. Tal dificuldade contraria uma das principais características do próprio paradigma funcional: a de usar funções puras, criando novas estruturas ao invés de alterar uma estrutura original. Por outro lado, Lua nos permite representar funções anônimas através de blocos de código chamados de \textit{trechos}, característico no modelo funcional. \cite{ManualLua}
+Lua oferece suporte ao modelo de programação funcional mas nos proporciona algumas dificuldades, como a de copiar tabelas, por exemplo, já que tal estrutura de dados atribuída a uma variável é apenas uma referência. Tal dificuldade contraria uma das principais características do próprio paradigma funcional: a de usar funções puras, criando novas estruturas ao invés de alterar uma estrutura original. Por outro lado, Lua nos permite representar funções anônimas através de blocos de código chamados de trechos, característico no modelo funcional. \cite{ManualLua}
 
 \section{Modelo Orientado a Objetos}
 
@@ -227,7 +241,7 @@ O suporte para a programação no paradigma orientado a objetos utilizando Lua �
 
 
 \bibliographystyle{abntex2-alf}
-%\bibliographystyle{plain}
+%bibliographystyle{plain}
 %\bibliographystyle{ieeetr}
 
 \bibliography{biblio} % arquivo que contém as referências (no formato bib). Colocar as suas lá (se tiver dúvida sobre como adicionar novas referências, usar o software JabRef ou Medley)
