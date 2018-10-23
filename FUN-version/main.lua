@@ -194,7 +194,6 @@ function curry2(f)
 end
 
 function map(fun, t, sizeT)
-  -- local result = {}
   if sizeT > 0 then
     fun(t[sizeT])
     map(fun, t, sizeT-1)
@@ -223,10 +222,8 @@ function drawEnemies(rows)
           if x_enemie >= limit_left and x_enemie <= limit_right then
             if y_enemie + enemie1_image:getHeight() >= limit_bottom then
               -- Gera novo estado dos inimigos a partir de uma cópia do estado atual
-              -- print(current_state) -- debug #1 last state
               table.insert(states_of_enemies, newStateOfEnemies(states_of_enemies[current_state],row,enemies_on_the_row))
               current_state = #states_of_enemies
-              -- print(current_state) -- debug #2 updated state
               resetShot()
             end
           end
