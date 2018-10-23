@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.9.7)  22 OCT 2018 23:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.9.7)  22 OCT 2018 23:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1267,6 +1267,13 @@ text indent calculated (toc, 0): 18.0pt
 number indent calculated (toc, 0): 0.0pt
 text noindent (toc, 0): 27.0pt
 number noindent (toc, 0): 0.0pt
+number indent by \l@... (toc, 0):  0.0pt
+text indent by \l@... (toc, 0):  18.0pt
+number indent by parent (toc, 0):  0.0pt
+text indent calculated (toc, 0): 18.0pt
+number indent calculated (toc, 0): 0.0pt
+text noindent (toc, 0): 27.0pt
+number noindent (toc, 0): 0.0pt
 number indent by \l@... (toc, 1):  18.0pt
 text indent by \l@... (toc, 1):  27.60004pt
 number indent by parent (toc, 1):  18.0pt
@@ -1380,7 +1387,7 @@ Package babel Info: Redefining portuges shorthand "|
 ]
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 142.
-<images/space-invaders-screen.jpg, id=162, 301.125pt x 344.28625pt>
+<images/space-invaders-screen.jpg, id=168, 301.125pt x 344.28625pt>
 File: images/space-invaders-screen.jpg Graphic file (type jpg)
 <use images/space-invaders-screen.jpg>
 Package pdftex.def Info: images/space-invaders-screen.jpg  used on input line 1
@@ -1637,14 +1644,19 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 377.
+(babel)             in language  on input line 375.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 377.
+(babel)             in language  on input line 375.
 [12]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 377.
+(babel)             in language  on input line 375.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 379.
+(babel)             in language  on input line 381.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 381.
+ [13
+
+]
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 381.
 Package babel Info: Redefining portuges shorthand "|
@@ -1666,51 +1678,61 @@ Package babel Info: Redefining portuges shorthand "|
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 399.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 399.
- [13
+(babel)             in language  on input line 401.
 
-]
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 399.
- (./relatorio.bbl
 Underfull \hbox (badness 10000) has occurred while \output is active
 \T1/ptm/m/n/10.95 14
  []
 
 Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 403.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 403.
+[14
+
+]
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 403.
+ (./relatorio.bbl
+Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 3.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 3.
-[14
+ [15
 
 ]
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 3.
 ) 
 AED: lastpage setting LastPage
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+\T1/ptm/m/n/10.95 16
+ []
+
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 424.
+(babel)             in language  on input line 428.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 424.
-[15
+(babel)             in language  on input line 428.
+[16
 
 ]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 424.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 424.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 424.
+(babel)             in language  on input line 428.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 428.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 428.
  (./relatorio.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 424.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 424.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 428.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 428.
 Package rerunfilecheck Info: File `relatorio.out' has not changed.
-(rerunfilecheck)             Checksum: BECD979448BA69961DF8882C66700C31;5078.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 424.
+(rerunfilecheck)             Checksum: 680B5B06FD9070BBF8C05504E4B3BF61;5190.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 428.
  ) 
 Here is how much of TeX's memory you used:
- 22306 strings out of 494903
- 369619 string characters out of 6179962
+ 22309 strings out of 494903
+ 369646 string characters out of 6179962
  452880 words of memory out of 5000000
- 25332 multiletter control sequences out of 15000+600000
+ 25333 multiletter control sequences out of 15000+600000
  555627 words of font info for 55 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
  48i,8n,45p,10365b,471s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1719,10 +1741,10 @@ e/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
 /times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.
 pfb>
-Output written on relatorio.pdf (15 pages, 109730 bytes).
+Output written on relatorio.pdf (16 pages, 110683 bytes).
 PDF statistics:
- 294 PDF objects out of 1000 (max. 8388607)
- 269 compressed objects within 3 object streams
- 55 named destinations out of 1000 (max. 500000)
- 230 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 303 PDF objects out of 1000 (max. 8388607)
+ 277 compressed objects within 3 object streams
+ 57 named destinations out of 1000 (max. 500000)
+ 238 words of extra memory for PDF output out of 10000 (max. 10000000)
 

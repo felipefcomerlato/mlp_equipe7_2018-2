@@ -372,6 +372,10 @@ end
 
 A função \textit{drawEnemies} desenha na tela cada inimigo através de uma tabela de tabelas, que é percorrida recursivamente para verificar se o inimigo de cada posição deve ou não ser desenhado.
 
+\chapter{Paralelismo}
+
+Lua oferece recurso de paralelismo através da função \textit{thread}, porém, tal recurso é conflitante com a biblioteca gráfica Love2d utilizada como mecanismo principal de funcionamento do jogo. Em contrapartida, a própria biblioteca Love2d possui um mecanismo de paralelismo. Apesar disso, devido à complexidade de uso de tal mecanismo, ainda não foi utilizado o recurso de paralelismo no projeto na sua atual versão, já que muitos erros foram resultantes das tentativas de uso das \textit{threads} com a Love2d.
+
 % ----------------------- %
 
 \chapter{Recursos de Orientação à Objetos}
