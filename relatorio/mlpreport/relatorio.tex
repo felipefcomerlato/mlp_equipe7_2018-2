@@ -186,19 +186,191 @@ O suporte para a programação no paradigma orientado a objetos utilizando Lua �
 
 \section{Elementos Imutáveis e Funções Puras}
 
+Funções puras são funções que não causam efeitos colaterais, ou seja, que não alteram valores de variáveis do programa. Em Lua não existe mecanismos explícitos para a criação de funções puras, ou seja, fica a cuidado do programador a implementação dessa técnica \cite{ImmutableObjectsLua}.
+
+Um exemplo de função pura criada para o projeto é a função \textit{newStateOfEnemies}, definida pelo código a seguir:
+
+\begin{verbatim}
+
+function newStateOfEnemies(enemies,death_row,death_col)
+  copyEnemies = {}
+  insertRows = function(r)
+    if r > 0 then
+      copyEnemies[r] = {}
+      insertCols = function(c)
+        if c > 0 then
+          if r == death_row and c == death_col then
+            copyEnemies[r][c] = 0
+          else
+            copyEnemies[r][c] = enemies[r][c]
+          end
+          insertCols(c-1)
+        end
+      end
+      insertCols(#enemies[r])
+      insertRows(r-1)
+    end
+  end
+  insertRows(#enemies)
+  return copyEnemies
+end
+
+\end{verbatim}
+
+\textit{newStateOfEnemies} foi criada com a finalidade de atualizar o estado dos inimigos no jogo. A função recebe a matriz (uma tabela de tabelas, em Lua) de inimigos e a posição da matriz na qual um inimigo morreu, e devolve uma matriz totalmente nova atualizada. 
+
+
 \section{Funções Anônimas}
 
-\section{Currying}
+Em Lua, por definição, todas as funções são anônimas. Todavia, é possível armazenar as funções em variáveis, para que possam ser utilizadas da maneira tradicional \cite{IntroLuaPDF}.
+
+No projeto, um exemplo de uso dessa técnica é a implementação da função \textit{setPlayerShot}, mostrada no código a seguir:
+
+\begin{verbatim}
+
+setPlayer = function()
+    player_image = love.graphics.newImage("images/baseshipb.png")
+    x_player = love.graphics.getWidth() / 2 - player_image:getWidth() / 2
+    y_player = love.graphics.getHeight() - 2 * player_image:getHeight()
+    max_x_player = love.graphics.getWidth() - player_image:getWidth()
+    min_x_player = 0
+    x_player_shift = 10
+
+    setPlayerShot = function()
+      player_shot_image = love.graphics.newImage("images/tiro.png")
+      x_player_shot = 0
+      y_player_shot = love.graphics.getWidth()
+      player_shot_speed = 900
+      y_player_shot_shift = 0
+      player_shot_on_the_screen = false
+    end
+    setPlayerShot()
+  end
+    
+\end{verbatim}
+
+Como pode ser visto, \textit{setPlayerShot} foi implementada dentro da função \textit{setPlayer}, portanto só existe dentro desse contexto. A função define a textura e posição inicial do tiro do jogador.
+
+\section{Currying} \label{Currying}
+
+Currying é a técnica de transformar uma função de N parâmetros em N funções de 1 parâmetro cada \cite{CurryingLua} projeto, foi implementada uma função genérica \textit{curry2}, mostrada abaixo:
+
+\begin{verbatim}
+
+function curry2(f)
+  return function(a)
+    return function(b)
+      return f(a, b)
+    end
+  end
+end
+
+\end{verbatim}
+
+\textit{curry2} é utilizada para fazer a verificação de colisão de cada inimigo com o tiro do jogador. A chamada da função de verificação de colisão com \textit{curry2} é como no código a seguir:
+
+\begin{verbatim}
+
+verifyCollision = curry2(verifyCollision)
+funRow = verifyCollision(row)
+funCol = funRow(enemies_on_the_row)
+
+\end{verbatim}
 
 \section{Pattern Matching}
 
+\textit{Pattern matching} ou casamento de padrões é a verificação por padrões dentro de uma estrutura de dados. Lua possui este recurso, principalmente no tratamento de \textit{strings} \cite{PatternMatchingLua}. No entanto, não foi encontrado um modo de utilizar este recurso no projeto até o momento.
+
 \section{Funções de Ordem Superior}
+
+Funções de ordem superior são aquelas que recebem uma função como parâmetro e/ou retornam uma função. Foi implementada genericamente a função \textit{map}, uma vez que Lua não possui tal função em sua definição \cite{HigherOrderFunctionLua}. \textit{map} é mostrada a seguir:
+
+\begin{verbatim}
+function map(fun, t, sizeT)
+  if sizeT > 0 then
+    fun(t[sizeT])
+    map(fun, t, sizeT-1)
+  end
+end
+\end{verbatim}
 
 \section{Funções de Ordem Maior Fornecidas Pela Linguagem}
 
+Conforme estudos realizados sobre Lua, foram encontrados poucos exemplos de funções de alta ordem disponíveis na linguagem. Um exemplo (não utilizado no trabalho) é a função \textit{table.sort}, mostrada abaixo, que espera como um dos parâmetros uma função que define o sentido de ordenação de uma tabela \cite{FunctionsLua}.
+
+\begin{verbatim}
+list = {{3}, {5}, {2}, {-1}}
+table.sort(list, function (a, b) return a[1] < b[1] end)
+\end{verbatim}
+
 \section{Funções como Elementos de Primeira Ordem}
 
+Funções são utilizadas como elementos de primeira ordem quando elas podem ser passadas como parâmetro e também retornadas por outras funções. Como mostrado na seção \ref{Currying}, a função \textit{verifyCollision} é passada como parâmetro para a função \textit{curry2} e retornada pela mesma \cite{FunctionsLua}.
+
 \section{Recursão}
+
+Conforme especificação, foi utilizada recursão como único mecanismo de iteração sobre as estruturas. Um exemplo de recursão implementada foi com a função \textit{drawEnemies}, mostrada a seguir:
+
+\begin{verbatim}
+function drawEnemies(rows)
+
+  if rows > 0 then
+    -- Desenha uma linha de inimigos
+    drawEnemiesOnTheRow = function(row, enemies_on_the_row)
+      x_enemie = enemies_on_the_row * x_distance_btw_enemies + x_enemies_shift
+      y_enemie = row * y_distance_btw_enemies + y_enemies_shift
+
+      -- Testa se houve colisão de um inimigo com o tiro
+      verifyCollision = function(row, enemies_on_the_row)
+        -- Delimita os pontos de colisão do tiro
+        limit_left = x_player_shot + player_shot_image:getWidth()/2 - enemie1_image:getWidth()
+        limit_right = x_player_shot + player_shot_image:getWidth()/2
+        limit_bottom = y_player_shot + player_shot_image:getHeight()/2
+
+        -- Se o inimigo está vivo, testa a colisão dele com o tiro
+        if states_of_enemies[current_state][row][enemies_on_the_row] == 1 then
+          if x_enemie >= limit_left and x_enemie <= limit_right then
+            if y_enemie + enemie1_image:getHeight() >= limit_bottom then
+              -- Gera novo estado dos inimigos a partir de uma cópia do estado atual
+              table.insert(states_of_enemies, newStateOfEnemies(states_of_enemies[current_state],row,enemies_on_the_row))
+              current_state = #states_of_enemies
+              resetShot()
+            end
+          end
+        end
+      end
+
+      -- Implementação curry
+      local verifyCollision = curry2(verifyCollision)
+      local funRow = verifyCollision(row)
+      local funCol = funRow(enemies_on_the_row)
+
+      if enemies_on_the_row > 0 then
+        -- Define inimigos diferentes conforme a linha da matriz
+        if states_of_enemies[current_state][row][enemies_on_the_row] == 1 then
+            if row <= 2 then
+              love.graphics.draw(enemie1_image, x_enemie, y_enemie)
+            elseif row == 3 or row == 4 then
+              love.graphics.draw(enemie2_image, x_enemie, y_enemie)
+            else
+              love.graphics.draw(enemie3_image, x_enemie, y_enemie)
+            end
+        end
+        -- Desenha os demais inimigos da linha recursivamente
+        drawEnemiesOnTheRow(row, enemies_on_the_row-1)
+      end
+
+    end
+    drawEnemiesOnTheRow(rows, #states_of_enemies[current_state][rows])
+    drawEnemies(rows-1)
+  end
+  -- Desenha o inimigo "mystery"
+  x_mystery_enemie = x_mystery_enemie + x_mystery_enemie_shift
+  love.graphics.draw(mystery_enemie_image, x_mystery_enemie, y_mystery_enemie)
+end
+\end{verbatim}
+
+A função \textit{drawEnemies} desenha na tela cada inimigo através de uma tabela de tabelas, que é percorrida recursivamente para verificar se o inimigo de cada posição deve ou não ser desenhado.
 
 % ----------------------- %
 

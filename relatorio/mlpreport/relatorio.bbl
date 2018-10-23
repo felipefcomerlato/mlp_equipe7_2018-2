@@ -10,11 +10,38 @@
 {ABOUT. 2018.
 Available from Internet: \url{https://www.lua.org/about.html}.}
 
+\bibitem[Currying in Lua 2018]{CurryingLua}
+\abntrefinfo{Currying\ldots}{CURRYING\ldots}{2018}
+{CURRYING in Lua. 2018.
+Available from Internet:
+  \url{https://www.reddit.com/r/lua/comments/6yy9wu/currying\_in\_lua/}.}
+
+\bibitem[Functions Tutorial 2018]{FunctionsLua}
+\abntrefinfo{Functions\ldots}{FUNCTIONS\ldots}{2018}
+{FUNCTIONS Tutorial. 2018.
+Available from Internet: \url{http://lua-users.org/wiki/FunctionsTutorial}.}
+
+\bibitem[Higher Order Functions in Lua 2018]{HigherOrderFunctionLua}
+\abntrefinfo{Higher\ldots}{HIGHER\ldots}{2018}
+{HIGHER Order Functions in Lua. 2018.
+Available from Internet:
+  \url{http://inmatarian.github.io/2015/08/09/send\_more\_money/}.}
+
+\bibitem[Immutable Objects 2018]{ImmutableObjectsLua}
+\abntrefinfo{Immutable\ldots}{IMMUTABLE\ldots}{2018}
+{IMMUTABLE Objects. 2018.
+Available from Internet: \url{http://lua-users.org/wiki/ImmutableObjects}.}
+
 \bibitem[Manual de Referência de Lua 5.2 2018]{ManualLua}
 \abntrefinfo{Manual\ldots}{MANUAL\ldots}{2018}
 {MANUAL de Referência de Lua 5.2. 2018.
 Available from Internet:
   \url{https://www.lua.org/manual/5.2/pt/manual.html\#2.6\%20\%E2\%80\%93\%20Co-rotinas}.}
+
+\bibitem[Patterns Tutorial 2018]{PatternMatchingLua}
+\abntrefinfo{Patterns\ldots}{PATTERNS\ldots}{2018}
+{PATTERNS Tutorial. 2018.
+Available from Internet: \url{http://lua-users.org/wiki/PatternsTutorial}.}
 
 \bibitem[Uma Introdução à Programação em Lua 2018]{IntroLuaPDF}
 \abntrefinfo{Uma\ldots}{UMA\ldots}{2018}
