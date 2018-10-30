@@ -1,31 +1,15 @@
-local enemieImage
-local num
-local x = 0
-local y = 0
-local xPlayer = 320
-local yPlayer = 608
+local character = require("entitys/enemie")
+
 
 function love.load()
-  enemieImage = love.graphics.newImage("images/saucer1b.png")
-  playerImage = love.graphics.newImage("images/baseshipb.png")
-  love.graphics.setBackgroundColor(0,255,255)
-end
-
-function love.draw()
-  for i=0,10,1 do
-    for j=0,4,1 do
-      love.graphics.draw(enemieImage, i*60, j * 20 + y)
-    end
-  end
-  love.graphics.draw(playerImage, xPlayer, yPlayer)
+  enemie1 = enemie.novo("images/mysteryb.png",100,100)
+  enemie2 = enemie.novo("images/saucer3b.png",300,300)
 end
 
 function love.update(dt)
-   y = y + 5*dt
-   if love.keyboard.isDown("right") then   -- reduce the value
-      xPlayer = xPlayer + 10
-   end
-   if love.keyboard.isDown("left") then   -- increase the value
-      xPlayer = xPlayer - 10
-   end
+end
+
+function love.draw()
+  love.graphics.draw(enemie1.texture, enemie1.position_x, enemie1.position_y)
+  love.graphics.draw(enemie2.texture, enemie2.position_x, enemie2.position_y)
 end
