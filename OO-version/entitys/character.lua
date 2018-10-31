@@ -1,14 +1,19 @@
-require("love.graphics")
+local object = require("entitys/object")
 
 local character = {}
+local move_limit_right = 600
+local move_limit_left = 0
 
-function character.novo(texture, position_x, position_y)
-  print("Um novo PERSONAGEM foi criado")
-  return {
-    texture = love.graphics.newImage(texture),
-    position_x = position_x,
-    position_y = position_y
-  }
+function character.new(texture, position_x, position_y, speed)
+  local character = object.new(texture, position_x, position_y)
+
+  character.speed = speed
+  --colocar aqui demais atributos
+  --exemplo:
+  --character.direction = "left"
+
+  return character
 end
+
 
 return character
