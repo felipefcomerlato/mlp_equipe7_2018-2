@@ -2,8 +2,6 @@ local character = require("entitys/character")
 
 local enemy = {}
 local distance_btw_enemies = 40
-local move_limit_right = 600
-local move_limit_left = 0
 local direction_move_init = 1 -- todos inimigos começam se movendo à direita
 
 function enemy.new(texture, position_x, position_y, speed, mysterySpeed)
@@ -23,14 +21,34 @@ function enemy.new(texture, position_x, position_y, speed, mysterySpeed)
       self.position_y = self.position_y + self.verticalSpeed
   end
 
+  function enemy.collisionTest(self, player, i)
+    
+    if #player.shots > 0 then
+      if self.position_y + self.texture:getHeight() >= player.shots[1].position_y + player.shots[1].texture:getHeight()/2 then
+        if self.position_x <= player.shots[1].position_x + player.shots[1].texture:getWidth()/2 then
+          if self.position_x + self.texture:getWidth() >= player.shots[1].position_x + player.shots[1].texture:getWidth()/2 then
+            if self.position_y <= player.shots[1].position_y + self.texture:getHeight() then
+              self = nil
+              player.shots[1]:destroy(player)
+              return 1
+            end
+          end
+        end
+      end
+    end
+  end
+
+  function enemy.destroy(self)
+    self = nil
+
+    -- table.remove(self)
+  end
+
   return enemy
 end
 
-function enemy.getMoveLimit()
-  return{
-    right = move_limit_right,
-    left = move_limit_left
-  }
+function enemy.getLimitScreen()
+  return character.getLimitScreen()
 end
 
 function enemy.getDirectionMoveInit()
