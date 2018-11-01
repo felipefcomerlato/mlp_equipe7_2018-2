@@ -6,39 +6,38 @@ local texture = "images/baseshipb.png"
 local position_x = love.graphics.getWidth()/2
 local position_y = love.graphics.getHeight() - 50
 local speed = 10
-local move_limit_right = 600
-local move_limit_left = 0
 
 function player.new()
   local player = character.new(texture, position_x, position_y, 20)
   player.lifes = 3
   player.score = 0
+  player.shots = {}
 
   function player.move(self)
     if love.keyboard.isDown("right") then
-      if self.position_x < move_limit_right then
+      if self.position_x < character.getLimitScreen().right - self.texture:getWidth() then
         self.position_x = self.position_x + speed
       else
-        self.position_x = move_limit_right
+        self.position_x = character.getLimitScreen().right - self.texture:getWidth()
       end
     end
     if love.keyboard.isDown("left") then
-      if self.position_x > move_limit_left then
+      if self.position_x > character.getLimitScreen().left then
         self.position_x = self.position_x - speed
       else
-        self.position_x = move_limit_left
+        self.position_x = character.getLimitScreen().left
       end
     end
   end
 
   function player.shot(self)
-
     function love.keypressed(key)
       if key == "space" then
-        print("TIRO")
+        if #self.shots < 1 then -- se não há outro tiro "em andamento" na tela
+          table.insert(self.shots,shot.new(self))
+        end
       end
     end
-
   end
 
   return player
