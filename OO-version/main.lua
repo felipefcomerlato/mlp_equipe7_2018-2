@@ -5,8 +5,6 @@ local player = require("entitys/player")
 function love.load()
   table_of_enemies = enemy.makeTable()
   player1 = player.new()
-  limit_right = enemy.getMoveLimit().right
-  limit_left = enemy.getMoveLimit().left
   direction = enemy.getDirectionMoveInit()
   directionMystery = enemy.getDirectionMoveInit()
 end
@@ -17,39 +15,62 @@ function love.update(dt)
 end
 
 function love.draw()
-  for i=1,#table_of_enemies do
-      love.graphics.draw(table_of_enemies[i].texture, table_of_enemies[i].position_x, table_of_enemies[i].position_y)
-  end
-  love.graphics.draw(player1.texture, player1.position_x, player1.position_y)
-end
 
+  -- draw enemies
+  for i=1,#table_of_enemies do
+    if table_of_enemies[i] then
+      love.graphics.draw(table_of_enemies[i].texture, table_of_enemies[i].position_x, table_of_enemies[i].position_y)
+      if table_of_enemies[i]:collisionTest(player1, i) == 1 then
+        table_of_enemies[i] = nil
+        -- player1.shots[1] = nil
+      end
+    end
+  end
+
+  -- draw player
+  love.graphics.draw(player1.texture, player1.position_x, player1.position_y)
+
+  --draw player shot
+  if #player1.shots > 0 then
+    love.graphics.draw(player1.shots[1].texture, player1.shots[1].position_x, player1.shots[1].position_y)
+  end
+
+end
 
 
 -- -------------------------------------
 
 function controlPlayer()
   player1:move()
-  -- tiro = player1:shot()
-  if player1:shot() == 2 then
-    print("TIRO")
+  player1:shot()
+  if #player1.shots > 0 then -- se foi disparado um tiro
+    player1.shots[1]:moveUp()
   end
 end
 
 function moveEnemies()
-  direction = direction * setDirection()
-  for i=2,#table_of_enemies do
-    table_of_enemies[i]:move(direction)
+  if #table_of_enemies > 1 then
+    direction = direction * setDirection()
+    for i=2,#table_of_enemies do
+      if table_of_enemies[i] then
+        table_of_enemies[i]:move(direction)
+      end
+    end
   end
-  directionMystery = directionMystery * setDirectionMystery()
-  table_of_enemies[1]:move(directionMystery)
+  if table_of_enemies[1] then
+    directionMystery = directionMystery * setDirectionMystery()
+    table_of_enemies[1]:move(directionMystery)
+  end
 end
 
 function setDirectionMystery()
-  local mystery = table_of_enemies[1]
-  if mystery.position_x >= enemy.getMoveLimit().right*2 or mystery.position_x <= enemy.getMoveLimit().left - 600 then
-    return -1
-  else
-    return 1
+  if table_of_enemies[1] then
+    local mystery = table_of_enemies[1]
+    if mystery.position_x >= enemy.getLimitScreen().right*2 or mystery.position_x <= enemy.getLimitScreen().left - 600 then
+      return -1 -- reverse values of shift
+    else
+      return 1
+    end
   end
 end
 
@@ -74,9 +95,11 @@ end
 function setDirection()
   last_enemy = getFirstOrLastEnemy().last
   first_enemy = getFirstOrLastEnemy().first
-  if last_enemy.position_x >= enemy.getMoveLimit().right or first_enemy.position_x <= enemy.getMoveLimit().left then
-    return -1
-  else
-    return 1
+  if first_enemy or last_enemy then
+    if last_enemy.position_x >= enemy.getLimitScreen().right or first_enemy.position_x <= enemy.getLimitScreen().left then
+      return -1
+    else
+      return 1
+    end
   end
 end
