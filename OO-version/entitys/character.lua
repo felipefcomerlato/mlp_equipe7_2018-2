@@ -8,9 +8,6 @@ function character.new(texture, position_x, position_y, speed)
   local character = object.new(texture, position_x, position_y)
 
   character.speed = speed
-  --colocar aqui demais atributos
-  --exemplo:
-  --character.direction = "left"
 
   return character
 end

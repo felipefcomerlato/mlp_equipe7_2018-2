@@ -13,6 +13,7 @@ end
 
 function love.update(dt)
   moveEnemies()
+  controlPlayer()
 end
 
 function love.draw()
@@ -25,6 +26,14 @@ end
 
 
 -- -------------------------------------
+
+function controlPlayer()
+  player1:move()
+  -- tiro = player1:shot()
+  if player1:shot() == 2 then
+    print("TIRO")
+  end
+end
 
 function moveEnemies()
   direction = direction * setDirection()
