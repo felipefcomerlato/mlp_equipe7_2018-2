@@ -50,6 +50,7 @@ function controlPlayer()
 end
 
 function moveEnemies()
+  -- move all enemies
   if #enemies > 1 then
     direction = direction * setDirection()
     for i=2,#enemies do
@@ -58,13 +59,26 @@ function moveEnemies()
       end
     end
   end
-  if enemies[1] then
-    directionMystery = directionMystery * setDirectionMystery()
+  -- move mystery enemy
+  if enemies[1].position_x then
+    directionMystery = directionMystery * reviewDirectionMystery()
     enemies[1]:move(directionMystery)
   end
 end
 
-function setDirectionMystery()
+function setDirection()
+  last_enemy = getFirstOrLastEnemy().last
+  first_enemy = getFirstOrLastEnemy().first
+  if first_enemy or last_enemy then
+    if last_enemy.position_x >= enemy.getLimitScreen().right - last_enemy.texture:getWidth() or first_enemy.position_x <= enemy.getLimitScreen().left then
+      return -1
+    else
+      return 1
+    end
+  end
+end
+
+function reviewDirectionMystery()
   if enemies[1] then
     local mystery = enemies[1]
     if mystery.position_x >= enemy.getLimitScreen().right*2 or mystery.position_x <= enemy.getLimitScreen().left - 600 then
@@ -93,16 +107,4 @@ function getFirstOrLastEnemy()
     last = enemies_ordered[1],
     first = enemies_ordered[#enemies_ordered]
   }
-end
-
-function setDirection()
-  last_enemy = getFirstOrLastEnemy().last
-  first_enemy = getFirstOrLastEnemy().first
-  if first_enemy or last_enemy then
-    if last_enemy.position_x >= enemy.getLimitScreen().right or first_enemy.position_x <= enemy.getLimitScreen().left then
-      return -1
-    else
-      return 1
-    end
-  end
 end
