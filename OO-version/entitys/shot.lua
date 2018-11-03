@@ -2,7 +2,7 @@ local character = require("entitys/character")
 
 local shot = {}
 local texture = "images/shot.png"
-local speed = 5
+local speed = 15
 
 function shot.new(shooter)
   local shot = character.new(texture, shooter.position_x, shooter.position_y, speed)

@@ -3,7 +3,7 @@ local player = require("entitys/player")
 
 
 function love.load()
-  table_of_enemies = enemy.makeTable()
+  enemies = enemy.makeEnemies()
   player1 = player.new()
   direction = enemy.getDirectionMoveInit()
   directionMystery = enemy.getDirectionMoveInit()
@@ -17,12 +17,13 @@ end
 function love.draw()
 
   -- draw enemies
-  for i=1,#table_of_enemies do
-    if table_of_enemies[i] then
-      love.graphics.draw(table_of_enemies[i].texture, table_of_enemies[i].position_x, table_of_enemies[i].position_y)
-      if table_of_enemies[i]:collisionTest(player1, i) == 1 then
-        table_of_enemies[i] = nil
-        -- player1.shots[1] = nil
+  for i=1,#enemies do
+    if enemies[i].texture and enemies[i].position_x and enemies[i].position_y then
+      love.graphics.draw(enemies[i].texture, enemies[i].position_x, enemies[i].position_y)
+      if player1.shots[1] then
+        if enemies[i]:collisionTest(player1) == 1 then
+          enemy.destroy(enemies[i])
+        end
       end
     end
   end
@@ -49,23 +50,23 @@ function controlPlayer()
 end
 
 function moveEnemies()
-  if #table_of_enemies > 1 then
+  if #enemies > 1 then
     direction = direction * setDirection()
-    for i=2,#table_of_enemies do
-      if table_of_enemies[i] then
-        table_of_enemies[i]:move(direction)
+    for i=2,#enemies do
+      if enemies[i] then
+        enemies[i]:move(direction)
       end
     end
   end
-  if table_of_enemies[1] then
+  if enemies[1] then
     directionMystery = directionMystery * setDirectionMystery()
-    table_of_enemies[1]:move(directionMystery)
+    enemies[1]:move(directionMystery)
   end
 end
 
 function setDirectionMystery()
-  if table_of_enemies[1] then
-    local mystery = table_of_enemies[1]
+  if enemies[1] then
+    local mystery = enemies[1]
     if mystery.position_x >= enemy.getLimitScreen().right*2 or mystery.position_x <= enemy.getLimitScreen().left - 600 then
       return -1 -- reverse values of shift
     else
@@ -76,8 +77,10 @@ end
 
 function getFirstOrLastEnemy()
   local enemies_ordered = {}
-  for i = 2, #table_of_enemies do
-    table.insert(enemies_ordered,table_of_enemies[i])
+  for i = 2, #enemies do
+    if enemies[i].position_x then
+      table.insert(enemies_ordered,enemies[i])
+    end
   end
 
   function sortByPos(a,b)

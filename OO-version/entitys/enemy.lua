@@ -17,33 +17,47 @@ function enemy.new(texture, position_x, position_y, speed, mysterySpeed)
   end
 
   function enemy.move(self, direction)
+    if self.position_x and self.position_y then
       self.position_x = self.position_x + self.speed * direction
       self.position_y = self.position_y + self.verticalSpeed
+    end
   end
 
-  function enemy.collisionTest(self, player, i)
-    
-    if #player.shots > 0 then
-      if self.position_y + self.texture:getHeight() >= player.shots[1].position_y + player.shots[1].texture:getHeight()/2 then
-        if self.position_x <= player.shots[1].position_x + player.shots[1].texture:getWidth()/2 then
-          if self.position_x + self.texture:getWidth() >= player.shots[1].position_x + player.shots[1].texture:getWidth()/2 then
-            if self.position_y <= player.shots[1].position_y + self.texture:getHeight() then
-              self = nil
-              player.shots[1]:destroy(player)
-              return 1
-            end
+  function enemy.collisionTest(self, player)
+
+    body = {
+      left = self.position_x,
+      right = self.position_x + self.texture:getWidth(),
+      top = self.position_y,
+      bottom = self.position_y + self.texture:getHeight()
+    }
+
+    shot = player.shots[1]
+
+    shot_c = {
+      x = shot.position_x + shot.texture:getWidth() / 2,
+      y = shot.position_y + shot.texture:getHeight() / 2
+    }
+
+    if body.bottom >= shot_c.y then
+      if body.left <= shot_c.x then
+        if body.right >= shot_c.x then
+          if body.top <= shot_c.y then
+            shot:destroy(player)
+            return 1
           end
         end
       end
     end
   end
 
-  function enemy.destroy(self)
-    self = nil
+  return enemy
+end
 
-    -- table.remove(self)
-  end
-
+function enemy.destroy(enemy)
+  enemy.texture = nil
+  enemy.position_x = nil
+  enemy.position_y = nil
   return enemy
 end
 
@@ -56,9 +70,9 @@ function enemy.getDirectionMoveInit()
 end
 
 
-function enemy.makeTable()
-  -- table_of_enemies é uma tabela de OBJETOS (inimigos)
-  local table_of_enemies = {}
+function enemy.makeEnemies()
+  -- enemies é uma tabela de OBJETOS (inimigos)
+  local enemies = {}
   -- "linha 1" da tela é do mysteryb
   -- "linhas 2 à 7" da tela são dos demais inimigos
   -- cada "linha" tem 14 "colunas" de inimigos
@@ -66,14 +80,14 @@ function enemy.makeTable()
     local texture = enemy.getDirTexture(r)
     if r == 1 then
       -- O primeiro inimigo é o mystery. Inicia na posição 0, velocidade 10 e velocidade vertical 0
-      table.insert(table_of_enemies, enemy.new(texture, distance_btw_enemies, 0, 3, 0))
+      table.insert(enemies, enemy.new(texture, distance_btw_enemies, 0, 3, 0))
     else
       for c = 1, 14 do
-        table.insert(table_of_enemies, enemy.new(texture,c*distance_btw_enemies, (r-1)*distance_btw_enemies, 1))
+        table.insert(enemies, enemy.new(texture,c*distance_btw_enemies, (r-1)*distance_btw_enemies, 1))
       end
     end
   end
-  return table_of_enemies
+  return enemies
 end
 
 function enemy.getDirTexture(row)
