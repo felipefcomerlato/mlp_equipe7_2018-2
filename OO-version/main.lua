@@ -36,6 +36,8 @@ function love.draw()
     love.graphics.draw(player1.shots[1].texture, player1.shots[1].position_x, player1.shots[1].position_y)
   end
 
+
+
 end
 
 
@@ -69,12 +71,14 @@ end
 function setDirection()
   last_enemy = getFirstOrLastEnemy().last
   first_enemy = getFirstOrLastEnemy().first
-  if first_enemy or last_enemy then
+  if first_enemy and last_enemy then
     if last_enemy.position_x >= enemy.getLimitScreen().right - last_enemy.texture:getWidth() or first_enemy.position_x <= enemy.getLimitScreen().left then
       return -1
     else
       return 1
     end
+  else
+    return 0
   end
 end
 
@@ -103,8 +107,15 @@ function getFirstOrLastEnemy()
 
   table.sort(enemies_ordered,sortByPos)
 
-  return {
-    last = enemies_ordered[1],
-    first = enemies_ordered[#enemies_ordered]
-  }
+  if enemies_ordered[1] and enemies_ordered[#enemies_ordered] then
+    return {
+      last = enemies_ordered[1],
+      first = enemies_ordered[#enemies_ordered]
+    }
+  else
+    return {
+      last = nil,
+      first = nil
+    }
+  end
 end
