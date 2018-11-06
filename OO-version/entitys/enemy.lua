@@ -11,6 +11,7 @@ function enemy.new(texture, position_x, position_y, speed, mystery_v_speed)
   enemy.verticalSpeed = mystery_v_speed or speed/30
   enemy.shots = {}
   enemy.speed_shot = 5
+  enemy.inverse_freq_shots = 2000
 
   function enemy.getPosition(self)
     return {
@@ -59,31 +60,23 @@ function enemy.new(texture, position_x, position_y, speed, mystery_v_speed)
     --   print("livre")
     -- end
     if self.position_y then
-      fire = math.random(1, 2000)
+      fire = math.random(1, self.inverse_freq_shots)
+      -- print(self.inverse_freq_shots)
       ready = true
-      a = 0
-      if fire == 50 then
+      if fire == 5 then
         for i=2, #enemies do
-          -- print(enemies[i].position_x)
           if enemies[i].position_x == self.position_x then
             if enemies[i].position_y > self.position_y then
               ready = false
             end
           end
         end
-        -- print(ready)
         if ready then
           table.insert(self.shots,shot.new(self))
         end
       end
     end
   end
-
-  -- function enemy.thereEnemiesBelow(self)
-  --   for
-  -- end
-
-
 
   return enemy
 end
@@ -93,6 +86,22 @@ function enemy.destroy(enemy)
   enemy.position_x = nil
   enemy.position_y = nil
   return enemy
+end
+
+function enemy.updateSkills(enemies)
+  for i=2, #enemies do
+    enemies[i].speed = enemies[i].speed * 1.01
+    print(enemies[i].speed)
+    if enemies[i].speed > 3.9 then
+      enemies[i].inverse_freq_shots = 10
+    elseif enemies[i].speed > 3.3 then
+      enemies[i].inverse_freq_shots = 400
+    elseif enemies[i].speed > 2.9 then
+      enemies[i].inverse_freq_shots = 800
+    elseif enemies[i].speed > 2.3 then
+      enemies[i].inverse_freq_shots = 1500
+    end
+  end
 end
 
 function enemy.getLimitScreen()

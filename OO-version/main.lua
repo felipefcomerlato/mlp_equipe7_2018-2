@@ -27,6 +27,7 @@ function love.draw()
       if player1.shots[1] then
         if enemies[i]:collisionTest(player1) == 1 then
           enemy.destroy(enemies[i])
+          enemy.updateSkills(enemies)
         end
       end
       if enemies[i].shots[1] then
