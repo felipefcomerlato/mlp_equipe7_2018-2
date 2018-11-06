@@ -9,8 +9,12 @@ function love.load()
   directionMystery = enemy.getDirectionMoveInit()
 end
 
+x=0
 function love.update(dt)
+  x = x + dt
   moveEnemies()
+  -- print(x)
+  makeEnemiesShots()
   controlPlayer()
 end
 
@@ -24,6 +28,9 @@ function love.draw()
         if enemies[i]:collisionTest(player1) == 1 then
           enemy.destroy(enemies[i])
         end
+      end
+      if enemies[i].shots[1] then
+        love.graphics.draw(enemies[i].shots[1].texture, enemies[i].shots[1].position_x,enemies[i].shots[1].position_y)
       end
     end
   end
@@ -48,6 +55,26 @@ function controlPlayer()
   player1:shot()
   if #player1.shots > 0 then -- se foi disparado um tiro
     player1.shots[1]:moveUp()
+  end
+end
+
+function makeEnemiesShots()
+  for i=2,#enemies do
+    if enemies[i].position_x then
+      if #enemies[i].shots < 1 then
+        enemies[i]:shot(enemies)
+      end
+    end
+    -- if #enemies[i].shots > 0 then
+    --   enemies[i].shots[1]:moveDown()
+    -- end
+  end
+  for i=2,#enemies do
+    if enemies[i].position_x then
+      if enemies[i].shots[1] then
+        enemies[i].shots[1]:moveDown()
+      end
+    end
   end
 end
 

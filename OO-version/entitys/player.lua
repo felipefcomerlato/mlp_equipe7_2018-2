@@ -8,10 +8,11 @@ local position_y = love.graphics.getHeight() - 50
 local speed = 5
 
 function player.new()
-  local player = character.new(texture, position_x, position_y, 20)
+  local player = character.new(texture, position_x, position_y, speed)
   player.lifes = 3
   player.score = 0
   player.shots = {}
+  player.speed_shot = 15
 
   function player.move(self)
     if love.keyboard.isDown("right") then
