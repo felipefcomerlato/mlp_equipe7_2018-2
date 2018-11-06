@@ -3,26 +3,35 @@ local player = require("entitys/player")
 
 
 function love.load()
-  table_of_enemies = enemy.makeTable()
+  enemies = enemy.makeEnemies()
   player1 = player.new()
   direction = enemy.getDirectionMoveInit()
   directionMystery = enemy.getDirectionMoveInit()
 end
 
+x=0
 function love.update(dt)
+  x = x + dt
   moveEnemies()
+  -- print(x)
+  makeEnemiesShots()
   controlPlayer()
 end
 
 function love.draw()
 
   -- draw enemies
-  for i=1,#table_of_enemies do
-    if table_of_enemies[i] then
-      love.graphics.draw(table_of_enemies[i].texture, table_of_enemies[i].position_x, table_of_enemies[i].position_y)
-      if table_of_enemies[i]:collisionTest(player1, i) == 1 then
-        table_of_enemies[i] = nil
-        -- player1.shots[1] = nil
+  for i=1,#enemies do
+    if enemies[i].texture and enemies[i].position_x and enemies[i].position_y then
+      love.graphics.draw(enemies[i].texture, enemies[i].position_x, enemies[i].position_y)
+      if player1.shots[1] then
+        if enemies[i]:collisionTest(player1) == 1 then
+          enemy.destroy(enemies[i])
+          enemy.updateSkills(enemies)
+        end
+      end
+      if enemies[i].shots[1] then
+        love.graphics.draw(enemies[i].shots[1].texture, enemies[i].shots[1].position_x,enemies[i].shots[1].position_y)
       end
     end
   end
@@ -34,6 +43,8 @@ function love.draw()
   if #player1.shots > 0 then
     love.graphics.draw(player1.shots[1].texture, player1.shots[1].position_x, player1.shots[1].position_y)
   end
+
+
 
 end
 
@@ -48,24 +59,60 @@ function controlPlayer()
   end
 end
 
-function moveEnemies()
-  if #table_of_enemies > 1 then
-    direction = direction * setDirection()
-    for i=2,#table_of_enemies do
-      if table_of_enemies[i] then
-        table_of_enemies[i]:move(direction)
+function makeEnemiesShots()
+  for i=2,#enemies do
+    if enemies[i].position_x then
+      if #enemies[i].shots < 1 then
+        enemies[i]:shot(enemies)
+      end
+    end
+    -- if #enemies[i].shots > 0 then
+    --   enemies[i].shots[1]:moveDown()
+    -- end
+  end
+  for i=2,#enemies do
+    if enemies[i].position_x then
+      if enemies[i].shots[1] then
+        enemies[i].shots[1]:moveDown()
       end
     end
   end
-  if table_of_enemies[1] then
-    directionMystery = directionMystery * setDirectionMystery()
-    table_of_enemies[1]:move(directionMystery)
+end
+
+function moveEnemies()
+  -- move all enemies
+  if #enemies > 1 then
+    direction = direction * setDirection()
+    for i=2,#enemies do
+      if enemies[i] then
+        enemies[i]:move(direction)
+      end
+    end
+  end
+  -- move mystery enemy
+  if enemies[1].position_x then
+    directionMystery = directionMystery * reviewDirectionMystery()
+    enemies[1]:move(directionMystery)
   end
 end
 
-function setDirectionMystery()
-  if table_of_enemies[1] then
-    local mystery = table_of_enemies[1]
+function setDirection()
+  last_enemy = getFirstOrLastEnemy().last
+  first_enemy = getFirstOrLastEnemy().first
+  if first_enemy and last_enemy then
+    if last_enemy.position_x >= enemy.getLimitScreen().right - last_enemy.texture:getWidth() or first_enemy.position_x <= enemy.getLimitScreen().left then
+      return -1
+    else
+      return 1
+    end
+  else
+    return 0
+  end
+end
+
+function reviewDirectionMystery()
+  if enemies[1] then
+    local mystery = enemies[1]
     if mystery.position_x >= enemy.getLimitScreen().right*2 or mystery.position_x <= enemy.getLimitScreen().left - 600 then
       return -1 -- reverse values of shift
     else
@@ -76,8 +123,10 @@ end
 
 function getFirstOrLastEnemy()
   local enemies_ordered = {}
-  for i = 2, #table_of_enemies do
-    table.insert(enemies_ordered,table_of_enemies[i])
+  for i = 2, #enemies do
+    if enemies[i].position_x then
+      table.insert(enemies_ordered,enemies[i])
+    end
   end
 
   function sortByPos(a,b)
@@ -86,20 +135,15 @@ function getFirstOrLastEnemy()
 
   table.sort(enemies_ordered,sortByPos)
 
-  return {
-    last = enemies_ordered[1],
-    first = enemies_ordered[#enemies_ordered]
-  }
-end
-
-function setDirection()
-  last_enemy = getFirstOrLastEnemy().last
-  first_enemy = getFirstOrLastEnemy().first
-  if first_enemy or last_enemy then
-    if last_enemy.position_x >= enemy.getLimitScreen().right or first_enemy.position_x <= enemy.getLimitScreen().left then
-      return -1
-    else
-      return 1
-    end
+  if enemies_ordered[1] and enemies_ordered[#enemies_ordered] then
+    return {
+      last = enemies_ordered[1],
+      first = enemies_ordered[#enemies_ordered]
+    }
+  else
+    return {
+      last = nil,
+      first = nil
+    }
   end
 end

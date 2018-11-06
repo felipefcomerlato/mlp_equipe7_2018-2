@@ -5,13 +5,14 @@ local player = {}
 local texture = "images/baseshipb.png"
 local position_x = love.graphics.getWidth()/2
 local position_y = love.graphics.getHeight() - 50
-local speed = 10
+local speed = 5
 
 function player.new()
-  local player = character.new(texture, position_x, position_y, 20)
+  local player = character.new(texture, position_x, position_y, speed)
   player.lifes = 3
   player.score = 0
   player.shots = {}
+  player.speed_shot = 15
 
   function player.move(self)
     if love.keyboard.isDown("right") then
@@ -26,6 +27,20 @@ function player.new()
         self.position_x = self.position_x - speed
       else
         self.position_x = character.getLimitScreen().left
+      end
+    end
+    if love.keyboard.isDown("up") then
+      if self.position_y > character.getLimitScreen().top then
+        self.position_y = self.position_y - speed
+      else
+        self.position_y = character.getLimitScreen().top
+      end
+    end
+    if love.keyboard.isDown("down") then
+      if self.position_y < character.getLimitScreen().bottom then
+        self.position_y = self.position_y + speed
+      else
+        self.position_y = character.getLimitScreen().bottom
       end
     end
   end
