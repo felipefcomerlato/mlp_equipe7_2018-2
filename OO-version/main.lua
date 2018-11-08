@@ -28,7 +28,7 @@ function love.draw()
     if obstacles[i] then
       if obstacles[i].state > 0 then
         love.graphics.draw(obstacles[i].texture, obstacles[i].position_x, obstacles[i].position_y)
-        if player1.shots[1] then
+        if player1:getShot() then
           if obstacles[i]:collisionTest(player1) == 1 then
             obstacles[i]:setState()
           end
@@ -43,7 +43,7 @@ function love.draw()
   for i=1,#enemies do
     if enemies[i].texture and enemies[i].position_x and enemies[i].position_y then
       love.graphics.draw(enemies[i].texture, enemies[i].position_x, enemies[i].position_y)
-      if player1.shots[1] then
+      if player1:getShot() then
         if enemies[i]:collisionTest(player1) == 1 then
           enemy.destroy(enemies[i])
           enemy.updateSkills(enemies)
@@ -67,12 +67,12 @@ function love.draw()
   end
 
   -- draw player
-  if player1.lives > 0 then
-    love.graphics.draw(player1.texture, player1.position_x, player1.position_y)
+  if player1:getLives() > 0 then
+    love.graphics.draw(player1:getTexture(), player1:getPosition().x, player1:getPosition().y)
   end
 
   --draw player shot
-  if #player1.shots > 0 then
+  if player1:getShot() then
     love.graphics.draw(player1.shots[1].texture, player1.shots[1].position_x, player1.shots[1].position_y)
   end
 
@@ -81,17 +81,17 @@ function love.draw()
 
   -- draw score and lives
   if player1 then
-    if player1.lives > 0 then
+    if player1:getLives() > 0 then
       label = "LIVES"
-      for i=1, player1.lives do
-        love.graphics.draw(player1.texture, 390 + i*player1.texture:getWidth(), 600)
+      for i=1, player1:getLives() do
+        love.graphics.draw(player1:getTexture(), 390 + i*player1.texture:getWidth(), 600)
       end
     else
       label = "GAMEOVER"
     end
     love.graphics.printf( label, 350, 600, 640, "left", 0, 2, 2 )
     love.graphics.printf( "SCORE ", 50, 600, 640, "left", 0, 2, 2)
-    love.graphics.printf( player1.score, 150, 600, 640, "left", 0, 2, 2)
+    love.graphics.printf( player1:getScore(), 150, 600, 640, "left", 0, 2, 2)
   end
 
 end
@@ -102,7 +102,7 @@ end
 function controlPlayer()
   player1:move()
   player1:shot()
-  if #player1.shots > 0 then -- se foi disparado um tiro
+  if player1:getShot() then -- se foi disparado um tiro
     player1.shots[1]:moveUp()
   end
 end
