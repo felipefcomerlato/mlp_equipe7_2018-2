@@ -4,14 +4,15 @@ local shot = require("entitys/shot")
 local enemy = {}
 local distance_btw_enemies = 40
 local direction_move_init = 1 -- todos inimigos começam se movendo à direita
+local speed = 1.5 -- speed default except mystery
 
-function enemy.new(texture, position_x, position_y, speed, mystery_v_speed)
+function enemy.new(texture, position_x, position_y, mystery_h_speed, mystery_v_speed)
   local enemy = character.new(texture, position_x, position_y)
-  enemy.speed = speed
-  enemy.verticalSpeed = mystery_v_speed or speed/30
+  enemy.speed = mystery_h_speed or speed
+  enemy.verticalSpeed = mystery_v_speed or speed/40
   enemy.shots = {}
-  enemy.speed_shot = 5
-  enemy.inverse_freq_shots = 2000
+  enemy.speed_shot = 3
+  enemy.inverse_freq_shots = 1500
 
   function enemy.getPosition(self)
     return {
@@ -63,7 +64,7 @@ function enemy.new(texture, position_x, position_y, speed, mystery_v_speed)
       fire = math.random(1, self.inverse_freq_shots)
       -- print(self.inverse_freq_shots)
       ready = true
-      if fire == 5 then
+      if fire == 2 then
         for i=2, #enemies do
           if enemies[i].position_x == self.position_x then
             if enemies[i].position_y > self.position_y then
@@ -72,7 +73,7 @@ function enemy.new(texture, position_x, position_y, speed, mystery_v_speed)
           end
         end
         if ready then
-          table.insert(self.shots,shot.new(self))
+          table.insert(self.shots,shot.new(self, "enemy"))
         end
       end
     end
@@ -91,15 +92,14 @@ end
 function enemy.updateSkills(enemies)
   for i=2, #enemies do
     enemies[i].speed = enemies[i].speed * 1.01
-    print(enemies[i].speed)
     if enemies[i].speed > 3.9 then
-      enemies[i].inverse_freq_shots = 10
+      enemies[i].inverse_freq_shots = 5
     elseif enemies[i].speed > 3.3 then
-      enemies[i].inverse_freq_shots = 400
+      enemies[i].inverse_freq_shots = 100
     elseif enemies[i].speed > 2.9 then
-      enemies[i].inverse_freq_shots = 800
+      enemies[i].inverse_freq_shots = 400
     elseif enemies[i].speed > 2.3 then
-      enemies[i].inverse_freq_shots = 1500
+      enemies[i].inverse_freq_shots = 800
     end
   end
 end
@@ -123,10 +123,10 @@ function enemy.makeEnemies()
     local texture = enemy.getDirTexture(r)
     if r == 1 then
       -- O primeiro inimigo é o mystery. Inicia na posição 0, velocidade 10 e velocidade vertical 0
-      table.insert(enemies, enemy.new(texture, distance_btw_enemies, 0, 3, 0))
+      table.insert(enemies, enemy.new(texture, distance_btw_enemies, 10, 3, 0))
     else
       for c = 1, 14 do
-        table.insert(enemies, enemy.new(texture,c*distance_btw_enemies, (r-1)*distance_btw_enemies, 1.8))
+        table.insert(enemies, enemy.new(texture,c*distance_btw_enemies, (r-1)*distance_btw_enemies))
       end
     end
   end
@@ -135,7 +135,7 @@ end
 
 function enemy.getDirTexture(row)
   if row == 1 then
-    return "images/mysteryb.png"
+    return "images/mystery.png"
   elseif row < 4 then
     return "images/saucer1b.png"
   elseif row < 6 then
