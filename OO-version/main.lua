@@ -7,6 +7,7 @@ function love.load()
   enemies = enemy.makeEnemies()
   obstacles = obstacle.makeObstacles()
   player1 = player.new()
+  background = love.graphics.newImage("images/background.png")
   hr = love.graphics.newImage("images/border_bottom.png")
   direction = enemy.getDirectionMoveInit()
   directionMystery = enemy.getDirectionMoveInit()
@@ -19,6 +20,9 @@ function love.update(dt)
 end
 
 function love.draw()
+
+  -- draw background
+  love.graphics.draw(background,0,0)
 
   -- draw obstacles
   for i=1, #obstacles do
