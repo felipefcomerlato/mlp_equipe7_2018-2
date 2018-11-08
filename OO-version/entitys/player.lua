@@ -14,6 +14,51 @@ function player.new()
   player.shots = {}
   player.speed_shot = 10
 
+  function player.getLives(self)
+    return self.lives
+  end
+
+  function player.getScore(self)
+    return self.score
+  end
+
+  function player.getShot(self)
+    if self.shots[1] then
+      return self.shots[1]
+    end
+  end
+
+  function player.getSpeed(self)
+    return self.speed
+  end
+
+  function player.getSpeedShot(self)
+    return self.speed_shot
+  end
+
+  function player.getTexture(self)
+    return self.texture
+  end
+
+  function player.getPosition(self)
+    return {
+      x = self.position_x,
+      y = self.position_y
+    }
+  end
+
+  function player.setScore(self)
+    self.score = self.score + 50
+  end
+
+  function player.setLives(self)
+    if self.lives > 0 then
+      self.lives = self.lives - 1
+      self.position_x = position_x
+      self.position_y = position_y
+    end
+  end
+
   function player.move(self)
     if love.keyboard.isDown("right") then
       if self.position_x < character.getLimitScreen().right - self.texture:getWidth() then
@@ -72,19 +117,6 @@ function player.new()
         end
       end
     end
-  end
-
-  function player.setScore(self)
-    self.score = self.score + 50
-  end
-
-  function player.setLives(self)
-    if self.lives > 0 then
-      self.lives = self.lives - 1
-      self.position_x = position_x
-      self.position_y = position_y
-    end
-    print(self.lives)
   end
 
   return player

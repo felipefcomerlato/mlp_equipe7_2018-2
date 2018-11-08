@@ -7,6 +7,21 @@ function obstacle.new(position_x, position_y)
   local obstacle = object.new(texture, position_x, position_y)
   obstacle.state = 1
 
+  function obstacle.getState(self)
+    return self.state
+  end
+
+  function obstacle.getTexture(self)
+    return self.texture
+  end
+
+  function obstacle.getPosition(self)
+    return {
+      x = self.position_x,
+      y = self.position_y
+    }
+  end
+
   function obstacle.setState(self)
     if self.state < 4 then
       self.state = self.state + 1

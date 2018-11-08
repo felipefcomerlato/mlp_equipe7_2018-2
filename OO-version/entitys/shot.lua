@@ -14,19 +14,19 @@ function shot.new(shooter, type)
     texture = texture_enemy
   end
 
-  local shot = character.new(texture, shooter.position_x
-                                      + shooter.texture:getWidth()/2,
-                                      shooter.position_y,
-                                      shooter.speed_shot)
+  local shot = character.new(texture, shooter:getPosition().x
+                                      + shooter:getTexture():getWidth()/2,
+                                      shooter:getPosition().y,
+                                      shooter:getSpeedShot())
 
   function shot.moveUp(self)
     self:screenCollisionTest()
-    self.position_y = self.position_y - shooter.speed_shot
+    self.position_y = self.position_y - shooter:getSpeedShot()
   end
 
   function shot.moveDown(self)
     self:screenCollisionTest()
-    self.position_y = self.position_y + shooter.speed_shot
+    self.position_y = self.position_y + shooter:getSpeedShot()
   end
 
   function shot.screenCollisionTest(self)
