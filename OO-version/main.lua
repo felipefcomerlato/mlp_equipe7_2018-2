@@ -1,10 +1,13 @@
 local enemy = require("entitys/enemy")
 local player = require("entitys/player")
+local obstacle = require("entitys/obstacle")
 
 
 function love.load()
   enemies = enemy.makeEnemies()
+  obstacles = obstacle.makeObstacles()
   player1 = player.new()
+  hr = love.graphics.newImage("images/border_bottom.png")
   direction = enemy.getDirectionMoveInit()
   directionMystery = enemy.getDirectionMoveInit()
 end
@@ -20,6 +23,22 @@ end
 
 function love.draw()
 
+  -- draw obstacles
+  for i=1, #obstacles do
+    if obstacles[i] then
+      if obstacles[i].state > 0 then
+        love.graphics.draw(obstacles[i].texture, obstacles[i].position_x, obstacles[i].position_y)
+        if player1.shots[1] then
+          if obstacles[i]:collisionTest(player1) == 1 then
+            obstacles[i]:setState()
+          end
+        end
+      else
+        obstacles[i] = nil
+      end
+    end
+  end
+
   -- draw enemies
   for i=1,#enemies do
     if enemies[i].texture and enemies[i].position_x and enemies[i].position_y then
@@ -28,23 +47,52 @@ function love.draw()
         if enemies[i]:collisionTest(player1) == 1 then
           enemy.destroy(enemies[i])
           enemy.updateSkills(enemies)
+          player1:setScore()
         end
       end
       if enemies[i].shots[1] then
         love.graphics.draw(enemies[i].shots[1].texture, enemies[i].shots[1].position_x,enemies[i].shots[1].position_y)
+        for j=1, #obstacles do
+          if obstacles[j] then
+            if obstacles[j]:collisionTest(enemies[i]) == 1 then
+              obstacles[j]:setState()
+            end
+          end
+        end
+        if player1:collisionTest(enemies[i]) == 1 then
+          player1:setLives()
+        end
       end
     end
   end
 
   -- draw player
-  love.graphics.draw(player1.texture, player1.position_x, player1.position_y)
+  if player1.lives > 0 then
+    love.graphics.draw(player1.texture, player1.position_x, player1.position_y)
+  end
 
   --draw player shot
   if #player1.shots > 0 then
     love.graphics.draw(player1.shots[1].texture, player1.shots[1].position_x, player1.shots[1].position_y)
   end
 
+  -- draw div bottom
+  love.graphics.draw(hr, 0, 580)
 
+  -- draw score and lives
+  if player1 then
+    if player1.lives > 0 then
+      label = "LIVES"
+      for i=1, player1.lives do
+        love.graphics.draw(player1.texture, 390 + i*player1.texture:getWidth(), 600)
+      end
+    else
+      label = "GAMEOVER"
+    end
+    love.graphics.printf( label, 350, 600, 640, "left", 0, 2, 2 )
+    love.graphics.printf( "SCORE ", 50, 600, 640, "left", 0, 2, 2)
+    love.graphics.printf( player1.score, 150, 600, 640, "left", 0, 2, 2)
+  end
 
 end
 
