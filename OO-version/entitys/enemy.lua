@@ -9,10 +9,33 @@ local speed = 1.5 -- speed default except mystery
 function enemy.new(texture, position_x, position_y, mystery_h_speed, mystery_v_speed)
   local enemy = character.new(texture, position_x, position_y)
   enemy.speed = mystery_h_speed or speed
-  enemy.verticalSpeed = mystery_v_speed or speed/40
+  enemy.vertical_speed = mystery_v_speed or speed/40
   enemy.shots = {}
   enemy.speed_shot = 3
   enemy.inverse_freq_shots = 1500
+
+
+  function enemy.getSpeed(self)
+    return self.speed
+  end
+
+  function enemy.getSpeedShot(self)
+    return self.speed_shot
+  end
+
+  function enemy.getInverseFreqShots(self)
+    return self.inverse_freq_shots
+  end
+
+  function enemy.getVerticalSpeed(self)
+    return self.vertical_speed
+  end
+
+  function enemy.getShot(self)
+    if self.shots[1] then
+      return self.shots[1]
+    end
+  end
 
   function enemy.getPosition(self)
     return {
@@ -21,10 +44,33 @@ function enemy.new(texture, position_x, position_y, mystery_h_speed, mystery_v_s
     }
   end
 
+  function enemy.getTexture(self)
+    return self.texture
+  end
+
+  function enemy.setShot(self, enemies)
+    if self.position_y then
+      fire = math.random(1, self.inverse_freq_shots)
+      ready = true
+      if fire == 2 then
+        for i=2, #enemies do
+          if enemies[i].position_x == self.position_x then
+            if enemies[i].position_y > self.position_y then
+              ready = false
+            end
+          end
+        end
+        if ready then
+          table.insert(self.shots,shot.new(self, "enemy"))
+        end
+      end
+    end
+  end
+
   function enemy.move(self, direction)
     if self.position_x and self.position_y then
       self.position_x = self.position_x + self.speed * direction
-      self.position_y = self.position_y + self.verticalSpeed
+      self.position_y = self.position_y + self.vertical_speed
     end
   end
 
@@ -51,29 +97,6 @@ function enemy.new(texture, position_x, position_y, mystery_h_speed, mystery_v_s
             shot_player:destroy(player)
             return 1
           end
-        end
-      end
-    end
-  end
-
-  function enemy.shot(self, enemies)
-    -- if self:thereEnemiesBelow() == false then
-    --   print("livre")
-    -- end
-    if self.position_y then
-      fire = math.random(1, self.inverse_freq_shots)
-      -- print(self.inverse_freq_shots)
-      ready = true
-      if fire == 2 then
-        for i=2, #enemies do
-          if enemies[i].position_x == self.position_x then
-            if enemies[i].position_y > self.position_y then
-              ready = false
-            end
-          end
-        end
-        if ready then
-          table.insert(self.shots,shot.new(self, "enemy"))
         end
       end
     end
