@@ -2,17 +2,17 @@ local character = require("entitys/character")
 local shot = require("entitys/shot")
 
 local player = {}
-local texture = "images/baseshipb.png"
+local texture = "images/player.png"
 local position_x = love.graphics.getWidth()/2
-local position_y = love.graphics.getHeight() - 50
+local position_y = love.graphics.getHeight() - 100
 local speed = 5
 
 function player.new()
   local player = character.new(texture, position_x, position_y, speed)
-  player.lifes = 3
+  player.lives = 3
   player.score = 0
   player.shots = {}
-  player.speed_shot = 15
+  player.speed_shot = 10
 
   function player.move(self)
     if love.keyboard.isDown("right") then
@@ -29,30 +29,62 @@ function player.new()
         self.position_x = character.getLimitScreen().left
       end
     end
-    if love.keyboard.isDown("up") then
-      if self.position_y > character.getLimitScreen().top then
-        self.position_y = self.position_y - speed
-      else
-        self.position_y = character.getLimitScreen().top
-      end
-    end
-    if love.keyboard.isDown("down") then
-      if self.position_y < character.getLimitScreen().bottom then
-        self.position_y = self.position_y + speed
-      else
-        self.position_y = character.getLimitScreen().bottom
-      end
-    end
   end
 
   function player.shot(self)
     function love.keypressed(key)
       if key == "space" then
         if #self.shots < 1 then -- se não há outro tiro "em andamento" na tela
-          table.insert(self.shots,shot.new(self))
+          table.insert(self.shots,shot.new(self, "player"))
         end
       end
     end
+  end
+
+  function player.collisionTest(self, char)
+
+    if self.lives > 0 then
+
+      body = {
+        left = self.position_x,
+        right = self.position_x + self.texture:getWidth(),
+        top = self.position_y,
+        bottom = self.position_y + self.texture:getHeight()
+      }
+
+      if char.shots[1] then
+        shot_char = char.shots[1]
+      end
+
+      shot_c = {
+        x = shot_char.position_x + shot_char.texture:getWidth() / 2,
+        y = shot_char.position_y + shot_char.texture:getHeight() / 2
+      }
+
+      if body.bottom >= shot_c.y then
+        if body.left <= shot_c.x then
+          if body.right >= shot_c.x then
+            if body.top <= shot_c.y then
+              shot_char:destroy(char)
+              return 1
+            end
+          end
+        end
+      end
+    end
+  end
+
+  function player.setScore(self)
+    self.score = self.score + 50
+  end
+
+  function player.setLives(self)
+    if self.lives > 0 then
+      self.lives = self.lives - 1
+      self.position_x = position_x
+      self.position_y = position_y
+    end
+    print(self.lives)
   end
 
   return player
