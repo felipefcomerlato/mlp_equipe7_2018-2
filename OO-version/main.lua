@@ -4,6 +4,7 @@ local obstacle = require("entitys/obstacle")
 
 
 function love.load()
+  math.randomseed(os.time())
   enemies = enemy.makeEnemies()
   obstacles = obstacle.makeObstacles()
   player1 = player.new()
@@ -17,6 +18,15 @@ function love.update(dt)
   moveEnemies()
   makeEnemiesShots()
   controlPlayer()
+  free()
+end
+
+function free()
+  for i=#enemies, 2, -1 do
+    if enemies[i]:getState() == 0 then
+      table.remove(enemies, i)
+    end
+  end
 end
 
 function love.draw()
@@ -42,16 +52,17 @@ function love.draw()
 
   -- draw enemies
   for i=1,#enemies do
-    if enemies[i]:getTexture() and enemies[i]:getPosition().x and enemies[i]:getPosition().y then
+    if enemies[i]:getState() == 1 then
       love.graphics.draw(enemies[i]:getTexture(), enemies[i]:getPosition().x, enemies[i]:getPosition().y)
       if player1:getShot() then
         if enemies[i]:collisionTest(player1) == 1 then
           enemy.destroy(enemies[i])
+          enemies[i]:setState()
           enemy.updateSkills(enemies)
           player1:setScore()
         end
       end
-      if enemies[i]:getShot() then
+      if enemies[i] and enemies[i]:getShot() then
         love.graphics.draw(enemies[i]:getShot().texture, enemies[i]:getShot().position_x,enemies[i]:getShot().position_y)
         for j=1, #obstacles do
           if obstacles[j] then
@@ -110,14 +121,14 @@ end
 
 function makeEnemiesShots()
   for i=2,#enemies do
-    if enemies[i]:getPosition().x then
+    if enemies[i]:getState() == 1 then
       if #enemies[i].shots < 1 then
         enemies[i]:setShot(enemies)
       end
     end
   end
   for i=2,#enemies do
-    if enemies[i]:getPosition().x then
+    if enemies[i]:getState() == 1 then
       if enemies[i]:getShot() then
         enemies[i]:getShot():moveDown()
       end
@@ -130,15 +141,17 @@ function moveEnemies()
   if #enemies > 1 then
     direction = direction * setDirection()
     for i=2,#enemies do
-      if enemies[i] then
+      if enemies[i]:getState() == 1 then
         enemies[i]:move(direction)
       end
     end
   end
   -- move mystery enemy
-  if enemies[1]:getPosition().x then
-    directionMystery = directionMystery * reviewDirectionMystery()
-    enemies[1]:move(directionMystery)
+  if enemies[1]:getState() == 1 then
+    if enemies[1]:getPosition().x then
+      directionMystery = directionMystery * reviewDirectionMystery()
+      enemies[1]:move(directionMystery)
+    end
   end
 end
 
@@ -157,7 +170,7 @@ function setDirection()
 end
 
 function reviewDirectionMystery()
-  if enemies[1] then
+  if enemies[1]:getState() == 1 then
     local mystery = enemies[1]
     if mystery:getPosition().x >= enemy.getLimitScreen().right*2 or mystery:getPosition().x <= enemy.getLimitScreen().left - 600 then
       return -1 -- reverse values of shift
@@ -170,8 +183,10 @@ end
 function getFirstOrLastEnemy()
   local enemies_ordered = {}
   for i = 2, #enemies do
-    if enemies[i]:getPosition().x then
-      table.insert(enemies_ordered,enemies[i])
+    if enemies[i]:getState() == 1 then
+      if enemies[i]:getPosition().x then
+        table.insert(enemies_ordered,enemies[i])
+      end
     end
   end
 
