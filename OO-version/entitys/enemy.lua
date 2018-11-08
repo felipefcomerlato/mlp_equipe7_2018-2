@@ -3,8 +3,8 @@ local shot = require("entitys/shot")
 
 local enemy = {}
 local distance_btw_enemies = 40
-local direction_move_init = 1 -- todos inimigos começam se movendo à direita
-local speed = 1.5 -- speed default except mystery
+local direction_move_init = 1 -- All enemies start moving to the right
+local speed = 1.5 -- Speed default except mystery
 
 function enemy.new(texture, position_x, position_y, mystery_h_speed, mystery_v_speed)
   local enemy = character.new(texture, position_x, position_y)
@@ -13,7 +13,15 @@ function enemy.new(texture, position_x, position_y, mystery_h_speed, mystery_v_s
   enemy.shots = {}
   enemy.speed_shot = 3
   enemy.inverse_freq_shots = 1500
+  enemy.state = 1 -- 1 = alive; 0 = dead
 
+  function enemy.getState(self)
+    return self.state
+  end
+
+  function enemy.setState(self)
+    self.state = self.state - 1
+  end
 
   function enemy.getSpeed(self)
     return self.speed
@@ -51,12 +59,15 @@ function enemy.new(texture, position_x, position_y, mystery_h_speed, mystery_v_s
   function enemy.setShot(self, enemies)
     if self.position_y then
       fire = math.random(1, self.inverse_freq_shots)
+      print(fire)
       ready = true
       if fire == 2 then
         for i=2, #enemies do
-          if enemies[i].position_x == self.position_x then
-            if enemies[i].position_y > self.position_y then
-              ready = false
+          if enemies[i]:getState() == 1 then
+            if enemies[i].position_x == self.position_x then
+              if enemies[i].position_y > self.position_y then
+                ready = false
+              end
             end
           end
         end
@@ -105,24 +116,19 @@ function enemy.new(texture, position_x, position_y, mystery_h_speed, mystery_v_s
   return enemy
 end
 
-function enemy.destroy(enemy)
-  enemy.texture = nil
-  enemy.position_x = nil
-  enemy.position_y = nil
-  return enemy
-end
-
 function enemy.updateSkills(enemies)
   for i=2, #enemies do
-    enemies[i].speed = enemies[i].speed * 1.01
-    if enemies[i].speed > 3.9 then
-      enemies[i].inverse_freq_shots = 5
-    elseif enemies[i].speed > 3.3 then
-      enemies[i].inverse_freq_shots = 100
-    elseif enemies[i].speed > 2.9 then
-      enemies[i].inverse_freq_shots = 400
-    elseif enemies[i].speed > 2.3 then
-      enemies[i].inverse_freq_shots = 800
+    if enemies[i]:getState() == 1 then
+      enemies[i].speed = enemies[i].speed * 1.01
+      if enemies[i].speed > 3.9 then
+        enemies[i].inverse_freq_shots = 5
+      elseif enemies[i].speed > 3.3 then
+        enemies[i].inverse_freq_shots = 100
+      elseif enemies[i].speed > 2.9 then
+        enemies[i].inverse_freq_shots = 400
+      elseif enemies[i].speed > 2.3 then
+        enemies[i].inverse_freq_shots = 800
+      end
     end
   end
 end
@@ -135,6 +141,12 @@ function enemy.getDirectionMoveInit()
   return direction_move_init
 end
 
+function enemy.destroy(enemie)
+  enemie.position_x = nil
+  enemie.position_y = nil
+  enemie.position_texture = nil
+  return enemie
+end
 
 function enemy.makeEnemies()
   -- enemies é uma tabela de OBJETOS (inimigos)
