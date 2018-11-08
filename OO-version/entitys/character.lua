@@ -5,12 +5,12 @@ local character = {}
 local limit_screen_right = love.graphics.getWidth()
 local limit_screen_left = 0
 local limit_screen_top = 0
-local limit_screen_bottom = love.graphics.getHeight()
+local limit_screen_bottom = love.graphics.getHeight() - 60
 
 function character.new(texture, position_x, position_y, speed)
   local character = object.new(texture, position_x, position_y)
-
   character.speed = speed
+
 
   return character
 end
