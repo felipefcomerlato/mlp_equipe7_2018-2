@@ -12,11 +12,8 @@ function love.load()
   directionMystery = enemy.getDirectionMoveInit()
 end
 
-x=0
 function love.update(dt)
-  x = x + dt
   moveEnemies()
-  -- print(x)
   makeEnemiesShots()
   controlPlayer()
 end
@@ -26,8 +23,8 @@ function love.draw()
   -- draw obstacles
   for i=1, #obstacles do
     if obstacles[i] then
-      if obstacles[i].state > 0 then
-        love.graphics.draw(obstacles[i].texture, obstacles[i].position_x, obstacles[i].position_y)
+      if obstacles[i]:getState() > 0 then
+        love.graphics.draw(obstacles[i]:getTexture(), obstacles[i]:getPosition().x, obstacles[i]:getPosition().y)
         if player1:getShot() then
           if obstacles[i]:collisionTest(player1) == 1 then
             obstacles[i]:setState()
@@ -41,8 +38,8 @@ function love.draw()
 
   -- draw enemies
   for i=1,#enemies do
-    if enemies[i].texture and enemies[i].position_x and enemies[i].position_y then
-      love.graphics.draw(enemies[i].texture, enemies[i].position_x, enemies[i].position_y)
+    if enemies[i]:getTexture() and enemies[i]:getPosition().x and enemies[i]:getPosition().y then
+      love.graphics.draw(enemies[i]:getTexture(), enemies[i]:getPosition().x, enemies[i]:getPosition().y)
       if player1:getShot() then
         if enemies[i]:collisionTest(player1) == 1 then
           enemy.destroy(enemies[i])
@@ -50,8 +47,8 @@ function love.draw()
           player1:setScore()
         end
       end
-      if enemies[i].shots[1] then
-        love.graphics.draw(enemies[i].shots[1].texture, enemies[i].shots[1].position_x,enemies[i].shots[1].position_y)
+      if enemies[i]:getShot() then
+        love.graphics.draw(enemies[i]:getShot().texture, enemies[i]:getShot().position_x,enemies[i]:getShot().position_y)
         for j=1, #obstacles do
           if obstacles[j] then
             if obstacles[j]:collisionTest(enemies[i]) == 1 then
@@ -73,7 +70,7 @@ function love.draw()
 
   --draw player shot
   if player1:getShot() then
-    love.graphics.draw(player1.shots[1].texture, player1.shots[1].position_x, player1.shots[1].position_y)
+    love.graphics.draw(player1:getShot().texture, player1:getShot().position_x, player1:getShot().position_y)
   end
 
   -- draw div bottom
@@ -84,7 +81,7 @@ function love.draw()
     if player1:getLives() > 0 then
       label = "LIVES"
       for i=1, player1:getLives() do
-        love.graphics.draw(player1:getTexture(), 390 + i*player1.texture:getWidth(), 600)
+        love.graphics.draw(player1:getTexture(), 390 + i*player1:getTexture():getWidth(), 600)
       end
     else
       label = "GAMEOVER"
@@ -103,25 +100,22 @@ function controlPlayer()
   player1:move()
   player1:shot()
   if player1:getShot() then -- se foi disparado um tiro
-    player1.shots[1]:moveUp()
+    player1:getShot():moveUp()
   end
 end
 
 function makeEnemiesShots()
   for i=2,#enemies do
-    if enemies[i].position_x then
+    if enemies[i]:getPosition().x then
       if #enemies[i].shots < 1 then
-        enemies[i]:shot(enemies)
+        enemies[i]:setShot(enemies)
       end
     end
-    -- if #enemies[i].shots > 0 then
-    --   enemies[i].shots[1]:moveDown()
-    -- end
   end
   for i=2,#enemies do
-    if enemies[i].position_x then
-      if enemies[i].shots[1] then
-        enemies[i].shots[1]:moveDown()
+    if enemies[i]:getPosition().x then
+      if enemies[i]:getShot() then
+        enemies[i]:getShot():moveDown()
       end
     end
   end
@@ -138,7 +132,7 @@ function moveEnemies()
     end
   end
   -- move mystery enemy
-  if enemies[1].position_x then
+  if enemies[1]:getPosition().x then
     directionMystery = directionMystery * reviewDirectionMystery()
     enemies[1]:move(directionMystery)
   end
@@ -148,7 +142,7 @@ function setDirection()
   last_enemy = getFirstOrLastEnemy().last
   first_enemy = getFirstOrLastEnemy().first
   if first_enemy and last_enemy then
-    if last_enemy.position_x >= enemy.getLimitScreen().right - last_enemy.texture:getWidth() or first_enemy.position_x <= enemy.getLimitScreen().left then
+    if last_enemy:getPosition().x >= enemy.getLimitScreen().right - last_enemy.texture:getWidth() or first_enemy:getPosition().x <= enemy.getLimitScreen().left then
       return -1
     else
       return 1
@@ -161,7 +155,7 @@ end
 function reviewDirectionMystery()
   if enemies[1] then
     local mystery = enemies[1]
-    if mystery.position_x >= enemy.getLimitScreen().right*2 or mystery.position_x <= enemy.getLimitScreen().left - 600 then
+    if mystery:getPosition().x >= enemy.getLimitScreen().right*2 or mystery:getPosition().x <= enemy.getLimitScreen().left - 600 then
       return -1 -- reverse values of shift
     else
       return 1
@@ -172,13 +166,13 @@ end
 function getFirstOrLastEnemy()
   local enemies_ordered = {}
   for i = 2, #enemies do
-    if enemies[i].position_x then
+    if enemies[i]:getPosition().x then
       table.insert(enemies_ordered,enemies[i])
     end
   end
 
   function sortByPos(a,b)
-    return a.position_x > b.position_x
+    return a:getPosition().x > b:getPosition().x
   end
 
   table.sort(enemies_ordered,sortByPos)
