@@ -57,7 +57,6 @@ function player.new()
       self.position_x = position_x
       self.position_y = position_y
     end
-    print(self.lives)
   end
 
   function player.move(self)
