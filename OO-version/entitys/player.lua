@@ -9,42 +9,48 @@ local speed = 5
 
 function player.new()
   local player = character.new(texture, position_x, position_y, speed)
-  player.lives = 3
-  player.score = 0
-  player.shots = {}
-  player.speed_shot = 10
+  local lives = 3
+  local score = 0
+  local shots = {}
+  local speed_shot = 10
 
-  function player.getLives(self)
-    return self.lives
-  end
-
-  function player.getScore(self)
-    return self.score
-  end
-
-  function player.getShot(self)
-    if self.shots[1] then
-      return self.shots[1]
+  function player:dShot()
+    if #shots > 0 then
+      shots[1] = nil
     end
   end
 
-  function player.getSpeedShot(self)
-    return self.speed_shot
+  function player:getLives()
+    return lives
   end
 
-  function player.setScore(self)
-    self.score = self.score + 50
+  function player:getScore()
+    return score
   end
 
-  function player.setLives(self)
-    if self.lives > 0 then
-      self.lives = self.lives - 1
+  function player:getShot()
+    if shots[1] then
+      return shots[1]
+    end
+  end
+
+  function player:getSpeedShot()
+    return speed_shot
+  end
+
+  function player:setScore()
+    score = score + 50
+  end
+
+  function player:setLives()
+    if lives > 0 then
+      lives = lives - 1
       self.position_x = position_x
       self.position_y = position_y
     end
   end
 
-  function player.move(self)
+  function player:move()
     if love.keyboard.isDown("right") then
       if self.position_x < character.getLimitScreen().right - self.texture:getWidth() then
         self.position_x = self.position_x + speed
@@ -61,19 +67,19 @@ function player.new()
     end
   end
 
-  function player.setShot(self)
+  function player:setShot()
     function love.keypressed(key)
       if key == "space" then
-        if #self.shots < 1 then -- se não há outro tiro "em andamento" na tela
-          table.insert(self.shots,shot.new(self, "player"))
+        if #shots < 1 then -- se não há outro tiro "em andamento" na tela
+          table.insert(shots,shot.new(self, "player"))
         end
       end
     end
   end
 
-  function player.collisionTest(self, char)
+  function player:collisionTest(char)
 
-    if self.lives > 0 then
+    if lives > 0 then
 
       body = {
         left = self.position_x,
@@ -82,8 +88,8 @@ function player.new()
         bottom = self.position_y + self.texture:getHeight()
       }
 
-      if char.shots[1] then
-        shot_char = char.shots[1]
+      if char:getShot() then
+        shot_char = char:getShot()
       end
 
       shot_c = {

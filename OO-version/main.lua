@@ -60,6 +60,8 @@ function love.draw()
           enemies[i]:setState()
           enemy.updateSpeed(enemies)
           player1:setScore()
+          -- print(player1:getLives()) -- print state
+          print(player1.position_x) -- print nil
         end
       end
       if enemies[i] and enemies[i]:getShot() then
@@ -122,7 +124,7 @@ end
 function makeEnemiesShots()
   for i=2,#enemies do
     if enemies[i]:getState() == 1 then
-      if #enemies[i].shots < 1 then
+      if not enemies[i]:getShot() then
         enemies[i]:setShot(enemies)
       end
     end

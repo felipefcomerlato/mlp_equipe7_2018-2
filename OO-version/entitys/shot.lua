@@ -17,28 +17,34 @@ function shot.new(shooter, type)
                                       + shooter:getTexture():getWidth()/2,
                                       shooter:getPosition().y,
                                       shooter:getSpeedShot())
-  function shot.getPosition(self)
+  local state = 1
+
+  function shot:getState()
+    return state
+  end
+
+  function shot:getPosition()
     return {
       x = self.position_x,
       y = self.position_y
     }
   end
 
-  function shot.getTexture(self)
+  function shot:getTexture()
     return self.texture
   end
 
-  function shot.moveUp(self)
+  function shot:moveUp()
     self:screenCollisionTest()
     self.position_y = self.position_y - shooter:getSpeedShot()
   end
 
-  function shot.moveDown(self)
+  function shot:moveDown()
     self:screenCollisionTest()
     self.position_y = self.position_y + shooter:getSpeedShot()
   end
 
-  function shot.screenCollisionTest(self)
+  function shot:screenCollisionTest()
     if self.position_y then
       if self.position_y <= object.getLimitScreen().top
         or self.position_y >= object.getLimitScreen().bottom
@@ -48,8 +54,8 @@ function shot.new(shooter, type)
     end
   end
 
-  function shot.destroy(self, shooter)
-    shooter.shots[1] = nil
+  function shot:destroy(shooter)
+    shooter:dShot()
   end
 
   return shot

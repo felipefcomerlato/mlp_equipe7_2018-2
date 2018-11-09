@@ -6,11 +6,24 @@ local limit_screen_top = 0
 local limit_screen_bottom = love.graphics.getHeight() - 60
 
 function object.new(texture, position_x, position_y)
+
+  function object:getTexture()
+    return texture
+  end
+
+  function object:getPosition()
+    return {
+      x = position_x,
+      y = position_y
+    }
+  end
+
   return {
     texture = love.graphics.newImage(texture),
     position_x = position_x,
     position_y = position_y
   }
+
 end
 
 function object.getLimitScreen()

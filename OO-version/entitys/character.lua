@@ -2,25 +2,25 @@ local object = require("entitys/object")
 
 local character = {}
 
-function character.new(texture, position_x, position_y, speed)
+function character.new(texture, position_x, position_y, inst_speed)
   local character = object.new(texture, position_x, position_y)
-  character.speed = speed
+  local speed = inst_speed
 
-  function character.setShot() end
+  function character:setShot() end
 
-  function character.getPosition(self)
+  function character:getPosition()
     return {
       x = self.position_x,
       y = self.position_y
     }
   end
 
-  function character.getTexture(self)
+  function character:getTexture()
     return self.texture
   end
 
-  function character.getSpeed(self)
-    return self.speed
+  function character:getSpeed()
+    return speed
   end
 
 
