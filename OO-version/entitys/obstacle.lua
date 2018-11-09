@@ -42,8 +42,8 @@ function obstacle.new(position_x, position_y)
         bottom = self.position_y + self.texture:getHeight()
       }
 
-      if char.shots[1] then
-        shot_char = char.shots[1]
+      if char:getShot() then
+        shot_char = char:getShot()
       end
 
       shot_c = {

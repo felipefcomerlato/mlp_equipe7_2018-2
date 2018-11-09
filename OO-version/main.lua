@@ -58,7 +58,7 @@ function love.draw()
         if enemies[i]:collisionTest(player1) == 1 then
           enemy.destroy(enemies[i])
           enemies[i]:setState()
-          enemy.updateSkills(enemies)
+          enemy.updateSpeed(enemies)
           player1:setScore()
         end
       end
@@ -113,7 +113,7 @@ end
 
 function controlPlayer()
   player1:move()
-  player1:shot()
+  player1:setShot()
   if player1:getShot() then -- se foi disparado um tiro
     player1:getShot():moveUp()
   end

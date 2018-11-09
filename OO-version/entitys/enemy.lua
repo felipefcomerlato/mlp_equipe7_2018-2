@@ -5,6 +5,7 @@ local enemy = {}
 local distance_btw_enemies = 40
 local direction_move_init = 1 -- All enemies start moving to the right
 local speed = 1.5 -- Speed default except mystery
+local increase_speed_factor = 1.01
 
 function enemy.new(texture, position_x, position_y, mystery_h_speed, mystery_v_speed)
   local enemy = character.new(texture, position_x, position_y)
@@ -12,7 +13,6 @@ function enemy.new(texture, position_x, position_y, mystery_h_speed, mystery_v_s
   enemy.vertical_speed = mystery_v_speed or speed/40
   enemy.shots = {}
   enemy.speed_shot = 3
-  enemy.inverse_freq_shots = 1500
   enemy.state = 1 -- 1 = alive; 0 = dead
 
   function enemy.getState(self)
@@ -23,16 +23,12 @@ function enemy.new(texture, position_x, position_y, mystery_h_speed, mystery_v_s
     self.state = self.state - 1
   end
 
-  function enemy.getSpeed(self)
-    return self.speed
+  function enemy.setSpeed(self)
+    self.speed = self.speed * increase_speed_factor
   end
 
   function enemy.getSpeedShot(self)
     return self.speed_shot
-  end
-
-  function enemy.getInverseFreqShots(self)
-    return self.inverse_freq_shots
   end
 
   function enemy.getVerticalSpeed(self)
@@ -45,21 +41,14 @@ function enemy.new(texture, position_x, position_y, mystery_h_speed, mystery_v_s
     end
   end
 
-  function enemy.getPosition(self)
-    return {
-      x = self.position_x,
-      y = self.position_y
-    }
-  end
-
   function enemy.getTexture(self)
     return self.texture
   end
 
   function enemy.setShot(self, enemies)
     if self.position_y then
-      fire = math.random(1, self.inverse_freq_shots)
-      print(fire)
+      fire = math.random(1, #enemies * 10)
+      -- print(fire)
       ready = true
       if fire == 2 then
         for i=2, #enemies do
@@ -94,17 +83,17 @@ function enemy.new(texture, position_x, position_y, mystery_h_speed, mystery_v_s
       bottom = self.position_y + self.texture:getHeight()
     }
 
-    shot_player = player.shots[1]
+    shot_player = player:getShot()
 
-    shot_c = {
-      x = shot_player.position_x + shot_player.texture:getWidth() / 2,
-      y = shot_player.position_y + shot_player.texture:getHeight() / 2
+    shot_coord = {
+      x = shot_player:getPosition().x + shot_player:getTexture():getWidth() / 2,
+      y = shot_player:getPosition().y + shot_player:getTexture():getHeight() / 2
     }
 
-    if body.bottom >= shot_c.y then
-      if body.left <= shot_c.x then
-        if body.right >= shot_c.x then
-          if body.top <= shot_c.y then
+    if body.bottom >= shot_coord.y then
+      if body.left <= shot_coord.x then
+        if body.right >= shot_coord.x then
+          if body.top <= shot_coord.y then
             shot_player:destroy(player)
             return 1
           end
@@ -116,20 +105,9 @@ function enemy.new(texture, position_x, position_y, mystery_h_speed, mystery_v_s
   return enemy
 end
 
-function enemy.updateSkills(enemies)
+function enemy.updateSpeed(enemies)
   for i=2, #enemies do
-    if enemies[i]:getState() == 1 then
-      enemies[i].speed = enemies[i].speed * 1.01
-      if enemies[i].speed > 3.9 then
-        enemies[i].inverse_freq_shots = 5
-      elseif enemies[i].speed > 3.3 then
-        enemies[i].inverse_freq_shots = 100
-      elseif enemies[i].speed > 2.9 then
-        enemies[i].inverse_freq_shots = 400
-      elseif enemies[i].speed > 2.3 then
-        enemies[i].inverse_freq_shots = 800
-      end
-    end
+    enemies[i]:setSpeed()
   end
 end
 
@@ -154,13 +132,13 @@ function enemy.makeEnemies()
   -- "linha 1" da tela é do mysteryb
   -- "linhas 2 à 7" da tela são dos demais inimigos
   -- cada "linha" tem 14 "colunas" de inimigos
-  for r = 1, 7 do
+  for r = 1, 6 do
     local texture = enemy.getDirTexture(r)
     if r == 1 then
       -- O primeiro inimigo é o mystery. Inicia na posição 0, velocidade 10 e velocidade vertical 0
       table.insert(enemies, enemy.new(texture, distance_btw_enemies, 10, 3, 0))
     else
-      for c = 1, 14 do
+      for c = 1, 11 do
         table.insert(enemies, enemy.new(texture,c*distance_btw_enemies, (r-1)*distance_btw_enemies))
       end
     end

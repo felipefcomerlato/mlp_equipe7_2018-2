@@ -28,23 +28,8 @@ function player.new()
     end
   end
 
-  function player.getSpeed(self)
-    return self.speed
-  end
-
   function player.getSpeedShot(self)
     return self.speed_shot
-  end
-
-  function player.getTexture(self)
-    return self.texture
-  end
-
-  function player.getPosition(self)
-    return {
-      x = self.position_x,
-      y = self.position_y
-    }
   end
 
   function player.setScore(self)
@@ -76,7 +61,7 @@ function player.new()
     end
   end
 
-  function player.shot(self)
+  function player.setShot(self)
     function love.keypressed(key)
       if key == "space" then
         if #self.shots < 1 then -- se não há outro tiro "em andamento" na tela
