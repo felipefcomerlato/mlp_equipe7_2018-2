@@ -4,48 +4,54 @@ local shot = require("entitys/shot")
 local enemy = {}
 local distance_btw_enemies = 40
 local direction_move_init = 1 -- All enemies start moving to the right
-local speed = 1.5 -- Speed default except mystery
+local default_speed = 1.5 -- Speed default except mystery
 local increase_speed_factor = 1.01
 
 function enemy.new(texture, position_x, position_y, mystery_h_speed, mystery_v_speed)
   local enemy = character.new(texture, position_x, position_y)
-  enemy.speed = mystery_h_speed or speed
-  enemy.vertical_speed = mystery_v_speed or speed/40
-  enemy.shots = {}
-  enemy.speed_shot = 3
-  enemy.state = 1 -- 1 = alive; 0 = dead
+  local speed = mystery_h_speed or default_speed
+  local vertical_speed = mystery_v_speed or speed/40
+  local shots = {}
+  local speed_shot = 3
+  local state = 1 -- 1 = alive; 0 = dead
 
-  function enemy.getState(self)
-    return self.state
-  end
-
-  function enemy.setState(self)
-    self.state = self.state - 1
-  end
-
-  function enemy.setSpeed(self)
-    self.speed = self.speed * increase_speed_factor
-  end
-
-  function enemy.getSpeedShot(self)
-    return self.speed_shot
-  end
-
-  function enemy.getVerticalSpeed(self)
-    return self.vertical_speed
-  end
-
-  function enemy.getShot(self)
-    if self.shots[1] then
-      return self.shots[1]
+  function enemy:dShot()
+    if #shots > 0 then
+      shots[1] = nil
     end
   end
 
-  function enemy.getTexture(self)
+  function enemy:getState()
+    return state
+  end
+
+  function enemy:setState()
+    state = state - 1
+  end
+
+  function enemy:setSpeed()
+    speed = speed * increase_speed_factor
+  end
+
+  function enemy:getSpeedShot()
+    return speed_shot
+  end
+
+  function enemy:getVerticalSpeed()
+    return vertical_speed
+  end
+
+  function enemy:getShot()
+    if shots[1] then
+      return shots[1]
+    end
+  end
+
+  function enemy:getTexture()
     return self.texture
   end
 
-  function enemy.setShot(self, enemies)
+  function enemy:setShot(enemies)
     if self.position_y then
       fire = math.random(1, #enemies * 10)
       -- print(fire)
@@ -61,20 +67,20 @@ function enemy.new(texture, position_x, position_y, mystery_h_speed, mystery_v_s
           end
         end
         if ready then
-          table.insert(self.shots,shot.new(self, "enemy"))
+          table.insert(shots,shot.new(self, "enemy"))
         end
       end
     end
   end
 
-  function enemy.move(self, direction)
+  function enemy:move(direction)
     if self.position_x and self.position_y then
-      self.position_x = self.position_x + self.speed * direction
-      self.position_y = self.position_y + self.vertical_speed
+      self.position_x = self.position_x + speed * direction
+      self.position_y = self.position_y + vertical_speed
     end
   end
 
-  function enemy.collisionTest(self, player)
+  function enemy:collisionTest(player)
 
     body = {
       left = self.position_x,
