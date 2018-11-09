@@ -2,14 +2,26 @@ local object = require("entitys/object")
 
 local character = {}
 
-local limit_screen_right = love.graphics.getWidth()
-local limit_screen_left = 0
-local limit_screen_top = 0
-local limit_screen_bottom = love.graphics.getHeight() - 60
-
 function character.new(texture, position_x, position_y, speed)
   local character = object.new(texture, position_x, position_y)
   character.speed = speed
+
+  function character.setShot() end
+
+  function character.getPosition(self)
+    return {
+      x = self.position_x,
+      y = self.position_y
+    }
+  end
+
+  function character.getTexture(self)
+    return self.texture
+  end
+
+  function character.getSpeed(self)
+    return self.speed
+  end
 
 
   return character
@@ -17,10 +29,10 @@ end
 
 function character.getLimitScreen()
   return {
-    top = limit_screen_top,
-    bottom = limit_screen_bottom,
-    left = limit_screen_left,
-    right = limit_screen_right
+    top = object:getLimitScreen().top,
+    bottom = object:getLimitScreen().bottom,
+    left = object:getLimitScreen().left,
+    right = object:getLimitScreen().right,
   }
 end
 

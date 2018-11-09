@@ -1,10 +1,9 @@
-local character = require("entitys/character")
+local object = require("entitys/object")
 
 local shot = {}
 local texture_player = "images/shot_player.png"
 local texture_enemy = "images/shot_enemy.png"
--- local texture = "images/shot_enemy.png"
--- local speed = 15
+
 
 function shot.new(shooter, type)
 
@@ -14,10 +13,20 @@ function shot.new(shooter, type)
     texture = texture_enemy
   end
 
-  local shot = character.new(texture, shooter:getPosition().x
+  local shot = object.new(texture, shooter:getPosition().x
                                       + shooter:getTexture():getWidth()/2,
                                       shooter:getPosition().y,
                                       shooter:getSpeedShot())
+  function shot.getPosition(self)
+    return {
+      x = self.position_x,
+      y = self.position_y
+    }
+  end
+
+  function shot.getTexture(self)
+    return self.texture
+  end
 
   function shot.moveUp(self)
     self:screenCollisionTest()
@@ -31,8 +40,8 @@ function shot.new(shooter, type)
 
   function shot.screenCollisionTest(self)
     if self.position_y then
-      if self.position_y <= character.getLimitScreen().top
-        or self.position_y >= character.getLimitScreen().bottom
+      if self.position_y <= object.getLimitScreen().top
+        or self.position_y >= object.getLimitScreen().bottom
                                       - self.texture:getHeight() then
         self:destroy(shooter)
       end
