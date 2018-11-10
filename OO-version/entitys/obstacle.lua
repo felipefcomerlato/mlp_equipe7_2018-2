@@ -5,6 +5,7 @@ local texture = "images/obstacle1.png" -- initial texture
 
 function obstacle.new(position_x, position_y)
   local obstacle = object.new(texture, position_x, position_y)
+
   local state = 1
 
   function obstacle:getState()

@@ -80,33 +80,6 @@ function enemy.new(texture, position_x, position_y, mystery_h_speed, mystery_v_s
     end
   end
 
-  function enemy:collisionTest(player)
-
-    body = {
-      left = self.position_x,
-      right = self.position_x + self.texture:getWidth(),
-      top = self.position_y,
-      bottom = self.position_y + self.texture:getHeight()
-    }
-
-    shot_player = player:getShot()
-
-    shot_coord = {
-      x = shot_player:getPosition().x + shot_player:getTexture():getWidth() / 2,
-      y = shot_player:getPosition().y + shot_player:getTexture():getHeight() / 2
-    }
-
-    if body.bottom >= shot_coord.y then
-      if body.left <= shot_coord.x then
-        if body.right >= shot_coord.x then
-          if body.top <= shot_coord.y then
-            shot_player:destroy(player)
-            return 1
-          end
-        end
-      end
-    end
-  end
 
   return enemy
 end

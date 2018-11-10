@@ -38,8 +38,8 @@ function player.new()
     return speed_shot
   end
 
-  function player:setScore()
-    score = score + 50
+  function player:setScore(time)
+    score = score + math.floor((1/time) * 5000)
   end
 
   function player:setLives()
@@ -67,45 +67,15 @@ function player.new()
     end
   end
 
-  function player:setShot()
+  function player:keyboard()
     function love.keypressed(key)
       if key == "space" then
         if #shots < 1 then -- se não há outro tiro "em andamento" na tela
           table.insert(shots,shot.new(self, "player"))
         end
       end
-    end
-  end
-
-  function player:collisionTest(char)
-
-    if lives > 0 then
-
-      body = {
-        left = self.position_x,
-        right = self.position_x + self.texture:getWidth(),
-        top = self.position_y,
-        bottom = self.position_y + self.texture:getHeight()
-      }
-
-      if char:getShot() then
-        shot_char = char:getShot()
-      end
-
-      shot_c = {
-        x = shot_char.position_x + shot_char.texture:getWidth() / 2,
-        y = shot_char.position_y + shot_char.texture:getHeight() / 2
-      }
-
-      if body.bottom >= shot_c.y then
-        if body.left <= shot_c.x then
-          if body.right >= shot_c.x then
-            if body.top <= shot_c.y then
-              shot_char:destroy(char)
-              return 1
-            end
-          end
-        end
+      if key == "return" then
+        love.load("play")
       end
     end
   end
