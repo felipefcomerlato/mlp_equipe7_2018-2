@@ -67,15 +67,17 @@ function player.new()
     end
   end
 
-  function player:keyboard()
+  function player:keyboard(game)
     function love.keypressed(key)
       if key == "space" then
         if #shots < 1 then -- se não há outro tiro "em andamento" na tela
           table.insert(shots,shot.new(self, "player"))
         end
       end
-      if key == "return" then
-        love.load("play")
+      if game == "menuscreen" or game == "gameover" then
+        if key == "return" then
+          love.load("play")
+        end
       end
     end
   end
