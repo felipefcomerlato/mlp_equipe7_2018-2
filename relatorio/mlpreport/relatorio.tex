@@ -27,6 +27,10 @@
 \usepackage{enumitem}
 \usepackage{titletoc}               
 \usepackage{listings}			    % para listagens de código-fonte
+\lstset{
+basicstyle=\fontsize{9}{11}\ttfamily,
+frame = single, 
+framexleftmargin=15pt}
 \usepackage{mathptmx}               % p/ usar fonte Adobe Times nas formulas matematicas
 \usepackage{url}                    % para formatar URLs
 %\usepackage{color}				    % para imagens e outras coisas coloridas
@@ -140,7 +144,7 @@ O desenvolvimento do trabalho encontra-se em \url{https://github.com/felipefcome
 
 
 \chapter{O Problema}
-O problema a ser resolvido neste trabalho é o desenvolvimento do jogo Space Invaders. O jogo expõe o jogador como uma espaçonave que deve destruir as espaçonaves inimigas que querem invadir o planeta do jogador. Na medida que elas avançam na tela (de cima para baixo), o jogador guia sua espaçonave horizontalmente e efetua disparos para destruir todas as ondas de inimigos que se seguem, como visto na Figura \ref{fig:figura1}
+O problema a ser resolvido neste trabalho é o desenvolvimento do jogo Space Invaders. O jogo expõe o jogador como uma espaçonave que deve destruir as espaçonaves inimigas que querem invadir o planeta do jogador. Na medida que elas avançam na tela (de cima para baixo), o jogador guia sua espaçonave horizontalmente e efetua disparos para destruir todas as ondas de inimigos que se seguem, como visto na Figura \ref{fig:Figura1}
 
 
 \begin{figure}[H]
@@ -149,35 +153,31 @@ O problema a ser resolvido neste trabalho é o desenvolvimento do jogo Space Inv
      \fbox{
          \includegraphics[width=5cm, keepaspectratio]{images/space-invaders-screen.jpg}
      }
-     \label{fig:figura1}
+     \label{fig:Figura1}
      \fonte{http://g1.globo.com/tecnologia/noticia/2011/10/homem-quebra-recorde-mundial-em-space-invaders-jogo-de-1978.html}
  \end{figure}
 
 
-\chapter{Visão Geral da Linguagem}
+\chapter{Visão Geral da Linguagem} \label{Linguagem}
 
-A linguagem escolhida para o trabalho foi extbf{Lua}. Lua é uma linguagem de script de multiparadigma, pequena, reflexiva e leve, projetada para expandir aplicações em geral, por ser uma linguagem extensível (que une partes de um programa feitas em mais de uma linguagem), para prototipagem e para ser embarcada em softwares complexos, como jogos. Assemelha-se com Python, Ruby e Icon, entre outras.
+A linguagem escolhida para o trabalho foi \textbf{Lua}. Lua é uma linguagem de script de multiparadigma, pequena, reflexiva e leve, projetada para expandir aplicações em geral, por ser uma linguagem extensível (que une partes de um programa feitas em mais de uma linguagem), para prototipagem e para ser embarcada em softwares complexos, como jogos. Assemelha-se com Python, Ruby e Icon, entre outras.
 
 Lua foi criada por um time de desenvolvedores do Tecgraf da PUC-Rio, a princípio, para ser usada em um projeto da Petrobras. Devido à sua eficiência, clareza e facilidade de aprendizado, passou a ser usada em diversos ramos da programação, como no desenvolvimento de jogos (a Blizzard Entertainment, por exemplo, usou a linguagem no jogo World of Warcraft), controle de robôs, processamento de texto, etc. Também é frequentemente usada como uma linguagem de propósito geral.
 
 Uma das características principais da linguagem é sua única estrutura de dados: tabelas - que podem ser usadas para representar arrays comuns, sequências, tabelas de símbolos, conjuntos, registros, grafos, árvores, etc.
-
-Lua é uma linguagem distribuída e pode ser compilada em qualquer plataforma que tenha um compilador da linguagem C. Lua pode ser executada em ambientes Unix e Windows, em dispositivos móveis (Android, iOS, Windows Phone, etc), em microprocessadores embarcados e etc.
 
 Incluir Lua numa aplicação não aumenta quase nada o seu tamanho. O pacote de Lua 5.3.5, contendo o código fonte e a documentação, ocupa 297K comprimido e 1.2M descompactado. O fonte contém cerca de 24000 linhas de C. No Linux de 64 bits, o interpretador Lua contendo todas as bibliotecas padrões de Lua ocupa 247K e a biblioteca Lua ocupa 421K \cite{AboutLua}.
 
 Lua possui interpretação dinâmica, ou seja, a linguagem é capaz de executar trechos de código criados dinamicamente, no mesmo ambiente de execução do programa. Como exemplos dessa facilidade temos a função \textit{loadstring} em Lua e a função \textit{eval} em Scheme/Lisp e Perl. Lua possui também tipagem dinâmica forte, ou seja, a linguagem faz verificação de tipos em tempo de execução do programa. Linguagens com
 tipagem dinâmica em geral não possuem declarações de tipos no código e não fazem verificação de tipos em tempo de compilação. Tipagem forte significa que a linguagem jamais aplica uma operação a um tipo incorreto. Além disso, Lua conta com gerência automática de memória dinâmica ("coleta de lixo"), por tanto não precisamos gerenciar memória explicitamente no nosso programa; em especial, não há necessidade de um comando para liberar memória após seu uso \cite{IntroLuaPDF}.
 
-
-
 \section{Modelo Funcional}
 
-Lua oferece suporte ao modelo de programação funcional mas nos proporciona algumas dificuldades, como a de copiar tabelas, por exemplo, já que tal estrutura de dados atribuída a uma variável é apenas uma referência. Tal dificuldade contraria uma das principais características do próprio paradigma funcional: a de usar funções puras, criando novas estruturas ao invés de alterar uma estrutura original. Por outro lado, Lua nos permite representar funções anônimas através de blocos de código chamados de trechos, característico no modelo funcional. \cite{ManualLua}
+Lua oferece um ótimo suporte ao modelo de programação funcional, nos permitindo utilizar a maioria dos conceitos desse paradigma de programação. Recursos como \textit{pattern matching}, \textit{currying}, funções anônimas, recursão e etc. são facilmente implementáveis, como será apresentado nas próximas seções. \cite{ManualLua}
 
 \section{Modelo Orientado a Objetos}
 
-O suporte para a programação no paradigma orientado a objetos utilizando Lua é muito vasto. É possível encontrar inúmeros tutoriais para a solução de diversos problemas na linguagem fazendo uso deste paradigma. Como não vimos diversos pré-requisitos necessários para a implementação deste trabalho, não podemos analisar com mais propriedade o desempenho da linguagem Lua neste modelo de programação.
+Lua não é uma linguagem orientada a objetos por definição, mas nos permite adaptá-la para que seja utilizada dessa forma. A partir do momento em que podemos utilizar tabelas como classes, vincular métodos e atributos exclusivos a essas classes (encapsulamento) e implementar mecanismo de herança, envolvendo os diferentes tipos de polimorfismo, temos então a linguagem Lua no modelo orientado à objetos.
 
 
 % ----------------------- %
@@ -190,7 +190,7 @@ Funções puras são funções que não causam efeitos colaterais, ou seja, que 
 
 Um exemplo de função pura criada para o projeto é a função \textit{newStateOfEnemies}, definida pelo código a seguir:
 
-\begin{verbatim}
+\begin{lstlisting}[frame=single]
 
 function newStateOfEnemies(enemies,death_row,death_col)
   copyEnemies = {}
@@ -215,9 +215,9 @@ function newStateOfEnemies(enemies,death_row,death_col)
   return copyEnemies
 end
 
-\end{verbatim}
+\end{lstlisting}
 
-\textit{newStateOfEnemies} foi criada com a finalidade de atualizar o estado dos inimigos no jogo. A função recebe a matriz (uma tabela de tabelas, em Lua) de inimigos e a posição da matriz na qual um inimigo morreu, e devolve uma matriz totalmente nova atualizada. 
+A função \textit{newStateOfEnemies} foi criada com a finalidade de atualizar o estado dos inimigos no jogo. A função recebe a matriz (uma tabela de tabelas, em Lua) de inimigos e a posição da matriz na qual um inimigo morreu, e devolve uma matriz totalmente nova representando o conjunto atualizado de inimigos. 
 
 
 \section{Funções Anônimas}
@@ -226,7 +226,7 @@ Em Lua, por definição, todas as funções são anônimas. Todavia, é possíve
 
 No projeto, um exemplo de uso dessa técnica é a implementação da função \textit{setPlayerShot}, mostrada no código a seguir:
 
-\begin{verbatim}
+\begin{lstlisting}
 
 setPlayer = function()
     player_image = love.graphics.newImage("images/baseshipb.png")
@@ -247,15 +247,17 @@ setPlayer = function()
     setPlayerShot()
   end
     
-\end{verbatim}
+\end{lstlisting}
 
 Como pode ser visto, \textit{setPlayerShot} foi implementada dentro da função \textit{setPlayer}, portanto só existe dentro desse contexto. A função define a textura e posição inicial do tiro do jogador.
 
 \section{Currying} \label{Currying}
 
-Currying é a técnica de transformar uma função de N parâmetros em N funções de 1 parâmetro cada \cite{CurryingLua} projeto, foi implementada uma função genérica \textit{curry2}, mostrada abaixo:
+Currying é a técnica de transformar uma função de N parâmetros em N funções de 1 parâmetro cada \cite{CurryingLua}. Em nosso projeto, foi implementada uma função genérica \textit{curry2}, mostrada abaixo:
 
-\begin{verbatim}
+\clearpage
+
+\begin{lstlisting}
 
 function curry2(f)
   return function(a)
@@ -265,43 +267,72 @@ function curry2(f)
   end
 end
 
-\end{verbatim}
+\end{lstlisting}
 
-\textit{curry2} é utilizada para fazer a verificação de colisão de cada inimigo com o tiro do jogador. A chamada da função de verificação de colisão com \textit{curry2} é como no código a seguir:
+A função \textit{curry2} é utilizada para fazer a verificação de colisão de cada inimigo com o tiro do jogador. A chamada da função de verificação de colisão com \textit{curry2} é como no código a seguir:
 
-\begin{verbatim}
+\begin{lstlisting}
 
 verifyCollision = curry2(verifyCollision)
 funRow = verifyCollision(row)
 funCol = funRow(enemies_on_the_row)
 
-\end{verbatim}
+\end{lstlisting}
 
 \section{Pattern Matching}
 
-\textit{Pattern matching} ou casamento de padrões é a verificação por padrões dentro de uma estrutura de dados. Lua possui este recurso, principalmente no tratamento de \textit{strings} \cite{PatternMatchingLua}. No entanto, não foi encontrado um modo de utilizar este recurso no projeto até o momento.
+\textit{Pattern matching} ou casamento de padrões é a verificação por padrões dentro de uma estrutura de dados. Lua possui este recurso, no tratamento de \textit{strings}, por exemplo \cite{PatternMatchingLua}. Em nosso projeto, utilizamos esse recurso de forma um pouco diferente. Lua nos permite definir variáveis dentro de tabelas, simulando assim uma espécie de dicionário. Assim, definimos a coordenada do \textit{player} na tela por uma variável do tipo tabela, composta pelos identificadores \textit{x} e \textit{y}, como mostrado abaixo.
+
+\begin{lstlisting}
+
+player_position = {
+      x = love.graphics.getWidth() / 2 - player_image:getWidth() / 2,
+      y = love.graphics.getHeight() - 100
+    }
+
+\end{lstlisting}
+
+O acesso aos valores das coordenadas x e y do \textit{player} é feita identificando as próprias variáveis \textit{x} e \textit{y} de dentro da variável de posição, como mostrado a seguir.
+
+\clearpage
+
+\begin{lstlisting}
+
+player_position.x
+
+\end{lstlisting}
+
+ou
+
+\begin{lstlisting}
+
+player_position.y
+
+\end{lstlisting}
+
+
 
 \section{Funções de Ordem Superior}
 
-Funções de ordem superior são aquelas que recebem uma função como parâmetro e/ou retornam uma função. Foi implementada genericamente a função \textit{map}, uma vez que Lua não possui tal função em sua definição \cite{HigherOrderFunctionLua}. \textit{map} é mostrada a seguir:
+Funções de ordem superior são aquelas que recebem uma função como parâmetro e/ou retornam uma função. Foi implementada genericamente a função \textit{map}, que recebe uma função, uma tabela e o tamanho original da tabela, e aplica a função para cada um dos elementos da tabela, iterando sob um mecanismo simples de recursão. Esse tipo de função é comum no modelo de programação funcional, mas Lua não possui nativamente tal função, por isso foi implementada \cite{HigherOrderFunctionLua}. A função \textit{map} implementada acabou não sendo utilizada no funcionamento do jogo, mas apenas para mostrar a permissividade do uso de funções de ordem superior em Lua. O código da função \textit{map} pode ser visto em seguida.
 
-\begin{verbatim}
+\begin{lstlisting}
 function map(fun, t, sizeT)
   if sizeT > 0 then
     fun(t[sizeT])
     map(fun, t, sizeT-1)
   end
 end
-\end{verbatim}
+\end{lstlisting}
 
 \section{Funções de Ordem Maior Fornecidas Pela Linguagem}
 
-Conforme estudos realizados sobre Lua, foram encontrados poucos exemplos de funções de alta ordem disponíveis na linguagem. Um exemplo (não utilizado no trabalho) é a função \textit{table.sort}, mostrada abaixo, que espera como um dos parâmetros uma função que define o sentido de ordenação de uma tabela \cite{FunctionsLua}.
+Conforme estudos realizados sobre Lua, foram encontrados poucos exemplos de funções de alta ordem disponíveis na linguagem. Um exemplo (não utilizado neste projeto) é a função \textit{table.sort}, mostrada abaixo, que espera como um dos parâmetros uma função que define o sentido de ordenação de uma tabela \cite{FunctionsLua}.
 
-\begin{verbatim}
+\begin{lstlisting}
 list = {{3}, {5}, {2}, {-1}}
 table.sort(list, function (a, b) return a[1] < b[1] end)
-\end{verbatim}
+\end{lstlisting}
 
 \section{Funções como Elementos de Primeira Ordem}
 
@@ -311,49 +342,37 @@ Funções são utilizadas como elementos de primeira ordem quando elas podem ser
 
 Conforme especificação, foi utilizada recursão como único mecanismo de iteração sobre as estruturas. Um exemplo de recursão implementada foi com a função \textit{drawEnemies}, mostrada a seguir:
 
-\begin{verbatim}
+\begin{lstlisting}
 function drawEnemies(rows)
 
   if rows > 0 then
-    -- Desenha uma linha de inimigos
     drawEnemiesOnTheRow = function(row, enemies_on_the_row)
-      x_enemie = enemies_on_the_row * x_distance_btw_enemies + x_enemies_shift
-      y_enemie = row * y_distance_btw_enemies + y_enemies_shift
+      x_enemy = enemies_on_the_row * x_distance_btw_enemies + x_enemies_shift
+      y_enemy = row * y_distance_btw_enemies + y_enemies_shift
 
-      -- Testa se houve colisão de um inimigo com o tiro
-      verifyCollision = function(row, enemies_on_the_row)
-        -- Delimita os pontos de colisão do tiro
-        limit_left = x_player_shot + player_shot_image:getWidth()/2 - enemie1_image:getWidth()
-        limit_right = x_player_shot + player_shot_image:getWidth()/2
-        limit_bottom = y_player_shot + player_shot_image:getHeight()/2
-
-        -- Se o inimigo está vivo, testa a colisão dele com o tiro
-        if states_of_enemies[current_state][row][enemies_on_the_row] == 1 then
-          if x_enemie >= limit_left and x_enemie <= limit_right then
-            if y_enemie + enemie1_image:getHeight() >= limit_bottom then
-              -- Gera novo estado dos inimigos a partir de uma cópia do estado atual
-              table.insert(states_of_enemies, newStateOfEnemies(states_of_enemies[current_state],row,enemies_on_the_row))
-              current_state = #states_of_enemies
-              resetShot()
-            end
-          end
+      if states_of_enemies[current_state][row][enemies_on_the_row] == 1 then
+        fire = math.random(1, 20)
+          if fire > 10 and fire < 20 then
+            make_enemy_shot(x_enemy + enemy1_image:getWidth()/2,
+            				 y_enemy+enemy1_image:getHeight())
         end
       end
 
-      -- Implementação curry
-      local verifyCollision = curry2(verifyCollision)
+      verifyCollisionPlayer(player_position.y,player_position.x)
+
+      -- Implementacao currying
+      local verifyCollision = currying2(verifyCollision)
       local funRow = verifyCollision(row)
       local funCol = funRow(enemies_on_the_row)
 
       if enemies_on_the_row > 0 then
-        -- Define inimigos diferentes conforme a linha da matriz
         if states_of_enemies[current_state][row][enemies_on_the_row] == 1 then
             if row <= 2 then
-              love.graphics.draw(enemie1_image, x_enemie, y_enemie)
+              love.graphics.draw(enemy1_image, x_enemy, y_enemy)
             elseif row == 3 or row == 4 then
-              love.graphics.draw(enemie2_image, x_enemie, y_enemie)
+              love.graphics.draw(enemy2_image, x_enemy, y_enemy)
             else
-              love.graphics.draw(enemie3_image, x_enemie, y_enemie)
+              love.graphics.draw(enemy3_image, x_enemy, y_enemy)
             end
         end
         -- Desenha os demais inimigos da linha recursivamente
@@ -365,40 +384,163 @@ function drawEnemies(rows)
     drawEnemies(rows-1)
   end
   -- Desenha o inimigo "mystery"
-  x_mystery_enemie = x_mystery_enemie + x_mystery_enemie_shift
-  love.graphics.draw(mystery_enemie_image, x_mystery_enemie, y_mystery_enemie)
+  x_mystery_enemy = x_mystery_enemy + x_mystery_enemy_shift
+  love.graphics.draw(mystery_enemy_image, x_mystery_enemy, y_mystery_enemy)
 end
-\end{verbatim}
+
+\end{lstlisting}
 
 A função \textit{drawEnemies} desenha na tela cada inimigo através de uma tabela de tabelas, que é percorrida recursivamente para verificar se o inimigo de cada posição deve ou não ser desenhado.
-
-\chapter{Paralelismo}
-
-Lua oferece recurso de paralelismo através da função \textit{thread}, porém, tal recurso é conflitante com a biblioteca gráfica Love2d utilizada como mecanismo principal de funcionamento do jogo. Em contrapartida, a própria biblioteca Love2d possui um mecanismo de paralelismo. Apesar disso, devido à complexidade de uso de tal mecanismo, ainda não foi utilizado o recurso de paralelismo no projeto na sua atual versão, já que muitos erros foram resultantes das tentativas de uso das \textit{threads} com a Love2d.
 
 % ----------------------- %
 
 \chapter{Recursos de Orientação à Objetos}
 
-\section{Classes}
+\section{Classes} \label{Classes}
+	
+Em Lua não existe explicitamente o conceito de classe. No entanto, é possível simular classes através de tabelas - única estrutura de dados oferecida pela linguagem, como visto na seção \ref{Linguagem}. Podemos declarar uma tabela dentro de um arquivo .lua e retornar desse arquivo a tabela. Uma vez declarada uma tabela, é possível declarar, por exemplo, métodos vinculados a ela através do padrão NomeDaTabela.Método(). Um outro arquivo qualquer do programa pode obter essa tabela - classe - com todos seus métodos e atributos através de um require, simulando assim uma hierarquia de classes.
+
+No código abaixo ... [blabl abl abla ]
+
 
 \section{Encapsulamento e Proteção dos Atributos}
 
-\section{Construtores}
+Em Lua é possível tornar um atributo privado o declarando como \textit{local}. Tal declaração restringe o atributo de forma que ele só fique acessível dentro do escopo da função na qual ele foi declarado.
+
+Desta forma, declaramos os atributos de cada classe como \textit{local} e implementamos \textit{getters} e \textit{setters} para obtê-los ou modificá-los de fora da classe, respeitando assim, o princípio de encapsulamento do paradigma de orientação à objetos. No código abaixo vemos um exemplo de encapsulamento utilizado na classe ...............
+
+
+
+\section{Construtores} \label{Construtores}
+
+Como visto na seção \ref{Classes}, Lua não possui o conceito de classe explicitamente, e consequentemente não possui o conceito explícito de construtor. No entanto, podemos simular um construtor através de um método que inicialize os atributos e métodos de um objeto - tabela. 
+
+Em nosso trabalho utilizamos para cada classe, por convenção, um método chamado \textit{new}, para simular o construtor-padrão de um objeto. Esse método retorna um objeto com os atributos inicializados e os métodos desse objeto.
+
+Em Lua, é possível chamar uma função sem passar todos os parâmetros que ela espera. Se isso acontecer, os parâmetros que não foram passados como argumento, são interpretados como valores \textit{nil} dentro da função. Como Lua sobrescreve métodos com mesmo nome, independentemente dos parâmetros, para implementar um construtor alternativo, o próprio construtor padrão deve esperar todos os parâmetros possíveis para um objeto. Dessa forma, o construtor espera todos os parâmetros e só inicializa os diferentes de \textit{nil}. O código abaixo mostra o construtor do objeto Enemy.
+
+[CODIGO AQUI CARAI]
+
+e depois fala do código.
+
 
 \section{Destrutores}
 
-\section{Espaços de Nomes Diferenciados}
+Lua realiza gerenciamento automático da memória. Isto significa que você não precisa se preocupar com a alocação de memória para novos objetos nem com a liberação de memória quando os objetos não são mais necessários. Lua gerencia a memória automaticamente executando um coletor de lixo de tempos em tempos para coletar todos os objetos mortos (ou seja, objetos que não são mais acessíveis). Toda memória usada por Lua está sujeita ao gerenciamento automático de memória: tabelas, userdata, funções, fluxos de execução, cadeias de caracteres, etc. (REFERENCIA AQUI (MANUAL - secao 2.10))
 
-\section{Mecanismos de Herança}
+No projeto, temos como exemplo de objetos a se tornarem inacessíveis depois de "mortos" os inimigos (classe \textit{enemy}) do jogador. Quando o jogo é inicializado, são gerados todos os \textit{enemies} e colocados dentro de uma tabela, acessível na \textit{main}. Quando um inimigo morre, seu atributo \textit{state} é alterado para 0. A cada \textit{frame} do jogo, a função \textit{deleteEnemies}, mostrada abaixo, percorre a tabela de inimigos e remove dela os inimigos com state = 0 [COLOCAR EM FORMATO DE CÓDIGO TALVEZ]. Quando um objeto \textit{enemy} é removido da tabela, ele passa a não ser mais acessível de nenhum outro lugar do programa, portanto fica apto a ser recolhido pelo coletor de lixo de Lua.
+
+[COLOCAR CÓDIGO AQUI CARAI]
+
+
+\section{Espaços de Nomes Diferenciados} \label{Espaço}
+
+Em Lua, se duas funções são declaradas com mesmo nome, a que foi avaliada por último sobrescreve a primeira. Em nosso projeto, todas as funções acessíveis a partir de um mesmo objeto possuem nomes diferenciados. Foram implementados alguns métodos com mesmo nome mas pertencentes à classes diferentes, e assim são chamados somente explicitando a classe ou a instância. No código abaixo....
+
+
+
+\section{Mecanismos de Herança} \label{Herança}
+
+Para implementar o mecanismo de herança, é necessário primeiramente importar a classe pai utilizando o comando \textit{require}, salvando-a em uma variável. Uma classe torna-se filha de outra a partir do momento que em seu método construtor é invocado o método construtor da classe pai, salva na variável de requisição. 
+
+No projeto do Space Invaders, especificamos a classe abstrata \textit{object}, que contém somente os atributos textura e posição. Em um segundo nível de hierarquia as classes \textit{character} e \textit{obstacle} herdam os atributos de \textit{object} e implementam novos atributos e métodos. A classe \textit{character} abstrai o atributo \textit{speed}, herdado por um terceiro nível de hierarquia: as classes \textit{enemy} e \textit{player}.
+
+[CÓDIGO BL BLABLABLBAL]
+
 
 \section{Polimorfismo por Inclusão}
 
+O polimorfismo por inclusão permite que um método de uma classe pai seja chamado por instâncias de diferentes classes, uma vez que elas herdam o método através do mecanismo de herança, explicado na seção \ref{Herança}. 
+
+Em nosso projeto, um exemplo de polimorfismo por inclusão está presente na classe \textit{character}. Nela é implementado o método \textit{character:collisionTest(shooter)}, sendo o parâmetro \textit{shooter} o objeto que disparou um tiro, que verifica se houve colisão do tiro com a instância que chamou o método, tratada como \textit{self}.
+
+[CÓDIGO AQUI]
+
+
 \section{Polimorfismo Paramétrico}
+
+Como Lua implementa tipagem dinâmica, ou seja, o tipo de uma variável é definido no instante em que ela recebe um valor, as funções podem receber parâmetros de qualquer tipo e tratá-los da maneira adequada. Esse tratamento de variáveis é desvantajoso pois transfere ao programador a responsabilidade de prever o comportamento do programa conforme o tipo de parâmetro passado para uma função, por exemplo. 
+
+Um exemplo simples de polimorfismo paramétrico, que não foi implementado no projeto mas que mostra permissividade em Lua, é mostrado no código abaixo.
+
+
 
 \section{Polimorfismo por Sobrecarga}
 
+A sobrecarga (overload) consiste em permitir, dentro da mesma classe, mais de um método com o mesmo nome. Entretanto, eles necessariamente devem possuir argumentos diferentes para funcionar(REFERENCIA AQUI). Porém, como mencionado na seção \ref{Espaço}, Lua sobrescreve métodos com mesmo nome implementados em uma mesma classe. A implementação do construtor da classe \textit{enemy}, mostrado na seção \ref{Construtores}, exemplifica uma maneira de utilizar método com comportamento alternativo ao invés de implementar dois métodos com mesmo nome.
+
 \section{Delegates}
+
+O recurso de \textit{delegates} não foi implementado no projeto. 
+
+\chapter{Paralelismo}
+
+Lua não oferece recurso nativo de paralelismo. Uma alternativa semelhante ao uso de \textit{threads}, mas que não funciona de fato em paralelo, são as co-rotinas. A principal diferença entre \textit{threads} e co-rotinas é que conceitualmente um programa com \textit{threads} roda várias \textit{threads} simultaneamente. Co-rotinas, por outro lado, são colaborativas: um programa com co-rotinas está a cada tempo rodando apenas uma de suas co-rotinas. Uma co-rotina pode ser suspensa para dar vez a outra, compartilhando recursos com ela.
+
+Existem bibliotecas que possibilitam o uso paralelo de threads, porém o compartilhamento de recursos é extremamente limitado. Para o projeto, por exemplo, a biblioteca gráfica love2d não permite o compartilhamento de recursos gráficos entre threads, que seria a principal aplicação do conceito de paralelismo no jogo Space Invaders.
+
+Para exemplificar o uso de paralelismo, embora não utilizado efetivamente em nosso projeto, foi implementado um pequeno programa, mostrado abaixo.
+
+Arquivo main.lua:
+
+\begin{lstlisting}
+
+socket = require "socket"
+
+function love.load()
+  thread = love.thread.newThread("thread.lua")
+  thread2 = love.thread.newThread("thread.lua")
+
+  input_5 = 5
+  input_4 = 4
+
+  execution_start = socket.gettime() * 1000
+
+  thread:start(input_4)
+  thread2:start(input_5)
+  thread:wait()
+  thread2:wait()
+
+  execution_time = socket.gettime() * 1000 - execution_start
+  print(string.format("Tempo total de execucao: %.0f Milisegundos",
+                        execution_time))
+end
+
+\end{lstlisting}
+
+\clearpage
+
+Arquivo thread.lua:
+
+\begin{lstlisting}
+
+require "love.timer"
+
+local input = ...
+
+function testSleep(input)
+  print("Thread com input = " .. input)
+  love.timer.sleep(input)
+end
+
+testSleep(input)
+
+\end{lstlisting}
+
+Como utilizamos a biblioteca \textit{love2d}, a função \textit{load} é invocada automaticamente, por padrão. Primeiramente, são definidos os objetos do tipo \textit{thread}. Uma \textit{thread} é inicializada com o valor 4 e a outra com o valor 5. Os métodos \textit{wait}, chamados por cada objeto \textit{thread}, indicam que o programa só deve prosseguir quando a \textit{thread} correspondente terminar. Por fim, é mostrado na saída o tempo de execução final do programa.
+
+A \textit{thread} em questão, utilizada para esse exemplo, executa apenas um \textit{sleep} do tempo recebido por parâmetro, em segundos. Ou seja, o programa executa uma \textit{thread} que dura 4 segundos e outra que dura 5 segundos.
+
+Sem o uso de \textit{threads}, o programa demoraria aproximadamente 9 segundos de execução entre um ponto imediatamente antes da inicialização da primeira \textit{thread} e um ponto imediatamente depois do término da segunda \textit{thread}. Já com o uso das \textit{threads}, essa execução levou apenas 5 segundos, como mostrado na Figura \ref{fig:Figura2}.
+
+\begin{figure}[H]
+     \centering
+     \caption{\textit{Print Screen} da saída do programa de exemplo do uso de paralelismo em Lua utilizando a biblioteca \textit{love2d}}
+     \fbox{
+         \includegraphics[width=13cm, keepaspectratio]{images/threads-screen.png}
+     }
+     \label{fig:Figura2}
+\end{figure}
 
 \chapter{Conclusão Final}
 

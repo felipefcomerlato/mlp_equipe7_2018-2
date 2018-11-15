@@ -54,7 +54,6 @@ function character.new(texture, position_x, position_y, inst_speed)
     end
   end
 
-
   return character
 end
 
