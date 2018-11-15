@@ -12,14 +12,14 @@ function love.load()
 
   -- Configura estado inicial dos inimigos
   setEnemies = function()
-    enemie1_image = love.graphics.newImage("images/saucer1b.png")
-    enemie2_image = love.graphics.newImage("images/saucer2b.png")
-    enemie3_image = love.graphics.newImage("images/saucer3b.png")
-    mystery_enemie_image = love.graphics.newImage("images/mystery.png")
-    max_x_mystery_enemie = love.graphics.getWidth() + 500
-    min_x_mystery_enemie = -500
-    x_mystery_enemie = max_x_mystery_enemie
-    y_mystery_enemie = 10
+    enemy1_image = love.graphics.newImage("images/saucer1b.png")
+    enemy2_image = love.graphics.newImage("images/saucer2b.png")
+    enemy3_image = love.graphics.newImage("images/saucer3b.png")
+    mystery_enemy_image = love.graphics.newImage("images/mystery.png")
+    max_x_mystery_enemy = love.graphics.getWidth() + 500
+    min_x_mystery_enemy = -500
+    x_mystery_enemy = max_x_mystery_enemy
+    y_mystery_enemy = 10
     initial_state_of_enemies = {
                 {1,1,1,1,1,1,1,1,1,1,1,1,1,1},
                 {1,1,1,1,1,1,1,1,1,1,1,1,1,1},
@@ -32,8 +32,8 @@ function love.load()
     current_state = #states_of_enemies
     enemies_speed_vertical = 1
     enemies_speed_horizontal = 20
-    mystery_enemie_speed = 20
-    x_mystery_enemie_shift = 0
+    mystery_enemy_speed = 20
+    x_mystery_enemy_shift = 0
     x_enemies_shift = 0 -- Controle do quanto os inimigos se moveram para uma direção
     y_enemies_shift = 0
     direction_enemies = 1 -- Inimigos começam se movendo para a direita
@@ -50,14 +50,17 @@ function love.load()
       shot_enemy_on = false
     end
     setEnemyShot()
-    
+
   end
 
 -- Configura estado inicial do player
   setPlayer = function()
     player_image = love.graphics.newImage("images/player.png")
-    x_player = love.graphics.getWidth() / 2 - player_image:getWidth() / 2
-    y_player = love.graphics.getHeight() - 100
+    player_position = {
+      x = love.graphics.getWidth() / 2 - player_image:getWidth() / 2,
+      y = love.graphics.getHeight() - 100
+    }
+    print(player_position.x)
     max_x_player = love.graphics.getWidth() - player_image:getWidth()
     min_x_player = 0
     x_player_shift = 10
@@ -83,7 +86,7 @@ function love.load()
   setScenario()
 end
 
-faz_tiro = function(x, y)
+make_enemy_shot = function(x, y)
   if not enemy_shot_on_the_screen then
     enemy_shot_on_the_screen = true
     x_enemy_shot = x
@@ -114,12 +117,12 @@ function love.draw()
     end
     print_lives(player_lives)
 
- 
+
     -- Desenha as linhas de inimigos
     -- Envia para a função drawEnemies o estado mais atual dos inimigos no jogo
     drawEnemies(#states_of_enemies[current_state])
     -- Desenha o player na tela
-    love.graphics.draw(player_image, x_player, y_player)
+    love.graphics.draw(player_image, player_position.x, player_position.y)
 
     -- Atualiza posição do tiro do player
     updatePlayerShot = function()
@@ -196,36 +199,36 @@ function love.update(dt)
     end
 
     -- Movimenta o inimigo "mystery"
-    changeMysteryEnemieDirection = function()
-      x_mystery_enemie_shift = x_mystery_enemie_shift * (-1)
-      mystery_enemie_speed = mystery_enemie_speed * (-1)
+    changeMysteryenemyDirection = function()
+      x_mystery_enemy_shift = x_mystery_enemy_shift * (-1)
+      mystery_enemy_speed = mystery_enemy_speed * (-1)
     end
 
     -- Inverte o sentido de movimento do inimigo "mystery"
-    if x_mystery_enemie <= min_x_mystery_enemie or x_mystery_enemie >= max_x_mystery_enemie then
-      changeMysteryEnemieDirection()
+    if x_mystery_enemy <= min_x_mystery_enemy or x_mystery_enemy >= max_x_mystery_enemy then
+      changeMysteryenemyDirection()
     end
 
-    x_mystery_enemie_shift = mystery_enemie_speed*dt
+    x_mystery_enemy_shift = mystery_enemy_speed*dt
   end
 
   -- Controla as ações e estado do jogador
   controlPlayer = function()
-    
+
     movePlayer = function()
       -- Movimenta o player horizontalmente
       if love.keyboard.isDown("right") then
-        if x_player < max_x_player then
-          x_player = x_player + x_player_shift
+        if player_position.x < max_x_player then
+          player_position.x = player_position.x + x_player_shift
         else
-          x_player = max_x_player
+          player_position.x = max_x_player
         end
 
       elseif love.keyboard.isDown("left") then
-        if x_player > min_x_player then
-          x_player = x_player - x_player_shift
+        if player_position.x > min_x_player then
+          player_position.x = player_position.x - x_player_shift
         else
-          x_player = min_x_player
+          player_position.x = min_x_player
         end
 
       elseif love.keyboard.isDown("return") then
@@ -235,8 +238,8 @@ function love.update(dt)
         -- Só pode atirar se não existe um tiro do player na tela
         if not player_shot_on_the_screen then
           player_shot_on_the_screen = true
-          x_player_shot = x_player
-          y_player_shot_initial = y_player
+          x_player_shot = player_position.x
+          y_player_shot_initial = player_position.y
         end
 
       --encerra o jogo
@@ -257,7 +260,7 @@ end
 -- end LOVE FUNCTIONS ###
 
 function resetShot()
-  y_player_shot = y_player
+  y_player_shot = player_position.y
   player_shot_on_the_screen = false
   y_player_shot_shift = 0
 end
@@ -294,7 +297,7 @@ function newStateOfEnemies(enemies,death_row,death_col)
   return copyEnemies
 end
 
-function curry2(f)
+function curryinging2(f)
   return function(a)
     return function(b)
       return f(a, b)
@@ -316,27 +319,27 @@ function drawEnemies(rows)
   if rows > 0 then
     -- Desenha uma linha de inimigos
     drawEnemiesOnTheRow = function(row, enemies_on_the_row)
-      x_enemie = enemies_on_the_row * x_distance_btw_enemies + x_enemies_shift
-      y_enemie = row * y_distance_btw_enemies + y_enemies_shift
+      x_enemy = enemies_on_the_row * x_distance_btw_enemies + x_enemies_shift
+      y_enemy = row * y_distance_btw_enemies + y_enemies_shift
 
       if states_of_enemies[current_state][row][enemies_on_the_row] == 1 then
         fire = math.random(1, 20)
           if fire > 10 and fire < 20 then
-            faz_tiro(x_enemie + enemie1_image:getWidth()/2, y_enemie+enemie1_image:getHeight())
+            make_enemy_shot(x_enemy + enemy1_image:getWidth()/2, y_enemy+enemy1_image:getHeight())
         end
-      end 
+      end
 
       -- Testa se houve colisão de um inimigo com o tiro
       verifyCollision = function(row, enemies_on_the_row)
         -- Delimita os pontos de colisão do tiro
-        limit_left = x_player_shot + player_shot_image:getWidth()/2 - enemie1_image:getWidth()
+        limit_left = x_player_shot + player_shot_image:getWidth()/2 - enemy1_image:getWidth()
         limit_right = x_player_shot + player_shot_image:getWidth()/2
         limit_bottom = y_player_shot + player_shot_image:getHeight()/2
 
         -- Se o inimigo está vivo, testa a colisão dele com o tiro
         if states_of_enemies[current_state][row][enemies_on_the_row] == 1 then
-          if x_enemie >= limit_left and x_enemie <= limit_right then
-            if y_enemie + enemie1_image:getHeight() >= limit_bottom then
+          if x_enemy >= limit_left and x_enemy <= limit_right then
+            if y_enemy + enemy1_image:getHeight() >= limit_bottom then
               -- Gera novo estado dos inimigos a partir de uma cópia do estado atual
               table.insert(states_of_enemies, newStateOfEnemies(states_of_enemies[current_state],row,enemies_on_the_row))
               current_state = #states_of_enemies
@@ -348,14 +351,14 @@ function drawEnemies(rows)
       end
 
 
-      -- Testa se houve colisão de um inimigo com o tiro
-      verifyCollisionPlayer = function(y_player, x_player)
+      -- Testa se houve colisão do player com o tiro
+      verifyCollisionPlayer = function(player_y, player_x)
         -- Delimita os pontos de colisão do tiro
         limit_side = x_enemy_shot
         limit_bottom = y_enemy_shot + enemy_shot_image:getHeight()
 
-        if x_player <= limit_side and x_player+player_image:getWidth() >= limit_side then
-          if y_player <= limit_bottom and y_player+player_image:getHeight() >= limit_bottom then
+        if player_x <= limit_side and player_x + player_image:getWidth() >= limit_side then
+          if player_y <= limit_bottom and player_y + player_image:getHeight() >= limit_bottom then
             if enemy_shot_on_the_screen then
               player_lives = player_lives - 1
               resetEnemyShot()
@@ -364,10 +367,10 @@ function drawEnemies(rows)
         end
       end
 
-      verifyCollisionPlayer(y_player,x_player)
+      verifyCollisionPlayer(player_position.y,player_position.x)
 
-      -- Implementação curry
-      local verifyCollision = curry2(verifyCollision)
+      -- Implementação currying
+      local verifyCollision = curryinging2(verifyCollision)
       local funRow = verifyCollision(row)
       local funCol = funRow(enemies_on_the_row)
 
@@ -375,11 +378,11 @@ function drawEnemies(rows)
         -- Define inimigos diferentes conforme a linha da matriz
         if states_of_enemies[current_state][row][enemies_on_the_row] == 1 then
             if row <= 2 then
-              love.graphics.draw(enemie1_image, x_enemie, y_enemie)
+              love.graphics.draw(enemy1_image, x_enemy, y_enemy)
             elseif row == 3 or row == 4 then
-              love.graphics.draw(enemie2_image, x_enemie, y_enemie)
+              love.graphics.draw(enemy2_image, x_enemy, y_enemy)
             else
-              love.graphics.draw(enemie3_image, x_enemie, y_enemie)
+              love.graphics.draw(enemy3_image, x_enemy, y_enemy)
             end
         end
         -- Desenha os demais inimigos da linha recursivamente
@@ -391,6 +394,6 @@ function drawEnemies(rows)
     drawEnemies(rows-1)
   end
   -- Desenha o inimigo "mystery"
-  x_mystery_enemie = x_mystery_enemie + x_mystery_enemie_shift
-  love.graphics.draw(mystery_enemie_image, x_mystery_enemie, y_mystery_enemie)
+  x_mystery_enemy = x_mystery_enemy + x_mystery_enemy_shift
+  love.graphics.draw(mystery_enemy_image, x_mystery_enemy, y_mystery_enemy)
 end
