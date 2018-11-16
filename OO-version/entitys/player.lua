@@ -74,7 +74,7 @@ function player.new()
           table.insert(shots,shot.new(self, "player"))
         end
       end
-      if game == "menuscreen" or game == "gameover" then
+      if game == "menuscreen" or game == "gameover" or game == "playerwin" then
         if key == "return" then
           love.load("play")
         end

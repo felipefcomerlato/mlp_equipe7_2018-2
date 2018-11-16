@@ -6,10 +6,17 @@ local game = "menuscreen" -- The game begin in menu screen
 local screenCenter = love.graphics.getWidth() / 2
 
 function love.load(menuKey)
-  player1 = player.new()
+
+  if menuKey ~= "playerwin" then
+    player1 = player.new()
+  end
 
   if menuKey == "play" then
     game = menuKey
+  end
+  if menuKey == "playerwin" then
+    game = menuKey
+    player_win_big = love.graphics.newImage("images/player_big_win.png")
   end
 
   math.randomseed(os.time())
@@ -53,8 +60,9 @@ function love.draw()
 end
 
 function winTest()
-  if not enemies then
-    game = "playerwin"
+  -- print(enemies[1]:getState())
+  if #enemies == 1 and enemies[1]:getState() == 0 then
+    love.load("playerwin")
   end
 end
 
@@ -88,8 +96,7 @@ function printGameOverScreen()
 end
 
 function printPlayerWin()
-  player_win_big = love.graphics.newImage("images/player.png")
-  love.graphics.draw(player_win_big, screenCenter - enemywin:getWidth() / 2, 180)
+  love.graphics.draw(player_win_big, screenCenter - player_win_big:getWidth() / 2, 180)
   love.graphics.printf("YOU WIN", 0, 400, screenCenter, "center", 0, 2, 2)
   love.graphics.printf("YOUR SCORE: " .. player1:getScore(), 0, 440, screenCenter, "center", 0, 2, 2)
   love.graphics.printf("PRESS ENTER TO RESTART", 0, 550, screenCenter, "center", 0, 2, 2)
