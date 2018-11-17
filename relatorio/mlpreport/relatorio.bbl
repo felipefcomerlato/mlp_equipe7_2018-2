@@ -5,11 +5,6 @@
 \providecommand{\abntbstabout}[1]{}
 \abntbstabout{v-1.9.1 }
 
-\bibitem[About 2018]{AboutLua}
-\abntrefinfo{About}{ABOUT}{2018}
-{ABOUT. 2018.
-Available from Internet: \url{https://www.lua.org/about.html}.}
-
 \bibitem[Currying in Lua 2018]{CurryingLua}
 \abntrefinfo{Currying\ldots}{CURRYING\ldots}{2018}
 {CURRYING in Lua. 2018.
