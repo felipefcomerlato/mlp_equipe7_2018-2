@@ -6,8 +6,6 @@ function character.new(texture, position_x, position_y, inst_speed)
   local character = object.new(texture, position_x, position_y)
   local speed = inst_speed
 
-  function character:setShot() end
-
   function character:getPosition()
     return {
       x = self.position_x,
