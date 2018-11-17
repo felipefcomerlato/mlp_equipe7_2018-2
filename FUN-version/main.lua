@@ -60,7 +60,6 @@ function love.load()
       x = love.graphics.getWidth() / 2 - player_image:getWidth() / 2,
       y = love.graphics.getHeight() - 100
     }
-    print(player_position.x)
     max_x_player = love.graphics.getWidth() - player_image:getWidth()
     min_x_player = 0
     x_player_shift = 10
@@ -297,7 +296,7 @@ function newStateOfEnemies(enemies,death_row,death_col)
   return copyEnemies
 end
 
-function curryinging2(f)
+function currying2(f)
   return function(a)
     return function(b)
       return f(a, b)
@@ -305,6 +304,8 @@ function curryinging2(f)
   end
 end
 
+-- Função não utilizada.
+-- Implementada apenas como exemplo de função de ordem superior
 function map(fun, t, sizeT)
   if sizeT > 0 then
     fun(t[sizeT])
@@ -370,7 +371,7 @@ function drawEnemies(rows)
       verifyCollisionPlayer(player_position.y,player_position.x)
 
       -- Implementação currying
-      local verifyCollision = curryinging2(verifyCollision)
+      local verifyCollision = currying2(verifyCollision)
       local funRow = verifyCollision(row)
       local funCol = funRow(enemies_on_the_row)
 
