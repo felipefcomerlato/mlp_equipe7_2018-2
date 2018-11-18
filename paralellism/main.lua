@@ -1,5 +1,6 @@
 socket = require "socket"
 
+-- This is only test of paralellism use with love2d + Lua
 function love.load()
   thread = love.thread.newThread("thread.lua")
   thread2 = love.thread.newThread("thread.lua")
