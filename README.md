@@ -1,6 +1,6 @@
-# "Space Invaders" em Lua (em construção)
+# "Space Invaders" em Lua
 
-Trabalho prático da disciplina de Modelos de Linguagem de Programação da UFRGS, 2º semestre de 2018.
+[Trabalho prático da disciplina de Modelos de Linguagem de Programação](https://github.com/schnorr/mlp/tree/master/projeto) da UFRGS, 2º semestre de 2018.
 
 O trabalho consiste na implementação do game Space Invaders utilizando a linguagem Lua aplicada em dois paradigmas: Funcional e Orientado a Objetos.
 
@@ -31,30 +31,23 @@ Versão Funcional:
 $ love FUN-version/
 ```
 
-Versão Orientada a Objetos: em breve...
+Versão Orientada a Objetos:
+
+```bash
+$ love OO-version/
+```
 
 ## Referências
 
-[Lua: Site oficial](https://www.lua.org/)
-
 [Lua: Documentação Oficial](https://www.lua.org/docs.html)
 
-[Lua: Manual](https://www.lua.org/manual/5.2/pt/manual.html#2.6%20%E2%80%93%20Co-rotinas)
-
-[Lua: Noções](http://www.lua.org/doc/nocoes-3.1.pdf)
+[Lua: Manual](https://www.lua.org/manual/5.2/pt/)
 
 [Lua: Wiki](http://lua-users.org/wiki/)
-
-[Curso de Programação em Lua](https://www.youtube.com/watch?v=3BA_fK0yXrI)
-
-[Tabelas como vetores](https://www.lua.org/pil/2.5.html)
-
-[Cópia de tabelas](http://lua-users.org/wiki/CopyTable)
 
 [Exemplo de jogo O.O em Lua](https://www.youtube.com/watch?v=hByAXwpoCzs)
 
 [Biblioteca Love2d](https://love2d.org/)
-
 
 ## Autores
 
