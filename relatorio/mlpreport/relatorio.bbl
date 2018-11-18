@@ -5,52 +5,52 @@
 \providecommand{\abntbstabout}[1]{}
 \abntbstabout{v-1.9.1 }
 
-\bibitem[About Lua 2018]{AboutLua:2018:Online}
-\abntrefinfo{About\ldots}{ABOUT\ldots}{2018}
-{ABOUT Lua. 2018.
+\bibitem[Geddes e Hatfield 2018]{SpaceInvadersWikipedia}
+\abntrefinfo{Geddes e Hatfield}{GEDDES; HATFIELD}{2018}
+{GEDDES, R.; HATFIELD, D. \textbf{IGN's Top 10 Most Influential Games}. 2018.
+Available from Internet:
+  \url{https://www.ign.com/articles/2007/12/11/igns-top-10-most-influential-games}.}
+
+\bibitem[Ierusalimschy 2018]{AboutLua}
+\abntrefinfo{Ierusalimschy}{IERUSALIMSCHY}{2018a}
+{IERUSALIMSCHY, R. \textbf{About Lua}. 2018.
 Available from Internet: \url{https://www.lua.org/about.html}.}
 
-\bibitem[Currying in Lua 2018]{CurryingLua}
-\abntrefinfo{Currying\ldots}{CURRYING\ldots}{2018}
-{CURRYING in Lua. 2018.
-Available from Internet:
-  \url{https://www.reddit.com/r/lua/comments/6yy9wu/currying\_in\_lua/}.}
+\bibitem[Ierusalimschy 2018]{IntroLuaPDF}
+\abntrefinfo{Ierusalimschy}{IERUSALIMSCHY}{2018b}
+{IERUSALIMSCHY, R. \textbf{Uma Introdução à Programação em Lua}. 2018.
+Available from Internet: \url{https://www.lua.org/doc/jai2009.pdf}.}
 
-\bibitem[Functions Tutorial 2018]{FunctionsLua}
-\abntrefinfo{Functions\ldots}{FUNCTIONS\ldots}{2018}
-{FUNCTIONS Tutorial. 2018.
-Available from Internet: \url{http://lua-users.org/wiki/FunctionsTutorial}.}
-
-\bibitem[Higher Order Functions in Lua 2018]{HigherOrderFunctionLua}
-\abntrefinfo{Higher\ldots}{HIGHER\ldots}{2018}
-{HIGHER Order Functions in Lua. 2018.
-Available from Internet:
-  \url{http://inmatarian.github.io/2015/08/09/send\_more\_money/}.}
-
-\bibitem[Immutable Objects 2018]{ImmutableObjectsLua}
-\abntrefinfo{Immutable\ldots}{IMMUTABLE\ldots}{2018}
-{IMMUTABLE Objects. 2018.
-Available from Internet: \url{http://lua-users.org/wiki/ImmutableObjects}.}
-
-\bibitem[Lua Language 2018]{DocLua}
-\abntrefinfo{Lua\ldots}{LUA\ldots}{2018}
-{LUA Language. 2018.
-Available from Internet: \url{https://www.lua.org/docs.html}.}
-
-\bibitem[Manual de Referência de Lua 5.2 2018]{ManualLua}
-\abntrefinfo{Manual\ldots}{MANUAL\ldots}{2018}
-{MANUAL de Referência de Lua 5.2. 2018.
+\bibitem[Ierusalimschy, Figueiredo e Celes 2018]{ManualLua}
+\abntrefinfo{Ierusalimschy, Figueiredo e Celes}{IERUSALIMSCHY; FIGUEIREDO;
+  CELES}{2018}
+{IERUSALIMSCHY, R.; FIGUEIREDO, L.~H. de; CELES, W. \textbf{Manual de
+  Referência de Lua 5.2}. 2018.
 Available from Internet:
   \url{https://www.lua.org/manual/5.2/pt/manual.html\#2.6\%20\%E2\%80\%93\%20Co-rotinas}.}
 
-\bibitem[Patterns Tutorial 2018]{PatternMatchingLua}
-\abntrefinfo{Patterns\ldots}{PATTERNS\ldots}{2018}
-{PATTERNS Tutorial. 2018.
-Available from Internet: \url{http://lua-users.org/wiki/PatternsTutorial}.}
+\bibitem[{Inny's Blog} 2018]{HigherOrderFunctionLua}
+\abntrefinfo{{Inny's Blog}}{{Inny's Blog}}{2018}
+{{Inny's Blog}. \textbf{Higher Order Functions in Lua}. 2018.
+Available from Internet:
+  \url{http://inmatarian.github.io/2015/08/09/send\_more\_money/}.}
 
-\bibitem[Uma Introdução à Programação em Lua 2018]{IntroLuaPDF}
-\abntrefinfo{Uma\ldots}{UMA\ldots}{2018}
-{UMA Introdução à Programação em Lua. 2018.
-Available from Internet: \url{https://www.lua.org/doc/jai2009.pdf}.}
+\bibitem[{Lua User Wiki, a Colaborative Website} 2018]{FunctionsLua}
+\abntrefinfo{{Lua User Wiki, a Colaborative Website}}{{Lua User Wiki, a
+  Colaborative Website}}{2018a}
+{{Lua User Wiki, a Colaborative Website}. \textbf{Functions Tutorial}. 2018.
+Available from Internet: \url{http://lua-users.org/wiki/FunctionsTutorial}.}
+
+\bibitem[{Lua User Wiki, a Colaborative Website} 2018]{ImmutableObjectsLua}
+\abntrefinfo{{Lua User Wiki, a Colaborative Website}}{{Lua User Wiki, a
+  Colaborative Website}}{2018b}
+{{Lua User Wiki, a Colaborative Website}. \textbf{Immutable Objects}. 2018.
+Available from Internet: \url{http://lua-users.org/wiki/ImmutableObjects}.}
+
+\bibitem[{Lua User Wiki, a Colaborative Website} 2018]{PatternMatchingLua}
+\abntrefinfo{{Lua User Wiki, a Colaborative Website}}{{Lua User Wiki, a
+  Colaborative Website}}{2018c}
+{{Lua User Wiki, a Colaborative Website}. \textbf{Patterns Tutorial}. 2018.
+Available from Internet: \url{http://lua-users.org/wiki/PatternsTutorial}.}
 
 \end{thebibliography}

@@ -13,25 +13,22 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
 Database file #1: abntex2-options.bib
 Database file #2: biblio.bib
-Warning--entry type for "DocLua" isn't style-file defined
---line 1 of file biblio.bib
 Warning--entry type for "ManualLua" isn't style-file defined
---line 7 of file biblio.bib
-Warning--entry type for "AboutLua:2018:Online" isn't style-file defined
---line 13 of file biblio.bib
+--line 1 of file biblio.bib
+Warning--entry type for "AboutLua" isn't style-file defined
+--line 8 of file biblio.bib
 Warning--entry type for "IntroLuaPDF" isn't style-file defined
---line 19 of file biblio.bib
+--line 15 of file biblio.bib
 Warning--entry type for "PatternMatchingLua" isn't style-file defined
---line 25 of file biblio.bib
+--line 22 of file biblio.bib
 Warning--entry type for "ImmutableObjectsLua" isn't style-file defined
---line 31 of file biblio.bib
-Warning--entry type for "CurryingLua" isn't style-file defined
---line 37 of file biblio.bib
+--line 29 of file biblio.bib
 Warning--entry type for "HigherOrderFunctionLua" isn't style-file defined
---line 43 of file biblio.bib
+--line 36 of file biblio.bib
 Warning--entry type for "FunctionsLua" isn't style-file defined
---line 49 of file biblio.bib
-Warning--I didn't find a database entry for "AboutLua"
+--line 43 of file biblio.bib
+Warning--entry type for "SpaceInvadersWikipedia" isn't style-file defined
+--line 50 of file biblio.bib
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
 Reallocated global_strs (elt_size=20001) to 20 items from 10.
@@ -41,45 +38,45 @@ Reallocated glb_str_end (elt_size=4) to 20 items from 10.
 | Em caso de dúvidas ou problemas com este estilo procure |
 | http://abntex2.googlecode.com                           |
 +---------------------------------------------------------+
-You've used 11 entries,
+You've used 10 entries,
             6711 wiz_defined-function locations,
-            1237 strings with 10196 characters,
-and the built_in function-call counts, 16422 in all, are:
-= -- 2544
-> -- 0
-< -- 420
-+ -- 599
-- -- 0
-* -- 804
-:= -- 1908
-add.period$ -- 27
-call.type$ -- 11
-change.case$ -- 51
-chr.to.int$ -- 10
-cite$ -- 9
-duplicate$ -- 1446
-empty$ -- 673
-format.name$ -- 0
-if$ -- 3661
-int.to.chr$ -- 1
+            1236 strings with 10334 characters,
+and the built_in function-call counts, 13898 in all, are:
+= -- 1797
+> -- 173
+< -- 403
++ -- 514
+- -- 55
+* -- 786
+:= -- 1755
+add.period$ -- 32
+call.type$ -- 10
+change.case$ -- 66
+chr.to.int$ -- 6
+cite$ -- 8
+duplicate$ -- 1415
+empty$ -- 538
+format.name$ -- 255
+if$ -- 2729
+int.to.chr$ -- 4
 int.to.str$ -- 0
-missing$ -- 155
-newline$ -- 53
-num.names$ -- 0
-pop$ -- 229
+missing$ -- 151
+newline$ -- 48
+num.names$ -- 40
+pop$ -- 220
 preamble$ -- 1
 purify$ -- 33
 quote$ -- 0
-skip$ -- 2301
+skip$ -- 1594
 stack$ -- 1
-substring$ -- 773
-swap$ -- 474
-text.length$ -- 9
+substring$ -- 597
+swap$ -- 481
+text.length$ -- 8
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 66
+type$ -- 0
 warning$ -- 0
-while$ -- 38
+while$ -- 58
 width$ -- 0
-write$ -- 125
-(There were 10 warnings)
+write$ -- 120
+(There were 8 warnings)

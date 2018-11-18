@@ -138,7 +138,7 @@ framexleftmargin=15pt}
 
 Este trabalho tem como objetivo o estudo de uma linguagem de programação moderna com características híbridas contextualizando os conceitos vistos em aula ao longo do semestre e, por fim, analisar e avaliar diferentes linguagens de programação, seguindo os critérios vistos em aula.
 
-A tarefa principal do trabalho consiste em experimentar e comparar as características e funcionalidades orientadas a objeto e funcionais da linguagem de programação escolhida. De posse de uma linguagem, é necessário escolher um problema a ser solucionado com ela. O problema será, então, implementado duas vezes na mesma linguagem: uma delas usando somente Orientação a Objetos e a outra usando somente características funcionais \cite{AboutLua:2018:Online}.
+A tarefa principal do trabalho consiste em experimentar e comparar as características e funcionalidades orientadas a objeto e funcionais da linguagem de programação escolhida. De posse de uma linguagem, é necessário escolher um problema a ser solucionado com ela. O problema será, então, implementado duas vezes na mesma linguagem: uma delas usando somente Orientação a Objetos e a outra usando somente características funcionais.
 
 O desenvolvimento do trabalho encontra-se em \url{https://github.com/felipefcomerlato/mlp_equipe7_2018-2}.
 
@@ -157,9 +157,7 @@ O problema a ser resolvido neste trabalho é o desenvolvimento do jogo Space Inv
      \fonte{https://www.smithsonianmag.com/science-nature/original-space-invaders-icon-1970s-America-180969393/}
  \end{figure}
  
-O jogo foi lançado em 1978, originalmente desenvolvimento para máquinas de fliperama. Foi um dos primeiros jogos de tiro com gráfico bidimensional, inspirado na mídia popular, como Guerra dos Mundos e \textit{Star Wars}. Apesar de seus controles simples comparados com os jogos de hoje, este jogo ajudou a expandir a indústria de video game para uma indústria mundial. Quando o jogo foi primeiramente lançado, ele fez muito sucesso tornando-se mundialmente popular até os dias de hoje. 
-
-
+O jogo foi lançado em 1978, originalmente desenvolvimento para máquinas de fliperama. Foi um dos primeiros jogos de tiro com gráfico bidimensional, inspirado na mídia popular, como Guerra dos Mundos e \textit{Star Wars}. Apesar de seus controles simples comparados com os jogos de hoje, este jogo ajudou a expandir a indústria de video game para uma indústria mundial. Quando o jogo foi primeiramente lançado, ele fez muito sucesso tornando-se mundialmente popular até os dias de hoje \cite{SpaceInvadersWikipedia}. 
 
 
 \chapter{Visão Geral da Linguagem} \label{Linguagem}
@@ -177,7 +175,7 @@ tipagem dinâmica em geral não possuem declarações de tipos no código e não
 
 \section{Modelo Funcional}
 
-Lua oferece um ótimo suporte ao modelo de programação funcional, nos permitindo utilizar a maioria dos conceitos desse paradigma de programação. Recursos como \textit{pattern matching}, \textit{currying}, funções anônimas, recursão e etc. são facilmente implementáveis, como será apresentado nas próximas seções. \cite{ManualLua}
+Lua oferece um ótimo suporte ao modelo de programação funcional, nos permitindo utilizar a maioria dos conceitos desse paradigma de programação. Recursos como \textit{pattern matching}, \textit{currying}, funções anônimas, recursão e etc. são facilmente implementáveis, como será apresentado nas próximas seções.
 
 \section{Modelo Orientado a Objetos}
 
@@ -265,7 +263,7 @@ Como pode ser visto, \textit{setPlayerShot} foi implementada dentro da função 
 
 \section{Currying} \label{Currying}
 
-Currying é a técnica de transformar uma função de N parâmetros em N funções de 1 parâmetro cada \cite{CurryingLua}. Em nosso projeto, a técnica foi utilizada com a função \textit{currying2}, mostrada abaixo:
+Currying é a técnica de transformar uma função de N parâmetros em N funções de 1 parâmetro cada. Em nosso projeto, a técnica foi utilizada com a função \textit{currying2}, mostrada abaixo:
 
 \begin{lstlisting}
 
@@ -304,18 +302,9 @@ player_position = {
 
 O acesso aos valores das coordenadas x e y do \textit{player} é feita identificando as próprias variáveis \textit{x} e \textit{y} de dentro da variável de posição, como mostrado a seguir.
 
-\clearpage
-
 \begin{lstlisting}
 
 player_position.x
-
-\end{lstlisting}
-
-ou
-
-\begin{lstlisting}
-
 player_position.y
 
 \end{lstlisting}
@@ -337,7 +326,7 @@ end
 
 \section{Funções de Ordem Maior Fornecidas Pela Linguagem}
 
-Conforme estudos realizados sobre Lua, foram encontrados poucos exemplos de funções de alta ordem disponíveis na linguagem. Um exemplo (não utilizado neste projeto) é a função \textit{table.sort}, mostrada abaixo, que espera como um dos parâmetros uma função que define o sentido de ordenação de uma tabela \cite{FunctionsLua}.
+Conforme estudos realizados sobre Lua, foram encontrados poucos exemplos de funções de alta ordem disponíveis na linguagem. Um exemplo (não utilizado neste projeto) é a função \textit{table.sort}, mostrada abaixo, que espera como um dos parâmetros uma função que define o sentido de ordenação de uma tabela, e aplica o reordenamento sobre a própria tabela (a tabela original é modificada) \cite{FunctionsLua}.
 
 \begin{lstlisting}
 list = {{3}, {5}, {2}, {-1}}
@@ -631,7 +620,7 @@ O recurso de \textit{delegates} não foi implementado no projeto.
 
 \chapter{Paralelismo}
 
-Lua não oferece recurso nativo de paralelismo. Uma alternativa semelhante ao uso de \textit{threads}, mas que não funciona de fato em paralelo, são as co-rotinas. A principal diferença entre \textit{threads} e co-rotinas é que conceitualmente um programa com \textit{threads} roda várias \textit{threads} simultaneamente. Co-rotinas, por outro lado, são colaborativas: um programa com co-rotinas está a cada tempo rodando apenas uma de suas co-rotinas. Uma co-rotina pode ser suspensa para dar vez a outra, compartilhando recursos com ela.
+Lua não oferece recurso nativo de paralelismo. Uma alternativa semelhante ao uso de \textit{threads}, mas que não funciona de fato em paralelo, são as co-rotinas. A principal diferença entre \textit{threads} e co-rotinas é que conceitualmente um programa com \textit{threads} roda várias \textit{threads} simultaneamente. Co-rotinas, por outro lado, são colaborativas: um programa com co-rotinas está a cada tempo rodando apenas uma de suas co-rotinas. Uma co-rotina pode ser suspensa para dar vez a outra, compartilhando recursos com ela \cite{ManualLua}.
 
 Existem bibliotecas que possibilitam o uso paralelo de threads, porém o compartilhamento de recursos é extremamente limitado. Para o projeto, por exemplo, a biblioteca gráfica love2d não permite o compartilhamento de recursos gráficos entre threads, que seria a principal aplicação do conceito de paralelismo no jogo Space Invaders.
 
@@ -729,7 +718,7 @@ Inspirado no primeiro CATP da disciplina, consideramos válido um comparativo da
 
 
 
-Embora Lua seja uma linguagem relativamente nova, de \textit{script}, ou seja, adaptada dentro de sistemas desenvolvidos em outras linguagens, principalmente em C, conseguimos nivelar muitas de suas características com uma linguagem robusta, como C, e uma linguagem interpretada completa, como Python. Destacamos a simplicidade de Lua, que se equipara a Python mas é superior a C, de acordo com a nossa avaliação. Um aspecto negativo da linguagem, no entanto, é a dificuldade de checagem de tipos e tratamento de exceções, características fortes em C e em Python, respectivamente \cite{DocLua}.
+Embora Lua seja uma linguagem relativamente nova, de \textit{script}, ou seja, adaptada dentro de sistemas desenvolvidos em outras linguagens, principalmente em C, conseguimos nivelar muitas de suas características com uma linguagem robusta, como C, e uma linguagem interpretada completa, como Python. Destacamos a simplicidade de Lua, que se equipara a Python mas é superior a C, de acordo com a nossa avaliação. Um aspecto negativo da linguagem, no entanto, é a dificuldade de checagem de tipos e tratamento de exceções, características fortes em C e em Python, respectivamente.
 
 
 \chapter{Conclusão Final}
