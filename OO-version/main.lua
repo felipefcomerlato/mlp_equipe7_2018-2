@@ -60,7 +60,6 @@ function love.draw()
 end
 
 function winTest()
-  -- print(enemies[1]:getState())
   if #enemies == 1 and enemies[1]:getState() == 0 then
     love.load("playerwin")
   end
