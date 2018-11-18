@@ -5,6 +5,11 @@
 \providecommand{\abntbstabout}[1]{}
 \abntbstabout{v-1.9.1 }
 
+\bibitem[About Lua 2018]{AboutLua:2018:Online}
+\abntrefinfo{About\ldots}{ABOUT\ldots}{2018}
+{ABOUT Lua. 2018.
+Available from Internet: \url{https://www.lua.org/about.html}.}
+
 \bibitem[Currying in Lua 2018]{CurryingLua}
 \abntrefinfo{Currying\ldots}{CURRYING\ldots}{2018}
 {CURRYING in Lua. 2018.
@@ -26,6 +31,11 @@ Available from Internet:
 \abntrefinfo{Immutable\ldots}{IMMUTABLE\ldots}{2018}
 {IMMUTABLE Objects. 2018.
 Available from Internet: \url{http://lua-users.org/wiki/ImmutableObjects}.}
+
+\bibitem[Lua Language 2018]{DocLua}
+\abntrefinfo{Lua\ldots}{LUA\ldots}{2018}
+{LUA Language. 2018.
+Available from Internet: \url{https://www.lua.org/docs.html}.}
 
 \bibitem[Manual de Referência de Lua 5.2 2018]{ManualLua}
 \abntrefinfo{Manual\ldots}{MANUAL\ldots}{2018}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.9.7)  16 NOV 2018 23:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.9.7)  18 NOV 2018 14:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1394,7 +1394,7 @@ Package babel Info: Redefining portuges shorthand "|
 ]
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 146.
-<images/space-invaders-screen.jpg, id=173, 301.125pt x 344.28625pt>
+<images/space-invaders-screen.jpg, id=176, 301.125pt x 344.28625pt>
 File: images/space-invaders-screen.jpg Graphic file (type jpg)
 <use images/space-invaders-screen.jpg>
 Package pdftex.def Info: images/space-invaders-screen.jpg  used on input line 1
@@ -1619,7 +1619,7 @@ Package babel Info: Redefining portuges shorthand "|
 [20
 
 ]
-<images/threads-screen.png, id=547, 162.3666pt x 49.1436pt>
+<images/threads-screen.png, id=550, 162.3666pt x 49.1436pt>
 File: images/threads-screen.png Graphic file (type png)
 <use images/threads-screen.png>
 Package pdftex.def Info: images/threads-screen.png  used on input line 697.
@@ -1652,9 +1652,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 706--729
 Underfull \hbox (badness 10000) in paragraph at lines 706--729
 
  []
-
-
-LaTeX Warning: Citation `DocLua' on page 22 undefined on input line 732.
 
 
 Underfull \hbox (badness 10000) has occurred while \output is active
@@ -1710,10 +1707,10 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 770.
  ) 
 Here is how much of TeX's memory you used:
- 22864 strings out of 494903
- 376026 string characters out of 6179962
- 468041 words of memory out of 5000000
- 25605 multiletter control sequences out of 15000+600000
+ 22874 strings out of 494903
+ 376238 string characters out of 6179962
+ 467366 words of memory out of 5000000
+ 25613 multiletter control sequences out of 15000+600000
  555627 words of font info for 55 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
  48i,9n,45p,10365b,1056s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1722,10 +1719,10 @@ e/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
 /times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.
 pfb>
-Output written on relatorio.pdf (24 pages, 167067 bytes).
+Output written on relatorio.pdf (24 pages, 167427 bytes).
 PDF statistics:
- 682 PDF objects out of 1000 (max. 8388607)
- 643 compressed objects within 7 object streams
- 338 named destinations out of 1000 (max. 500000)
+ 690 PDF objects out of 1000 (max. 8388607)
+ 651 compressed objects within 7 object streams
+ 340 named destinations out of 1000 (max. 500000)
  251 words of extra memory for PDF output out of 10000 (max. 10000000)
 
