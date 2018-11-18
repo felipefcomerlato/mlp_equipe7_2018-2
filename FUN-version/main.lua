@@ -1,4 +1,3 @@
--- ### LOVE FUNCTIONS
 function love.load()
 
   math.randomseed(os.time())
@@ -96,7 +95,7 @@ end
 
 
 function love.draw()
-  --set background image
+  -- "background"
   love.graphics.draw(background_image, 0,0)
   love.graphics.draw(hr, 0, 580)
 
@@ -183,6 +182,7 @@ function love.update(dt)
     end
   end
 
+  -- Faz o tiro dos inimigos descerem na tela
   updateEnemyShotPosition = function(dt)
     if enemy_shot_on_the_screen then
       y_enemy_shot_shift = y_enemy_shot_shift + enemy_shot_speed*dt
@@ -230,9 +230,11 @@ function love.update(dt)
           player_position.x = min_x_player
         end
 
+        -- Tecla enter para começar o jogo
       elseif love.keyboard.isDown("return") then
         love.load()
 
+        -- Tecla espaço para disparar um tiro
       elseif love.keyboard.isDown("space") then
         -- Só pode atirar se não existe um tiro do player na tela
         if not player_shot_on_the_screen then
@@ -240,11 +242,6 @@ function love.update(dt)
           x_player_shot = player_position.x
           y_player_shot_initial = player_position.y
         end
-
-      --encerra o jogo
-      elseif love.keyboard.isDown("escape") then
-        love.event.quit()
-      end
     end
     movePlayer()
 
@@ -256,7 +253,6 @@ function love.update(dt)
   controlPlayer()
 end
 
--- end LOVE FUNCTIONS ###
 
 function resetShot()
   y_player_shot = player_position.y
