@@ -242,6 +242,7 @@ function love.update(dt)
           x_player_shot = player_position.x
           y_player_shot_initial = player_position.y
         end
+      end
     end
     movePlayer()
 
